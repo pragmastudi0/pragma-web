@@ -12,15 +12,15 @@
     gtag('config', 'G-PVCRW4GH5Z');
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Demo CRM — pragma studio</title>
-  <meta name="description" content="Probá un mini CRM interactivo de pragma studio: dashboard, clientes y pipeline. Sin registro.">
+  <title>Ordenar para crecer — pragma studio</title>
+  <meta name="description" content="Un recorrido interactivo: así releva PRAGMA los procesos de una empresa y los convierte en software a medida. Caso ficticio de un estudio de arquitectura.">
   <meta name="robots" content="noindex">
-  <meta property="og:title" content="Demo CRM — pragma studio">
-  <meta property="og:description" content="Mini CRM interactivo: dashboard, clientes y pipeline Kanban. Probalo sin registrarte.">
+  <meta property="og:title" content="Ordenar para crecer — pragma studio">
+  <meta property="og:description" content="Del desorden de Excel y WhatsApp a un sistema a medida. Recorrelo y probá el resultado, sin registrarte.">
   <meta property="og:type" content="website">
   <link rel="icon" type="image/png" href="images/favicon.png">
   <link rel="apple-touch-icon" href="images/favicon.png">
-  <meta name="theme-color" content="#0a0a0a">
+  <meta name="theme-color" content="#f7f6f2">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -30,175 +30,338 @@
 </head>
 
 <body>
-  <div class="crm" id="crm">
-    <!-- ══════ SIDEBAR ══════ -->
-    <aside class="crm-sidebar" id="sidebar">
-      <div class="side-head">
-        <a href="index.html" class="side-brand" aria-label="pragma studio">
-          <span class="side-brand-mark">P</span>
-          <span class="side-brand-text">pragma<em>studio</em></span>
-        </a>
-        <button class="side-collapse" id="collapseBtn" aria-label="Contraer menú" title="Contraer">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-        </button>
+  <a class="skip-link" href="#resultado">Saltar al demo interactivo</a>
+
+  <!-- ══════ NAV ══════ -->
+  <nav class="dnav">
+    <a href="index.html" class="dnav-brand">PRAGMA<span>studio</span></a>
+    <div class="dnav-right">
+      <span class="dnav-pill"><span class="dnav-dot"></span>Caso ficticio</span>
+      <a class="dnav-exit" href="index.html">Volver al sitio</a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ══════ HERO ══════ -->
+    <header class="dhero">
+      <p class="section-tag">Demo interactiva · Caso ficticio</p>
+      <h1>Ordenar para <em class="italic-bordo">crecer</em>.</h1>
+      <p class="dhero-desc">
+        Imaginá un estudio de arquitectura que creció: las consultas entran por WhatsApp,
+        los presupuestos viven en Excel, las tareas en la cabeza de alguien y los cobros… donde se pueda.
+      </p>
+      <p class="dhero-sub">
+        Es un caso inventado. Lo usamos para mostrarte cómo relevamos procesos y los convertimos en software a medida.
+      </p>
+      <div class="dhero-scroll" aria-hidden="true">
+        <span>Scrolleá</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
       </div>
+    </header>
 
-      <nav class="side-nav" id="sideNav">
-        <button class="side-link active" data-view="dashboard">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
-          <span>Dashboard</span>
-        </button>
-        <button class="side-link" data-view="clientes">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          <span>Clientes</span>
-          <em class="side-badge" id="navClientCount">0</em>
-        </button>
-        <button class="side-link" data-view="pipeline">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="3" y2="20"/><line x1="9" y1="6" x2="9" y2="14"/><line x1="15" y1="6" x2="15" y2="17"/><line x1="21" y1="6" x2="21" y2="11"/></svg>
-          <span>Pipeline</span>
-        </button>
-      </nav>
+    <!-- ══════ RECORRIDO ══════ -->
+    <section class="journey" id="journey">
+      <div class="journey-grid">
 
-      <div class="side-foot">
-        <button class="side-tool" id="tourBtn">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-          <span>Recorrido guiado</span>
-        </button>
-        <button class="side-tool" id="resetBtn">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L3 8"/></svg>
-          <span>Reiniciar demo</span>
-        </button>
-        <a class="side-cta" href="https://wa.me/5493512145673?text=Hola!%20Vi%20la%20demo%20del%20CRM%20y%20me%20gustar%C3%ADa%20un%20sistema%20a%20medida." target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          <span>Quiero uno a medida</span>
-        </a>
-      </div>
-    </aside>
+        <!-- Escenario sticky: los mismos cuadrados en cada etapa -->
+        <div class="stage-wrap" aria-hidden="true">
+          <div class="stage" id="stage" data-stage="1">
 
-    <div class="sidebar-scrim" id="sidebarScrim" aria-hidden="true"></div>
+            <!-- líneas del relevamiento (etapa 2) -->
+            <svg class="stage-links" viewBox="0 0 100 112" preserveAspectRatio="none">
+              <line x1="50" y1="55" x2="20" y2="22"/>
+              <line x1="50" y1="55" x2="78" y2="20"/>
+              <line x1="50" y1="55" x2="20" y2="74"/>
+              <line x1="50" y1="55" x2="78" y2="76"/>
+            </svg>
 
-    <!-- ══════ MAIN ══════ -->
-    <div class="crm-main">
-      <header class="crm-topbar">
-        <button class="top-burger" id="burgerBtn" aria-label="Abrir menú">
-          <span></span><span></span><span></span>
-        </button>
-        <div class="top-title">
-          <span class="top-eyebrow">Demo interactiva</span>
-          <h1 id="viewTitle">Dashboard</h1>
+            <!-- cuadrados: consultas -->
+            <div class="chip t-consulta" data-chip="c1"><span class="chip-label">Consulta</span><span class="chip-sub">Familia Serra</span></div>
+            <div class="chip t-consulta" data-chip="c2"><span class="chip-label">Consulta</span><span class="chip-sub">Café Mitre</span></div>
+            <div class="chip t-consulta" data-chip="c3"><span class="chip-label">Consulta</span><span class="chip-sub">Cons. Güemes</span></div>
+            <!-- presupuestos -->
+            <div class="chip t-presu" data-chip="p1"><span class="chip-label">Presupuesto</span><span class="chip-sub">Dúplex Lote 12</span></div>
+            <div class="chip t-presu" data-chip="p2"><span class="chip-label">Presupuesto</span><span class="chip-sub">Casa Alsina</span></div>
+            <!-- proyecto -->
+            <div class="chip t-proy" data-chip="pr1"><span class="chip-label">Proyecto</span><span class="chip-sub">Casa Costa</span></div>
+            <!-- tareas -->
+            <div class="chip t-tarea" data-chip="t1"><span class="chip-label">Tarea</span><span class="chip-sub">Pedir hierros</span></div>
+            <div class="chip t-tarea" data-chip="t2"><span class="chip-label">Tarea</span><span class="chip-sub">Revestimiento</span></div>
+            <div class="chip t-tarea" data-chip="t3"><span class="chip-label">Tarea</span><span class="chip-sub">Certificado</span></div>
+            <div class="chip t-tarea" data-chip="t4"><span class="chip-label">Tarea</span><span class="chip-sub">Instalador</span></div>
+            <!-- cobros -->
+            <div class="chip t-cobro" data-chip="m1"><span class="chip-label">Cobro</span><span class="chip-sub">Anticipo</span></div>
+            <div class="chip t-cobro" data-chip="m2"><span class="chip-label">Cobro</span><span class="chip-sub">Certif. 2</span></div>
+
+            <!-- etapa 1: el ruido -->
+            <div class="s1-only ghost ghost-wa" data-g="1">“¿Respondiste lo de Serra?”</div>
+            <div class="s1-only ghost ghost-wa" data-g="2">“Pasame el Excel de cobros”</div>
+            <div class="s1-only ghost ghost-xl" data-g="3">presupuestos_FINAL_v7.xlsx</div>
+            <div class="s1-only s1-badge">+7 pendientes</div>
+
+            <!-- etapa 2: clusters y personas -->
+            <div class="s2-only cluster-label" data-c="consultas">Consultas</div>
+            <div class="s2-only cluster-label" data-c="presu">Presupuestos</div>
+            <div class="s2-only cluster-label" data-c="tareas">Tareas</div>
+            <div class="s2-only cluster-label" data-c="cobros">Cobros</div>
+            <div class="s2-only person" data-p="1"><i>JP</i>Julia</div>
+            <div class="s2-only person" data-p="2"><i>MV</i>Marcos</div>
+            <div class="s2-only person" data-p="3"><i>SR</i>Sol</div>
+
+            <!-- etapa 3: el flujo -->
+            <div class="s3-only flow-head" data-f="1">Consulta<em>resp. Julia</em></div>
+            <div class="s3-only flow-head" data-f="2">Presupuesto<em>resp. Marcos</em></div>
+            <div class="s3-only flow-head" data-f="3">Proyecto<em>equipo + Sol</em></div>
+            <div class="s3-only flow-arrow" data-a="1">→</div>
+            <div class="s3-only flow-arrow" data-a="2">→</div>
+            <div class="s3-only flow-next">Cada paso con responsable y próximo paso</div>
+
+            <!-- etapa 4: wireframe del sistema -->
+            <div class="s4-only wf-frame"></div>
+            <div class="s4-only wf-topbar"><i></i><i></i><i></i><b>sistema del estudio</b></div>
+            <div class="s4-only wf-rail"><i></i><i></i><i></i></div>
+            <div class="s4-only wf-caption">Los mismos elementos, ahora componentes</div>
+          </div>
         </div>
-        <div class="top-actions">
-          <span class="demo-pill" title="Todos los datos son ficticios y viven solo en tu navegador">
-            <span class="demo-dot"></span> Datos de demo
+
+        <!-- Pasos -->
+        <div class="steps">
+          <article class="step" data-stage="1" id="paso-1">
+            <p class="section-tag">01 · El desorden</p>
+            <h2>Todo funciona… hasta que crece.</h2>
+            <p>Consultas sin responder, presupuestos que se pisan, tareas que dependen de la memoria
+              y cobros que nadie sigue. No es desprolijidad: es una empresa que creció más rápido que sus herramientas.</p>
+          </article>
+
+          <article class="step" data-stage="2" id="paso-2">
+            <p class="section-tag">02 · Relevamiento</p>
+            <h2>Primero entendemos cómo trabajan.</h2>
+            <p>Nos sentamos con el equipo y miramos la operación real: qué entra, quién lo toma, dónde se traba.
+              Cada elemento encuentra su grupo, y cada proceso, su responsable.</p>
+          </article>
+
+          <article class="step" data-stage="3" id="paso-3">
+            <p class="section-tag">03 · Diseño</p>
+            <h2>Un flujo claro: consulta → presupuesto → proyecto.</h2>
+            <p>Ordenamos el recorrido de punta a punta. Nada queda “en el aire”:
+              cada cosa tiene un lugar, un responsable y un próximo paso.</p>
+          </article>
+
+          <article class="step" data-stage="4" id="paso-4">
+            <p class="section-tag">04 · Desarrollo</p>
+            <h2>Los mismos elementos se vuelven software.</h2>
+            <p>Cada cuadrado del relevamiento se convierte en un componente del sistema:
+              listas, fichas, tareas, cobros. A medida del estudio, no al revés.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════ RESULTADO: el sistema ══════ -->
+    <section class="resultado" id="resultado">
+      <div class="resultado-head">
+        <p class="section-tag">05 · Resultado</p>
+        <h2>Una sola pantalla, <em class="italic-bordo">todo el estudio</em>.</h2>
+        <p class="resultado-desc">Esto es lo que el estudio usaría todos los días. Probalo:
+          pasá la consulta a presupuesto, confirmá el trabajo y tildá tareas.</p>
+      </div>
+
+      <div class="app" id="app">
+        <!-- chrome -->
+        <div class="app-chrome">
+          <span class="chrome-dots"><i></i><i></i><i></i></span>
+          <span class="chrome-url">sistema.estudioandamio.app</span>
+          <span class="chrome-badge">Datos ficticios</span>
+        </div>
+
+        <div class="app-top">
+          <div class="app-brand"><b>EA</b><span>Estudio Andamio<em>arquitectura · caso ficticio</em></span></div>
+          <div class="app-tabs" role="tablist" aria-label="Secciones del sistema">
+            <button class="app-tab active" role="tab" aria-selected="true" aria-controls="panel-consultas" id="tab-consultas" data-panel="consultas">Consultas <b data-count="consultas">3</b></button>
+            <button class="app-tab" role="tab" aria-selected="false" aria-controls="panel-presupuestos" id="tab-presupuestos" data-panel="presupuestos" tabindex="-1">Presupuestos <b data-count="presupuestos">2</b></button>
+            <button class="app-tab" role="tab" aria-selected="false" aria-controls="panel-proyectos" id="tab-proyectos" data-panel="proyectos" tabindex="-1">Proyectos <b data-count="proyectos">2</b></button>
+          </div>
+        </div>
+
+        <div class="app-body">
+          <!-- ── CONSULTAS ── -->
+          <section class="app-panel active" id="panel-consultas" role="tabpanel" aria-labelledby="tab-consultas" data-panel="consultas">
+            <h3 class="panel-title">Consultas</h3>
+
+            <article class="card" data-id="c14">
+              <div class="card-row">
+                <span class="tag tag-hot"><span class="tag-dot"></span>Sin responder · hace 2 días</span>
+                <span class="card-id">C-014</span>
+              </div>
+              <h4>Vivienda nueva en Villa Allende</h4>
+              <p class="card-meta">Familia Serra · llegó por Instagram</p>
+              <p class="card-note">“Tenemos el lote y queremos empezar a construir en marzo. ¿Cómo es el proceso con ustedes?”</p>
+              <div class="card-foot">
+                <span class="owner"><i class="av av-j">JP</i>Julia</span>
+                <button class="btn-mini" data-act="convertir-presupuesto" data-id="c14">Pasar a presupuesto
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+              </div>
+            </article>
+
+            <article class="card" data-id="c13">
+              <div class="card-row">
+                <span class="tag tag-ok"><span class="tag-dot"></span>Respondida · reunión el jueves</span>
+                <span class="card-id">C-013</span>
+              </div>
+              <h4>Reforma de local gastronómico</h4>
+              <p class="card-meta">Café Mitre · recomendado por un cliente</p>
+              <div class="card-foot">
+                <span class="owner"><i class="av av-j">JP</i>Julia</span>
+                <span class="next-step">Próximo paso: preparar propuesta</span>
+              </div>
+            </article>
+
+            <article class="card card-dim" data-id="c12">
+              <div class="card-row">
+                <span class="tag"><span class="tag-dot"></span>Derivada · fuera de alcance</span>
+                <span class="card-id">C-012</span>
+              </div>
+              <h4>Ampliación de cochera</h4>
+              <p class="card-meta">Consorcio Güemes · se derivó a un maestro mayor de obras</p>
+            </article>
+          </section>
+
+          <!-- ── PRESUPUESTOS ── -->
+          <section class="app-panel" id="panel-presupuestos" role="tabpanel" aria-labelledby="tab-presupuestos" data-panel="presupuestos">
+            <h3 class="panel-title">Presupuestos</h3>
+
+            <article class="card" data-id="p31">
+              <div class="card-row">
+                <span class="tag tag-warn"><span class="tag-dot"></span>Enviado · hace 5 días</span>
+                <span class="card-id">P-031</span>
+              </div>
+              <h4>Dúplex en Lote 12</h4>
+              <p class="card-meta">Hnos. Castro · a partir de la consulta C-010</p>
+              <ul class="items">
+                <li><span>Anteproyecto</span><b>$ 2.400.000</b></li>
+                <li><span>Documentación de obra</span><b>$ 3.100.000</b></li>
+                <li><span>Dirección de obra</span><b>$ 4.900.000</b></li>
+                <li class="items-total"><span>Total</span><b>$ 10.400.000</b></li>
+              </ul>
+              <div class="card-foot">
+                <span class="owner"><i class="av av-m">MV</i>Marcos</span>
+                <button class="btn-mini btn-confirm" data-act="confirmar-trabajo" data-id="p31">Confirmar trabajo
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </button>
+              </div>
+            </article>
+
+            <article class="card" data-id="p30">
+              <div class="card-row">
+                <span class="tag"><span class="tag-dot"></span>En preparación · vence el viernes</span>
+                <span class="card-id">P-030</span>
+              </div>
+              <h4>Reforma Casa Alsina</h4>
+              <p class="card-meta">Vera y Asoc. · falta cotizar la carpintería</p>
+              <div class="card-foot">
+                <span class="owner"><i class="av av-m">MV</i>Marcos</span>
+                <span class="next-step">Próximo paso: pedir precio al carpintero</span>
+              </div>
+            </article>
+          </section>
+
+          <!-- ── PROYECTOS ── -->
+          <section class="app-panel" id="panel-proyectos" role="tabpanel" aria-labelledby="tab-proyectos" data-panel="proyectos">
+            <h3 class="panel-title">Proyectos</h3>
+
+            <article class="proj open" data-id="pr7">
+              <button class="proj-head" aria-expanded="true" data-act="toggle-proyecto">
+                <span class="proj-main">
+                  <span class="card-row">
+                    <span class="tag tag-build"><span class="tag-dot"></span>En obra</span>
+                    <span class="card-id">PR-07</span>
+                  </span>
+                  <h4>Casa Costa</h4>
+                  <p class="card-meta">Familia Ponce · dirección: Julia</p>
+                </span>
+                <span class="proj-side">
+                  <span class="proj-prog"><b data-prog="pr7">1/4</b> tareas</span>
+                  <svg class="proj-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                </span>
+              </button>
+              <div class="proj-body">
+                <p class="proj-next"><b>Próximo paso</b> Visita de obra — viernes 10:00 <span class="owner"><i class="av av-j">JP</i>Julia</span></p>
+                <div class="proj-cols">
+                  <div class="proj-tasks">
+                    <h5>Tareas</h5>
+                    <label class="task"><input type="checkbox" data-proj="pr7"><span class="task-box" aria-hidden="true"></span><span class="task-txt">Pedir hierros al corralón</span><span class="owner sm"><i class="av av-m">MV</i>Marcos</span></label>
+                    <label class="task"><input type="checkbox" data-proj="pr7"><span class="task-box" aria-hidden="true"></span><span class="task-txt">Aprobar revestimiento con el cliente</span><span class="owner sm"><i class="av av-j">JP</i>Julia</span></label>
+                    <label class="task"><input type="checkbox" data-proj="pr7" checked><span class="task-box" aria-hidden="true"></span><span class="task-txt">Cargar certificado mensual</span><span class="owner sm"><i class="av av-s">SR</i>Sol</span></label>
+                    <label class="task"><input type="checkbox" data-proj="pr7"><span class="task-box" aria-hidden="true"></span><span class="task-txt">Coordinar instalador eléctrico</span><span class="owner sm"><i class="av av-m">MV</i>Marcos</span></label>
+                  </div>
+                  <div class="proj-pay">
+                    <h5>Cobros</h5>
+                    <div class="pay-row"><span>Anticipo</span><b>$ 3.500.000</b><em class="pay-ok">Cobrado</em></div>
+                    <div class="pay-row"><span>Certificado 2</span><b>$ 2.800.000</b><em class="pay-due">Vence 20/11</em></div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="proj" data-id="pr6">
+              <button class="proj-head" aria-expanded="false" data-act="toggle-proyecto">
+                <span class="proj-main">
+                  <span class="card-row">
+                    <span class="tag tag-doc"><span class="tag-dot"></span>Documentación</span>
+                    <span class="card-id">PR-06</span>
+                  </span>
+                  <h4>Oficinas Nodo</h4>
+                  <p class="card-meta">Nodo Coworking · dirección: Marcos</p>
+                </span>
+                <span class="proj-side">
+                  <span class="proj-prog"><b data-prog="pr6">1/3</b> tareas</span>
+                  <svg class="proj-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                </span>
+              </button>
+              <div class="proj-body">
+                <p class="proj-next"><b>Próximo paso</b> Entregar planos en la municipalidad <span class="owner"><i class="av av-m">MV</i>Marcos</span></p>
+                <div class="proj-cols">
+                  <div class="proj-tasks">
+                    <h5>Tareas</h5>
+                    <label class="task"><input type="checkbox" data-proj="pr6" checked><span class="task-box" aria-hidden="true"></span><span class="task-txt">Ajustar planta según observaciones</span><span class="owner sm"><i class="av av-m">MV</i>Marcos</span></label>
+                    <label class="task"><input type="checkbox" data-proj="pr6"><span class="task-box" aria-hidden="true"></span><span class="task-txt">Firmar planos con el comitente</span><span class="owner sm"><i class="av av-j">JP</i>Julia</span></label>
+                    <label class="task"><input type="checkbox" data-proj="pr6"><span class="task-box" aria-hidden="true"></span><span class="task-txt">Pagar tasa municipal</span><span class="owner sm"><i class="av av-s">SR</i>Sol</span></label>
+                  </div>
+                  <div class="proj-pay">
+                    <h5>Cobros</h5>
+                    <div class="pay-row"><span>Etapa documentación</span><b>$ 1.900.000</b><em class="pay-ok">Cobrado</em></div>
+                    <div class="pay-row"><span>Saldo entrega</span><b>$ 1.100.000</b><em class="pay-due">Al entregar</em></div>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════ CTA ══════ -->
+    <section class="dcta">
+      <div class="dcta-inner">
+        <h2>Ahora imaginá esto <em class="italic-bordo">con tu empresa</em>.</h2>
+        <p>Cada negocio tiene su propio desorden: el de este estudio es inventado, el tuyo no.
+          Contanos cómo trabajan hoy y lo relevamos juntos.</p>
+        <a class="btn-primary" href="https://wa.me/5493512145673?text=Hola!%20Hice%20el%20recorrido%20%E2%80%9COrdenar%20para%20crecer%E2%80%9D%20y%20quiero%20contarles%20c%C3%B3mo%20trabajamos%20en%20mi%20empresa." target="_blank" rel="noopener">
+          <span>Contanos cómo trabajan</span>
+          <span class="btn-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </span>
-          <a class="top-exit" href="index.html">Volver al sitio</a>
-        </div>
-      </header>
-
-      <main class="crm-content">
-        <!-- DASHBOARD -->
-        <section class="view active" data-view="dashboard" id="view-dashboard">
-          <div class="kpi-row" id="kpiRow"></div>
-          <div class="dash-grid">
-            <div class="panel">
-              <div class="panel-head">
-                <h2>Oportunidades por etapa</h2>
-                <span class="panel-sub">Cantidad en cada fase del pipeline</span>
-              </div>
-              <div class="chart-bars" id="chartStages"></div>
-            </div>
-            <div class="panel">
-              <div class="panel-head">
-                <h2>Valor del pipeline</h2>
-                <span class="panel-sub">Distribución por etapa</span>
-              </div>
-              <div class="chart-donut-wrap">
-                <div id="chartDonut"></div>
-                <ul class="donut-legend" id="donutLegend"></ul>
-              </div>
-            </div>
-            <div class="panel panel-wide">
-              <div class="panel-head">
-                <h2>Ingresos ganados</h2>
-                <span class="panel-sub">Últimos 6 meses</span>
-              </div>
-              <div class="chart-area" id="chartRevenue"></div>
-            </div>
-          </div>
-        </section>
-
-        <!-- CLIENTES -->
-        <section class="view" data-view="clientes" id="view-clientes">
-          <div class="toolbar">
-            <div class="search">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-              <input type="text" id="clientSearch" placeholder="Buscar por nombre, empresa o email…">
-            </div>
-            <button class="btn-accent" id="newClientBtn">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-              Nuevo cliente
-            </button>
-          </div>
-          <div class="table-wrap">
-            <table class="data-table">
-              <thead>
-                <tr>
-                  <th>Cliente</th><th class="col-hide-sm">Empresa</th><th class="col-hide-sm">Email</th>
-                  <th>Etapa</th><th class="num">Valor</th>
-                </tr>
-              </thead>
-              <tbody id="clientRows"></tbody>
-            </table>
-            <div class="empty-state" id="clientEmpty" hidden>
-              <p>No encontramos clientes con ese criterio.</p>
-            </div>
-          </div>
-        </section>
-
-        <!-- PIPELINE -->
-        <section class="view" data-view="pipeline" id="view-pipeline">
-          <div class="toolbar">
-            <p class="pipeline-hint">Arrastrá las tarjetas entre columnas, o usá las flechas en mobile.</p>
-            <button class="btn-accent" id="newDealBtn">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-              Nueva oportunidad
-            </button>
-          </div>
-          <div class="kanban" id="kanban"></div>
-        </section>
-      </main>
-    </div>
-  </div>
-
-  <!-- ══════ MODAL ══════ -->
-  <div class="modal-backdrop" id="modalBackdrop" hidden>
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-      <div class="modal-head">
-        <h3 id="modalTitle">Nuevo cliente</h3>
-        <button class="modal-close" id="modalClose" aria-label="Cerrar">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-        </button>
+        </a>
+        <a class="dcta-back" href="index.html">← Volver al sitio</a>
       </div>
-      <div class="modal-body" id="modalBody"></div>
-    </div>
-  </div>
+    </section>
+  </main>
 
-  <!-- ══════ TOUR ══════ -->
-  <div class="tour" id="tour" hidden>
-    <div class="tour-spot" id="tourSpot"></div>
-    <div class="tour-pop" id="tourPop">
-      <span class="tour-step" id="tourStep"></span>
-      <h4 id="tourTitle"></h4>
-      <p id="tourText"></p>
-      <div class="tour-actions">
-        <button class="tour-skip" id="tourSkip">Saltar</button>
-        <div class="tour-nav">
-          <button class="tour-prev" id="tourPrev">Atrás</button>
-          <button class="tour-next" id="tourNext">Siguiente</button>
-        </div>
-      </div>
-    </div>
-  </div>
+  <footer class="dfoot">
+    <span>pragma<b>studio</b></span>
+    <span class="dfoot-note">Estudio Andamio es un caso ficticio con fines demostrativos.</span>
+  </footer>
 
   <div class="toast" id="toast" hidden></div>
 
