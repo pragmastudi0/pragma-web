@@ -3,20 +3,50 @@
 
 <head>
   <meta charset="UTF-8">
-  <!-- Google tag (gtag.js) -->
+  <!-- Google tag (gtag.js) + Consent Mode v2 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PVCRW4GH5Z"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
+    // Consent Mode v2 — analítica/marketing denegados por defecto hasta que la persona lo autorice
+    gtag('consent', 'default', {
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: 'denied',
+      wait_for_update: 500
+    });
+    // Restaurar una elección previa guardada (antes de config)
+    try {
+      var _pc = JSON.parse(localStorage.getItem('pragma-consent-v1') || 'null');
+      if (_pc && _pc.analytics === true) {
+        gtag('consent', 'update', { analytics_storage: 'granted' });
+      }
+    } catch (e) {}
     gtag('js', new Date());
     gtag('config', 'G-PVCRW4GH5Z');
   </script>
+  <!-- Consentimiento de cookies -->
+  <link rel="stylesheet" href="css/consent.css">
+  <script src="js/consent.js" defer></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>proyectos — pragma studio</title>
-  <meta name="description" content="Proyectos de pragma studio: webs y sistemas a medida.">
+  <meta name="description" content="Proyectos de pragma studio: webs y sistemas a medida para negocios reales — EMAT, Quintana Ruiz Asesores, Greenova, Tilin y Alma.">
+  <link rel="canonical" href="https://pragmastudio.com.ar/proyectos.html">
   <meta property="og:title" content="proyectos — pragma studio">
-  <meta property="og:description" content="Webs y sistemas a medida: EMAT, Quintana Ruiz, Greenova, Tilin, Alma.">
+  <meta property="og:description" content="Webs y sistemas a medida: EMAT, Quintana Ruiz Asesores, Greenova, Tilin y Alma.">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pragmastudio.com.ar/proyectos.html">
+  <meta property="og:site_name" content="pragma studio">
+  <meta property="og:locale" content="es_AR">
+  <meta property="og:image" content="https://pragmastudio.com.ar/images/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="pragma studio — soluciones digitales a medida, Córdoba, Argentina">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="proyectos — pragma studio">
+  <meta name="twitter:description" content="Webs y sistemas a medida: EMAT, Quintana Ruiz Asesores, Greenova, Tilin y Alma.">
+  <meta name="twitter:image" content="https://pragmastudio.com.ar/images/og-image.jpg">
   <link rel="icon" type="image/png" href="images/favicon.png">
   <link rel="shortcut icon" type="image/png" href="images/favicon.png">
   <link rel="apple-touch-icon" href="images/favicon.png">
@@ -27,6 +57,57 @@
     href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="css/proyectos.css">
+
+  <!-- Sin JavaScript: mostrar todo el contenido (quitar loader y animaciones de revelado) -->
+  <noscript>
+    <style>
+      .page-loader { display: none !important; }
+      body.loading { overflow: auto !important; }
+      .reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-blur, .reveal-mask {
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+      }
+    </style>
+  </noscript>
+
+  <!-- Datos estructurados (JSON-LD) — consistentes con el contenido visible -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        "@id": "https://pragmastudio.com.ar/proyectos.html#webpage",
+        "url": "https://pragmastudio.com.ar/proyectos.html",
+        "name": "Proyectos — pragma studio",
+        "description": "Webs y sistemas a medida desarrollados por pragma studio para negocios reales.",
+        "inLanguage": "es",
+        "isPartOf": { "@id": "https://pragmastudio.com.ar/#website" },
+        "about": { "@id": "https://pragmastudio.com.ar/#organization" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://pragmastudio.com.ar/" },
+          { "@type": "ListItem", "position": 2, "name": "Proyectos", "item": "https://pragmastudio.com.ar/proyectos.html" }
+        ]
+      },
+      {
+        "@type": "ItemList",
+        "name": "Proyectos de pragma studio",
+        "itemListOrder": "https://schema.org/ItemListUnordered",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Tilin — tienda digital" },
+          { "@type": "ListItem", "position": 2, "name": "Alma — gestión de turnos" },
+          { "@type": "ListItem", "position": 3, "name": "EMAT — aislación térmica y acústica" },
+          { "@type": "ListItem", "position": 4, "name": "Quintana Ruiz Asesores — seguros" },
+          { "@type": "ListItem", "position": 5, "name": "Greenova — soluciones ambientales" }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 
 <body class="loading">
@@ -249,6 +330,8 @@
         <a href="proyectos.html" data-i18n-en="Projects">Proyectos</a>
         <a href="marcas.html" data-i18n-en="Brands">Marcas</a>
         <a href="index.html#nosotros" data-i18n-en="Studio">Nosotros</a>
+        <a href="privacidad.html" data-i18n-en="Privacy">Privacidad</a>
+        <a href="privacidad.html#cookies" data-cookie-preferences data-i18n-en="Cookie preferences">Preferencias de cookies</a>
       </div>
     </div>
     <div class="footer-bottom">

@@ -2,16 +2,35 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<!-- Google tag (gtag.js) -->
+<!-- Google tag (gtag.js) + Consent Mode v2 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-PVCRW4GH5Z"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
+  // Consent Mode v2 — analítica/marketing denegados por defecto hasta que la persona lo autorice
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'denied',
+    wait_for_update: 500
+  });
+  try {
+    var _pc = JSON.parse(localStorage.getItem('pragma-consent-v1') || 'null');
+    if (_pc && _pc.analytics === true) {
+      gtag('consent', 'update', { analytics_storage: 'granted' });
+    }
+  } catch (e) {}
   gtag('js', new Date());
   gtag('config', 'G-PVCRW4GH5Z');
 </script>
+<!-- Consentimiento de cookies -->
+<link rel="stylesheet" href="css/consent.css">
+<script src="js/consent.js" defer></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Relevamiento — Sistema de Gestión</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://pragmastudio.com.ar/formulario-relevamiento.html">
 <link rel="stylesheet" href="css/formulario-relevamiento.css">
 </head>
 <body>
