@@ -3,22 +3,52 @@
 
 <head>
   <meta charset="UTF-8">
-  <!-- Google tag (gtag.js) -->
+  <!-- Google tag (gtag.js) + Consent Mode v2 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PVCRW4GH5Z"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
+    // Consent Mode v2 — analítica/marketing denegados por defecto hasta que la persona lo autorice
+    gtag('consent', 'default', {
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: 'denied',
+      wait_for_update: 500
+    });
+    // Restaurar una elección previa guardada (antes de config)
+    try {
+      var _pc = JSON.parse(localStorage.getItem('pragma-consent-v1') || 'null');
+      if (_pc && _pc.analytics === true) {
+        gtag('consent', 'update', { analytics_storage: 'granted' });
+      }
+    } catch (e) {}
     gtag('js', new Date());
     gtag('config', 'G-PVCRW4GH5Z');
   </script>
+  <!-- Consentimiento de cookies -->
+  <link rel="stylesheet" href="css/consent.css">
+  <script src="js/consent.js" defer></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title data-i18n-en="pragma studio — custom digital solutions">pragma studio — soluciones digitales a medida</title>
   <meta name="description"
     content="pragma studio: desarrollamos webs, sitios corporativos, e-commerce, apps y sistemas internos a medida para tu negocio. cualquier solución digital, sin costos excesivos.">
+  <link rel="canonical" href="https://pragmastudio.com.ar/">
   <meta property="og:title" content="pragma studio — soluciones digitales a medida">
   <meta property="og:description"
     content="webs, sitios corporativos, e-commerce, apps y sistemas internos a medida. tecnología de primer nivel, al alcance de todos.">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pragmastudio.com.ar/">
+  <meta property="og:site_name" content="pragma studio">
+  <meta property="og:locale" content="es_AR">
+  <meta property="og:image" content="https://pragmastudio.com.ar/images/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="pragma studio — soluciones digitales a medida, Córdoba, Argentina">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="pragma studio — soluciones digitales a medida">
+  <meta name="twitter:description" content="webs, sitios corporativos, e-commerce, apps y sistemas internos a medida. tecnología de primer nivel, al alcance de todos.">
+  <meta name="twitter:image" content="https://pragmastudio.com.ar/images/og-image.jpg">
   <link rel="icon" type="image/png" href="images/favicon.png">
   <link rel="shortcut icon" type="image/png" href="images/favicon.png">
   <link rel="apple-touch-icon" href="images/favicon.png">
@@ -29,6 +59,98 @@
     href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="css/index.css">
+
+  <!-- Sin JavaScript: mostrar todo el contenido (quitar loader y animaciones de revelado) -->
+  <noscript>
+    <style>
+      .page-loader { display: none !important; }
+      body.loading { overflow: auto !important; }
+      .reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-blur, .reveal-mask {
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+      }
+    </style>
+  </noscript>
+
+  <!-- Datos estructurados (JSON-LD) — consistentes con el contenido visible -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": ["Organization", "ProfessionalService"],
+        "@id": "https://pragmastudio.com.ar/#organization",
+        "name": "pragma studio",
+        "url": "https://pragmastudio.com.ar/",
+        "image": "https://pragmastudio.com.ar/images/og-image.jpg",
+        "logo": "https://pragmastudio.com.ar/images/favicon.png",
+        "description": "Estudio de software de Córdoba, Argentina. Desarrollamos webs, sitios corporativos, CRMs, apps y sistemas internos a medida para ordenar los procesos de pequeñas y medianas empresas.",
+        "email": "hola@pragmastudio.com",
+        "telephone": "+5493512145673",
+        "areaServed": "AR",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Córdoba",
+          "addressRegion": "Córdoba",
+          "addressCountry": "AR"
+        },
+        "sameAs": [
+          "https://www.instagram.com/pragmasolucionesdigitales/",
+          "https://ar.linkedin.com/company/pragmasolucionesdigitales"
+        ],
+        "knowsLanguage": ["es", "en"],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Servicios",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Landing page",
+                "description": "Una sola página construida para convertir, ideal para campañas puntuales, lanzamientos, eventos o profesionales que necesitan un punto de contacto digital directo."
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Sitio corporativo",
+                "description": "Sitio con varias secciones para empresas consolidadas: servicios, casos, equipo, novedades y canales de contacto, con gestión de contenido propia."
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Apps y sistemas internos",
+                "description": "Software interno a medida: CRMs, sistemas de gestión, paneles de administración y apps web y móviles para ordenar la operación."
+              }
+            }
+          ]
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://pragmastudio.com.ar/#website",
+        "url": "https://pragmastudio.com.ar/",
+        "name": "pragma studio",
+        "inLanguage": "es",
+        "publisher": { "@id": "https://pragmastudio.com.ar/#organization" }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://pragmastudio.com.ar/#webpage",
+        "url": "https://pragmastudio.com.ar/",
+        "name": "pragma studio — soluciones digitales a medida",
+        "isPartOf": { "@id": "https://pragmastudio.com.ar/#website" },
+        "about": { "@id": "https://pragmastudio.com.ar/#organization" },
+        "inLanguage": "es"
+      }
+    ]
+  }
+  </script>
 </head>
 
 <body class="loading">
@@ -489,6 +611,8 @@
         <a href="proyectos.html" data-i18n-en="Projects">Proyectos</a>
         <a href="marcas.html" data-i18n-en="Brands">Marcas</a>
         <a href="#nosotros" data-i18n-en="Studio">Nosotros</a>
+        <a href="privacidad.html" data-i18n-en="Privacy">Privacidad</a>
+        <a href="privacidad.html#cookies" data-cookie-preferences data-i18n-en="Cookie preferences">Preferencias de cookies</a>
       </div>
     </div>
     <div class="footer-bottom">
