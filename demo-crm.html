@@ -3,21 +3,48 @@
 
 <head>
   <meta charset="UTF-8">
-  <!-- Google tag (gtag.js) -->
+  <!-- Google tag (gtag.js) + Consent Mode v2 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PVCRW4GH5Z"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
+    // Consent Mode v2 — analítica/marketing denegados por defecto hasta que la persona lo autorice
+    gtag('consent', 'default', {
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: 'denied',
+      wait_for_update: 500
+    });
+    // Restaurar una elección previa guardada (antes de config)
+    try {
+      var _pc = JSON.parse(localStorage.getItem('pragma-consent-v1') || 'null');
+      if (_pc && _pc.analytics === true) {
+        gtag('consent', 'update', { analytics_storage: 'granted' });
+      }
+    } catch (e) {}
     gtag('js', new Date());
     gtag('config', 'G-PVCRW4GH5Z');
   </script>
+  <!-- Consentimiento de cookies -->
+  <link rel="stylesheet" href="css/consent.css">
+  <script src="js/consent.js" defer></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Demo CRM — pragma studio</title>
   <meta name="description" content="Probá un mini CRM interactivo de pragma studio: dashboard, clientes y pipeline. Sin registro.">
   <meta name="robots" content="noindex">
+  <link rel="canonical" href="https://pragmastudio.com.ar/demo-crm.html">
   <meta property="og:title" content="Demo CRM — pragma studio">
   <meta property="og:description" content="Mini CRM interactivo: dashboard, clientes y pipeline Kanban. Probalo sin registrarte.">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pragmastudio.com.ar/demo-crm.html">
+  <meta property="og:site_name" content="pragma studio">
+  <meta property="og:locale" content="es_AR">
+  <meta property="og:image" content="https://pragmastudio.com.ar/images/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://pragmastudio.com.ar/images/og-image.jpg">
   <link rel="icon" type="image/png" href="images/favicon.png">
   <link rel="apple-touch-icon" href="images/favicon.png">
   <meta name="theme-color" content="#0a0a0a">

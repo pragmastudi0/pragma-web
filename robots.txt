@@ -1,0 +1,31 @@
+# robots.txt — pragma studio
+# https://pragmastudio.com.ar
+
+# Regla general: todo el contenido público es rastreable.
+User-agent: *
+Allow: /
+
+# Buscadores web principales
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Buscadores con IA / asistentes
+# OAI-SearchBot: rastreo para resultados de búsqueda de ChatGPT.
+User-agent: OAI-SearchBot
+Allow: /
+
+# ChatGPT-User / PerplexityBot: recuperan páginas cuando un usuario las solicita.
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# NOTA: la política de GPTBot (uso para entrenamiento de modelos de OpenAI)
+# se deja en su estado actual (permitida por la regla general). No se bloquea
+# aquí porque requiere una decisión explícita del negocio.
+
+Sitemap: https://pragmastudio.com.ar/sitemap.xml
