@@ -132,7 +132,7 @@ img, svg { display: block; }
 
 /* reveals (solo con JS) */
 html.js .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
-html.js .reveal.in { opacity: 1; transform: none; }
+html.js .reveal.in { opacity: 1; }
 
 /* ═══════════ STAGE (escenario) ═══════════ */
 .stage {
@@ -161,9 +161,18 @@ html.js .reveal.in { opacity: 1; transform: none; }
   box-shadow: 0 10px 28px rgba(10, 10, 10, 0.07);
   display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
   gap: 0.15rem; padding: 0.45rem 0.6rem; overflow: hidden;
+  transform: rotate(var(--r, 0deg));
   transition: left 1s var(--ease), top 1s var(--ease), width 1s var(--ease), height 1s var(--ease),
     transform 1s var(--ease), opacity 0.7s var(--ease), border-radius 1s var(--ease);
 }
+/* vida sutil mientras reina el desorden */
+@keyframes chipFloat {
+  from { transform: translateY(-0.7%) rotate(var(--r, 0deg)); }
+  to   { transform: translateY(1.4%) rotate(var(--r, 0deg)); }
+}
+.stage[data-stage="1"] .chip { animation: chipFloat 4.6s ease-in-out infinite alternate; }
+.stage[data-stage="1"] .chip:nth-child(odd) { animation-duration: 5.6s; animation-delay: -1.4s; }
+.stage[data-stage="1"] .chip:nth-child(3n) { animation-duration: 6.4s; animation-delay: -2.6s; }
 .chip:nth-child(odd) { transition-delay: 0.06s; }
 .chip:nth-child(3n) { transition-delay: 0.12s; }
 .chip-label {
@@ -190,18 +199,18 @@ html.js .reveal.in { opacity: 1; transform: none; }
 .stage[data-stage="4"] .s4-only { opacity: 1; transform: none; }
 
 /* ── ETAPA 1 · desorden ── */
-.stage[data-stage="1"] [data-chip="c1"] { left: 4%;  top: 3%;  transform: rotate(-7deg); }
-.stage[data-stage="1"] [data-chip="c2"] { left: 57%; top: 1%;  transform: rotate(5deg); }
-.stage[data-stage="1"] [data-chip="c3"] { left: 28%; top: 13%; transform: rotate(-3deg); }
-.stage[data-stage="1"] [data-chip="p1"] { left: 72%; top: 25%; transform: rotate(8deg); }
-.stage[data-stage="1"] [data-chip="p2"] { left: 7%;  top: 29%; transform: rotate(-9deg); }
-.stage[data-stage="1"] [data-chip="t1"] { left: 40%; top: 33%; transform: rotate(4deg); }
-.stage[data-stage="1"] [data-chip="t2"] { left: 65%; top: 49%; transform: rotate(-6deg); }
-.stage[data-stage="1"] [data-chip="t3"] { left: 19%; top: 53%; transform: rotate(7deg); }
-.stage[data-stage="1"] [data-chip="t4"] { left: 46%; top: 61%; transform: rotate(-4deg); }
-.stage[data-stage="1"] [data-chip="m1"] { left: 3%;  top: 73%; transform: rotate(6deg); }
-.stage[data-stage="1"] [data-chip="m2"] { left: 70%; top: 72%; transform: rotate(-8deg); }
-.stage[data-stage="1"] [data-chip="pr1"]{ left: 33%; top: 80%; transform: rotate(3deg); }
+.stage[data-stage="1"] [data-chip="c1"] { left: 4%;  top: 3%;  --r: -7deg; }
+.stage[data-stage="1"] [data-chip="c2"] { left: 57%; top: 1%;  --r: 5deg; }
+.stage[data-stage="1"] [data-chip="c3"] { left: 28%; top: 13%; --r: -3deg; }
+.stage[data-stage="1"] [data-chip="p1"] { left: 72%; top: 25%; --r: 8deg; }
+.stage[data-stage="1"] [data-chip="p2"] { left: 7%;  top: 29%; --r: -9deg; }
+.stage[data-stage="1"] [data-chip="t1"] { left: 40%; top: 33%; --r: 4deg; }
+.stage[data-stage="1"] [data-chip="t2"] { left: 65%; top: 49%; --r: -6deg; }
+.stage[data-stage="1"] [data-chip="t3"] { left: 19%; top: 53%; --r: 7deg; }
+.stage[data-stage="1"] [data-chip="t4"] { left: 46%; top: 61%; --r: -4deg; }
+.stage[data-stage="1"] [data-chip="m1"] { left: 3%;  top: 73%; --r: 6deg; }
+.stage[data-stage="1"] [data-chip="m2"] { left: 70%; top: 72%; --r: -8deg; }
+.stage[data-stage="1"] [data-chip="pr1"]{ left: 33%; top: 80%; --r: 3deg; }
 
 .ghost {
   font-size: 0.68rem; font-weight: 500; color: var(--text-secondary);
@@ -213,10 +222,13 @@ html.js .reveal.in { opacity: 1; transform: none; }
   background: #eaf0ea; border: 1px dashed rgba(34, 165, 89, 0.45);
   border-radius: 4px; font-family: var(--font-mono); font-size: 0.6rem;
 }
-.ghost[data-g="1"] { left: 44%; top: 25%; transform: rotate(2deg); }
-.ghost[data-g="2"] { left: 6%; top: 46%; transform: rotate(-3deg); }
-.ghost[data-g="3"] { left: 56%; top: 90%; transform: rotate(2deg); }
-.stage[data-stage="1"] .ghost { transform: none; }
+.ghost[data-g="1"] { left: 44%; top: 25%; }
+.ghost[data-g="2"] { left: 6%; top: 46%; }
+.ghost[data-g="3"] { left: 56%; top: 90%; }
+@keyframes ghostFloat { from { transform: translateY(0); } to { transform: translateY(-7px); } }
+.stage[data-stage="1"] .ghost { animation: ghostFloat 3.8s ease-in-out infinite alternate; }
+.stage[data-stage="1"] .ghost[data-g="2"] { animation-delay: -1.5s; }
+.stage[data-stage="1"] .ghost[data-g="3"] { animation-delay: -2.7s; }
 .s1-badge {
   right: 0; top: -4%;
   font-family: var(--font-mono); font-size: 0.64rem; font-weight: 600;
@@ -227,18 +239,18 @@ html.js .reveal.in { opacity: 1; transform: none; }
 @keyframes badgePulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.07); } }
 
 /* ── ETAPA 2 · relevamiento (clusters) ── */
-.stage[data-stage="2"] [data-chip="c1"] { left: 4%;  top: 10%; transform: none; }
-.stage[data-stage="2"] [data-chip="c2"] { left: 27%; top: 10%; transform: none; }
-.stage[data-stage="2"] [data-chip="c3"] { left: 15%; top: 26%; transform: none; }
-.stage[data-stage="2"] [data-chip="p1"] { left: 55%; top: 10%; transform: none; }
-.stage[data-stage="2"] [data-chip="p2"] { left: 77%; top: 13%; transform: none; }
-.stage[data-stage="2"] [data-chip="pr1"]{ left: 39%; top: 33%; transform: none; }
-.stage[data-stage="2"] [data-chip="t1"] { left: 4%;  top: 63%; transform: none; }
-.stage[data-stage="2"] [data-chip="t2"] { left: 27%; top: 63%; transform: none; }
-.stage[data-stage="2"] [data-chip="t3"] { left: 4%;  top: 81%; transform: none; }
-.stage[data-stage="2"] [data-chip="t4"] { left: 27%; top: 81%; transform: none; }
-.stage[data-stage="2"] [data-chip="m1"] { left: 58%; top: 67%; transform: none; }
-.stage[data-stage="2"] [data-chip="m2"] { left: 77%; top: 79%; transform: none; }
+.stage[data-stage="2"] [data-chip="c1"] { left: 4%;  top: 10%; }
+.stage[data-stage="2"] [data-chip="c2"] { left: 27%; top: 10%; }
+.stage[data-stage="2"] [data-chip="c3"] { left: 15%; top: 26%; }
+.stage[data-stage="2"] [data-chip="p1"] { left: 55%; top: 10%; }
+.stage[data-stage="2"] [data-chip="p2"] { left: 77%; top: 13%; }
+.stage[data-stage="2"] [data-chip="pr1"]{ left: 39%; top: 33%; }
+.stage[data-stage="2"] [data-chip="t1"] { left: 4%;  top: 63%; }
+.stage[data-stage="2"] [data-chip="t2"] { left: 27%; top: 63%; }
+.stage[data-stage="2"] [data-chip="t3"] { left: 4%;  top: 81%; }
+.stage[data-stage="2"] [data-chip="t4"] { left: 27%; top: 81%; }
+.stage[data-stage="2"] [data-chip="m1"] { left: 58%; top: 67%; }
+.stage[data-stage="2"] [data-chip="m2"] { left: 77%; top: 79%; }
 
 .cluster-label {
   font-family: var(--font-mono); font-size: 0.6rem; font-weight: 600;
@@ -268,24 +280,24 @@ html.js .reveal.in { opacity: 1; transform: none; }
 
 /* ── ETAPA 3 · diseño (flujo) ── */
 .stage[data-stage="3"] .chip { width: 24%; height: 13%; }
-.stage[data-stage="3"] [data-chip="c1"] { left: 2%;  top: 15%; transform: none; }
-.stage[data-stage="3"] [data-chip="c2"] { left: 2%;  top: 31%; transform: none; }
-.stage[data-stage="3"] [data-chip="c3"] { left: 2%;  top: 47%; transform: none; opacity: 0.45; }
-.stage[data-stage="3"] [data-chip="p1"] { left: 38%; top: 15%; transform: none; }
-.stage[data-stage="3"] [data-chip="p2"] { left: 38%; top: 31%; transform: none; }
-.stage[data-stage="3"] [data-chip="pr1"]{ left: 74%; top: 15%; transform: none; }
+.stage[data-stage="3"] [data-chip="c1"] { left: 2%;  top: 15%; }
+.stage[data-stage="3"] [data-chip="c2"] { left: 2%;  top: 31%; }
+.stage[data-stage="3"] [data-chip="c3"] { left: 2%;  top: 47%; opacity: 0.45; }
+.stage[data-stage="3"] [data-chip="p1"] { left: 38%; top: 15%; }
+.stage[data-stage="3"] [data-chip="p2"] { left: 38%; top: 31%; }
+.stage[data-stage="3"] [data-chip="pr1"]{ left: 74%; top: 15%; }
 .stage[data-stage="3"] [data-chip="t1"],
 .stage[data-stage="3"] [data-chip="t2"],
 .stage[data-stage="3"] [data-chip="t3"],
 .stage[data-stage="3"] [data-chip="t4"],
 .stage[data-stage="3"] [data-chip="m1"],
 .stage[data-stage="3"] [data-chip="m2"] { width: 11.5%; height: 10%; padding: 0.3rem 0.4rem; }
-.stage[data-stage="3"] [data-chip="t1"] { left: 74%;   top: 33%; transform: none; }
-.stage[data-stage="3"] [data-chip="t2"] { left: 86.5%; top: 33%; transform: none; }
-.stage[data-stage="3"] [data-chip="t3"] { left: 74%;   top: 45%; transform: none; }
-.stage[data-stage="3"] [data-chip="t4"] { left: 86.5%; top: 45%; transform: none; }
-.stage[data-stage="3"] [data-chip="m1"] { left: 74%;   top: 60%; transform: none; }
-.stage[data-stage="3"] [data-chip="m2"] { left: 86.5%; top: 60%; transform: none; }
+.stage[data-stage="3"] [data-chip="t1"] { left: 74%;   top: 33%; }
+.stage[data-stage="3"] [data-chip="t2"] { left: 86.5%; top: 33%; }
+.stage[data-stage="3"] [data-chip="t3"] { left: 74%;   top: 45%; }
+.stage[data-stage="3"] [data-chip="t4"] { left: 86.5%; top: 45%; }
+.stage[data-stage="3"] [data-chip="m1"] { left: 74%;   top: 60%; }
+.stage[data-stage="3"] [data-chip="m2"] { left: 86.5%; top: 60%; }
 .stage[data-stage="3"] [data-chip^="t"] .chip-sub,
 .stage[data-stage="3"] [data-chip^="m"] .chip-sub { display: none; }
 
@@ -318,18 +330,18 @@ html.js .reveal.in { opacity: 1; transform: none; }
   border-radius: 9px; border-top-width: 1px; border-left: 3px solid var(--chip-c);
   box-shadow: none;
 }
-.stage[data-stage="4"] [data-chip="c1"] { left: 16%; top: 16%; width: 38%; height: 9.5%; transform: none; }
-.stage[data-stage="4"] [data-chip="c2"] { left: 16%; top: 27.5%; width: 38%; height: 9.5%; transform: none; }
-.stage[data-stage="4"] [data-chip="c3"] { left: 16%; top: 39%; width: 38%; height: 9.5%; transform: none; }
-.stage[data-stage="4"] [data-chip="p1"] { left: 16%; top: 54%; width: 38%; height: 9.5%; transform: none; }
-.stage[data-stage="4"] [data-chip="p2"] { left: 16%; top: 65.5%; width: 38%; height: 9.5%; transform: none; }
-.stage[data-stage="4"] [data-chip="pr1"]{ left: 58%; top: 16%; width: 37%; height: 12%; transform: none; }
-.stage[data-stage="4"] [data-chip="t1"] { left: 58%; top: 31%; width: 37%; height: 7.5%; transform: none; }
-.stage[data-stage="4"] [data-chip="t2"] { left: 58%; top: 40.5%; width: 37%; height: 7.5%; transform: none; }
-.stage[data-stage="4"] [data-chip="t3"] { left: 58%; top: 50%; width: 37%; height: 7.5%; transform: none; }
-.stage[data-stage="4"] [data-chip="t4"] { left: 58%; top: 59.5%; width: 37%; height: 7.5%; transform: none; }
-.stage[data-stage="4"] [data-chip="m1"] { left: 58%; top: 71.5%; width: 37%; height: 7.5%; transform: none; }
-.stage[data-stage="4"] [data-chip="m2"] { left: 58%; top: 81%; width: 37%; height: 7.5%; transform: none; }
+.stage[data-stage="4"] [data-chip="c1"] { left: 16%; top: 16%; width: 38%; height: 9.5%; }
+.stage[data-stage="4"] [data-chip="c2"] { left: 16%; top: 27.5%; width: 38%; height: 9.5%; }
+.stage[data-stage="4"] [data-chip="c3"] { left: 16%; top: 39%; width: 38%; height: 9.5%; }
+.stage[data-stage="4"] [data-chip="p1"] { left: 16%; top: 54%; width: 38%; height: 9.5%; }
+.stage[data-stage="4"] [data-chip="p2"] { left: 16%; top: 65.5%; width: 38%; height: 9.5%; }
+.stage[data-stage="4"] [data-chip="pr1"]{ left: 58%; top: 16%; width: 37%; height: 12%; }
+.stage[data-stage="4"] [data-chip="t1"] { left: 58%; top: 31%; width: 37%; height: 7.5%; }
+.stage[data-stage="4"] [data-chip="t2"] { left: 58%; top: 40.5%; width: 37%; height: 7.5%; }
+.stage[data-stage="4"] [data-chip="t3"] { left: 58%; top: 50%; width: 37%; height: 7.5%; }
+.stage[data-stage="4"] [data-chip="t4"] { left: 58%; top: 59.5%; width: 37%; height: 7.5%; }
+.stage[data-stage="4"] [data-chip="m1"] { left: 58%; top: 71.5%; width: 37%; height: 7.5%; }
+.stage[data-stage="4"] [data-chip="m2"] { left: 58%; top: 81%; width: 37%; height: 7.5%; }
 
 .wf-frame {
   inset: 0; border: 1px solid var(--border-card); border-radius: 18px;
@@ -357,6 +369,40 @@ html.js .reveal.in { opacity: 1; transform: none; }
   left: 16%; top: 80%; width: 38%;
   font-size: 0.76rem; color: var(--text-secondary); line-height: 1.4;
 }
+
+/* ═══════════ RIEL DE PROGRESO (desktop) ═══════════ */
+.rail {
+  position: fixed; left: 1.2rem; top: 50%; transform: translateY(-50%);
+  z-index: 60; display: flex; flex-direction: column; gap: 0.35rem;
+  opacity: 0; pointer-events: none; transition: opacity 0.45s var(--ease);
+}
+.rail.show { opacity: 1; pointer-events: auto; }
+.rail a {
+  display: flex; align-items: center; gap: 0.5rem;
+  padding: 0.32rem 0.4rem; border-radius: 9px;
+  color: var(--text-tertiary); transition: color 0.25s;
+}
+.rail a i {
+  display: block; width: 16px; height: 2px; border-radius: 2px;
+  background: currentColor; opacity: 0.55;
+  transition: width 0.35s var(--ease), opacity 0.3s;
+}
+.rail a b {
+  font-family: var(--font-mono); font-weight: 600; font-size: 0.6rem; letter-spacing: 0.08em;
+}
+.rail a span {
+  font-size: 0.7rem; font-weight: 600; white-space: nowrap;
+  opacity: 0; transform: translateX(-5px);
+  transition: opacity 0.3s, transform 0.3s var(--ease);
+}
+.rail a:hover { color: var(--text-primary); }
+.rail a:hover span, .rail a:focus-visible span { opacity: 1; transform: none; }
+.rail a.active { color: var(--accent-bordo); }
+.rail a.active i { width: 26px; opacity: 1; }
+.rail a:focus-visible { outline: 2px solid var(--accent-bordo); outline-offset: 2px; }
+
+.step { scroll-margin-top: 8vh; }
+#resultado { scroll-margin-top: 4vh; }
 
 /* ═══════════ RESULTADO · el sistema ═══════════ */
 .resultado { padding: 7rem clamp(1rem, 4vw, 3rem) 5rem; }
@@ -505,7 +551,7 @@ html:not(.js) .app-panel + .app-panel { margin-top: 1.6rem; }
 .card.flash, .proj.flash { animation: flash 1.6s var(--ease); }
 @keyframes flash {
   0% { box-shadow: 0 0 0 3px rgba(107, 28, 28, 0.5); transform: translateY(6px); opacity: 0; }
-  25% { opacity: 1; transform: none; }
+  25% { opacity: 1; }
   100% { box-shadow: 0 0 0 0 rgba(107, 28, 28, 0); }
 }
 
@@ -631,21 +677,48 @@ html.js .proj:not(.open) .proj-body { display: none; }
 
 /* ═══════════ RESPONSIVE ═══════════ */
 @media (max-width: 960px) {
+  .rail { display: none; }
   .journey { padding: 0; }
   .journey-grid { display: block; }
+
+  /* la escena ocupa toda la pantalla, sin caja */
   .stage-wrap {
-    position: sticky; top: var(--nav-h); z-index: 5;
-    height: auto; padding: 1rem 1rem 1.2rem;
-    background: var(--bg-primary);
-    box-shadow: 0 14px 22px -16px rgba(10, 10, 10, 0.18);
+    position: sticky; top: 0; z-index: 1;
+    height: 100vh; height: 100svh;
+    padding: 0; align-items: flex-start;
   }
   .stage {
-    width: min(100%, calc(52svh * 100 / 112), 440px);
-    margin: 0 auto; max-height: none;
+    width: min(94vw, calc(56svh * 100 / 112), 460px);
+    margin-top: calc(var(--nav-h) + 2.5vh);
+    max-height: none;
   }
-  .steps { padding: 0 1.4rem; }
-  .step { min-height: 0; padding: 4.5rem 0; max-width: 32rem; margin: 0 auto; }
-  .step:last-child { padding-bottom: 6rem; }
+
+  /* los pasos flotan por encima, como tarjetas */
+  .steps {
+    position: relative; z-index: 6;
+    margin-top: -100vh; margin-top: -100svh;
+    padding: 0;
+  }
+  .step {
+    min-height: 100vh; min-height: 100svh;
+    justify-content: flex-end;
+    max-width: none; margin: 0;
+    padding: 0 1rem calc(1.4rem + env(safe-area-inset-bottom, 0px));
+  }
+  .step:last-child { padding-bottom: 9svh; }
+  .step-card {
+    width: 100%; max-width: 30rem; margin: 0 auto;
+    background: rgba(252, 251, 248, 0.82);
+    -webkit-backdrop-filter: blur(16px) saturate(1.3);
+    backdrop-filter: blur(16px) saturate(1.3);
+    border: 1px solid rgba(10, 10, 10, 0.08);
+    border-radius: 20px;
+    padding: 1.25rem 1.35rem 1.4rem;
+    box-shadow: 0 26px 60px rgba(10, 10, 10, 0.14);
+  }
+  .step h2 { font-size: 1.42rem; margin: 0.55rem 0 0.65rem; }
+  .step p:not(.section-tag) { font-size: 0.93rem; }
+
   .chip-sub { font-size: 0.62rem; }
   .chip-label { font-size: 0.5rem; }
   .ghost { font-size: 0.6rem; }

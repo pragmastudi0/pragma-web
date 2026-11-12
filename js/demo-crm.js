@@ -24,15 +24,43 @@
     revealEls.forEach(function (el) { el.classList.add('in'); });
   }
 
+  /* ───────── riel de progreso ───────── */
+  var rail = $('#rail');
+  function setRail(n) {
+    if (!rail) return;
+    $$('a', rail).forEach(function (a) {
+      a.classList.toggle('active', a.dataset.r === String(n));
+    });
+  }
+
   /* ───────── escenario: etapa según el paso visible ───────── */
   var stage = $('#stage');
   if (stage && 'IntersectionObserver' in window) {
     var stepObs = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
-        if (e.isIntersecting) stage.dataset.stage = e.target.dataset.stage;
+        if (e.isIntersecting) {
+          stage.dataset.stage = e.target.dataset.stage;
+          setRail(e.target.dataset.stage);
+        }
       });
     }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
     $$('.step').forEach(function (s) { stepObs.observe(s); });
+  }
+
+  /* el riel aparece durante el recorrido y el resultado */
+  if (rail && 'IntersectionObserver' in window) {
+    var railVis = { journey: false, resultado: false };
+    var railObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        railVis[e.target.id === 'resultado' ? 'resultado' : 'journey'] = e.isIntersecting;
+        if (e.target.id === 'resultado' && e.isIntersecting) setRail(5);
+      });
+      rail.classList.toggle('show', railVis.journey || railVis.resultado);
+    }, { rootMargin: '-25% 0px -25% 0px', threshold: 0 });
+    ['#journey', '#resultado'].forEach(function (sel) {
+      var el = $(sel);
+      if (el) railObs.observe(el);
+    });
   }
 
   /* ───────── toast ───────── */
