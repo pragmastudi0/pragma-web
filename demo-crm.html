@@ -47,11 +47,12 @@
   <meta name="twitter:image" content="https://pragmastudio.com.ar/images/og-image.jpg">
   <link rel="icon" type="image/png" href="images/favicon.png">
   <link rel="apple-touch-icon" href="images/favicon.png">
-  <meta name="theme-color" content="#f7f6f2">
+  <meta name="theme-color" content="#F2F0E9">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Tipografías de marca (Brandbook §6): Inter + Playfair Display Italic -->
   <link
-    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,700;1,800&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="css/demo-crm.css">
 </head>
@@ -61,7 +62,10 @@
 
   <!-- ══════ NAV ══════ -->
   <nav class="dnav">
-    <a href="index.html" class="dnav-brand">PRAGMA<span>studio</span></a>
+    <!-- Firma pragma. studio (Brandbook §4.1). TODO: reemplazar la "p" tipeada por el isotipo p_dark.png cuando esté el vector. -->
+    <a href="index.html" class="dnav-brand" aria-label="pragma studio — volver al inicio">
+      <span class="sig"><span class="sig-word">pragma</span><span class="sig-dot" aria-hidden="true"></span><span class="sig-studio">studio</span></span>
+    </a>
     <div class="dnav-right">
       <span class="dnav-pill"><span class="dnav-dot"></span>Caso ficticio</span>
       <a class="dnav-exit" href="index.html">Volver al sitio</a>
@@ -403,7 +407,7 @@
   </main>
 
   <footer class="dfoot">
-    <span>pragma<b>studio</b></span>
+    <span class="sig"><span class="sig-word">pragma</span><span class="sig-dot" aria-hidden="true"></span><span class="sig-studio">studio</span></span>
     <span class="dfoot-note">Estudio Andamio es un caso ficticio con fines demostrativos.</span>
   </footer>
 
