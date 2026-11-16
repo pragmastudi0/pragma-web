@@ -99,8 +99,8 @@ img, svg { display: block; }
   position: relative;
 }
 .dhero h1 {
-  font-family: var(--font-display); font-weight: 800;
-  font-size: clamp(2.6rem, 7.5vw, 5.2rem); letter-spacing: -0.04em; line-height: 1.02;
+  font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(2.6rem, 7.5vw, 5.2rem); letter-spacing: -0.05em; line-height: 0.98;
   margin: 1.1rem 0 1.4rem; max-width: 14ch;
 }
 .dhero-desc { max-width: 34rem; font-size: clamp(1rem, 2.2vw, 1.18rem); color: var(--text-secondary); }
@@ -135,7 +135,7 @@ img, svg { display: block; }
 }
 .step h2 {
   font-family: var(--font-display); font-weight: 700;
-  font-size: clamp(1.55rem, 3.2vw, 2.15rem); letter-spacing: -0.03em; line-height: 1.12;
+  font-size: clamp(1.55rem, 3.2vw, 2.15rem); letter-spacing: -0.045em; line-height: 1.12;
   margin: 0.9rem 0 1rem;
 }
 .step p:not(.section-tag) { color: var(--text-secondary); font-size: 1.02rem; }
@@ -418,8 +418,8 @@ html.js .reveal.in { opacity: 1; }
 .resultado { padding: 7rem clamp(1rem, 4vw, 3rem) 5rem; }
 .resultado-head { max-width: 760px; margin: 0 auto 2.6rem; text-align: center; }
 .resultado-head h2 {
-  font-family: var(--font-display); font-weight: 800;
-  font-size: clamp(1.9rem, 4.5vw, 3rem); letter-spacing: -0.035em; line-height: 1.08;
+  font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(1.9rem, 4.5vw, 3rem); letter-spacing: -0.045em; line-height: 1.05;
   margin: 0.9rem 0 1rem;
 }
 .resultado-desc { color: var(--text-secondary); font-size: 1.04rem; max-width: 36rem; margin: 0 auto; }
@@ -646,8 +646,8 @@ html.js .proj:not(.open) .proj-body { display: none; }
   padding: clamp(2.6rem, 6vw, 4.5rem) clamp(1.4rem, 5vw, 4rem);
 }
 .dcta h2 {
-  font-family: var(--font-display); font-weight: 800;
-  font-size: clamp(1.9rem, 4.6vw, 3rem); letter-spacing: -0.035em; line-height: 1.1;
+  font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(1.9rem, 4.6vw, 3rem); letter-spacing: -0.045em; line-height: 1.05;
 }
 .dcta .italic-bordo { color: #d98f8f; }
 .dcta p { color: rgba(243, 241, 236, 0.65); max-width: 32rem; margin: 1.1rem auto 1.9rem; }
