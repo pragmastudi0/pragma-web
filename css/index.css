@@ -1650,7 +1650,7 @@
     .brands-marquee-track {
       display: flex;
       width: max-content;
-      animation: brands-marquee 38s linear infinite;
+      animation: brands-marquee 22s linear infinite;
     }
 
     .brands-marquee-wrap:hover .brands-marquee-track {
