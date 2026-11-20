@@ -1,0 +1,291 @@
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #f4f5f7;
+    color: #1a1a2e;
+    font-size: 16px;
+    padding-bottom: 40px;
+  }
+
+  /* HEADER */
+  .header {
+    background: #1a1a2e;
+    color: white;
+    padding: 24px 20px 20px;
+  }
+  .header-logo {
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 6px;
+  }
+  .header h1 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .header p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.5;
+  }
+
+  /* PROGRESS */
+  .progress-wrap {
+    background: #1a1a2e;
+    padding: 0 20px 20px;
+  }
+  .progress-bar-bg {
+    width: 100%;
+    height: 4px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .progress-bar-fill {
+    height: 4px;
+    background: #4a8fcc;
+    border-radius: 4px;
+    transition: width 0.4s ease;
+    width: 0%;
+  }
+  .progress-text {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 8px;
+  }
+
+  /* SECTIONS */
+  .section {
+    margin: 16px;
+    background: white;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    display: none;
+  }
+  .section.active { display: block; }
+
+  .section-header {
+    background: #1a1a2e;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-num {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #4a8fcc;
+    color: white;
+    font-size: 13px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: white;
+  }
+  .section-subtitle {
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+    margin-top: 2px;
+  }
+
+  /* QUESTIONS */
+  .questions { padding: 4px 0; }
+
+  .question {
+    padding: 16px 20px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  .question:last-child { border-bottom: none; }
+
+  .q-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1a1a2e;
+    margin-bottom: 10px;
+    line-height: 1.4;
+  }
+  .q-optional {
+    font-size: 11px;
+    font-weight: 400;
+    color: #aaa;
+    margin-left: 4px;
+  }
+
+  /* INPUTS */
+  input[type="text"],
+  input[type="number"],
+  textarea,
+  select {
+    width: 100%;
+    border: 1.5px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 15px;
+    font-family: inherit;
+    color: #1a1a2e;
+    background: #fafafa;
+    outline: none;
+    transition: border-color 0.2s;
+    -webkit-appearance: none;
+  }
+  input:focus, textarea:focus, select:focus {
+    border-color: #4a8fcc;
+    background: white;
+  }
+  textarea {
+    min-height: 80px;
+    resize: none;
+    line-height: 1.5;
+  }
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+  }
+
+  /* RADIO / CHECKBOX */
+  .options { display: flex; flex-direction: column; gap: 8px; }
+  .option-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border: 1.5px solid #e0e0e0;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .option-item:active { background: #f0f6ff; }
+  .option-item input[type="radio"],
+  .option-item input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    padding: 0;
+    flex-shrink: 0;
+    accent-color: #4a8fcc;
+    border: none;
+    background: none;
+  }
+  .option-item label {
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    flex: 1;
+  }
+  .option-item.selected {
+    border-color: #4a8fcc;
+    background: #f0f6ff;
+  }
+
+  /* CHIPS (multi-select visual) */
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip {
+    padding: 8px 14px;
+    border: 1.5px solid #e0e0e0;
+    border-radius: 999px;
+    font-size: 13px;
+    color: #555;
+    cursor: pointer;
+    transition: all 0.15s;
+    user-select: none;
+  }
+  .chip.selected {
+    border-color: #4a8fcc;
+    background: #4a8fcc;
+    color: white;
+  }
+
+  /* NAVIGATION */
+  .nav {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: white;
+    border-top: 1px solid #e8e8e8;
+    padding: 12px 16px;
+    display: flex;
+    gap: 10px;
+    z-index: 100;
+  }
+  .btn {
+    flex: 1;
+    padding: 14px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .btn-prev {
+    background: #f0f0f0;
+    color: #666;
+  }
+  .btn-next {
+    background: #1a1a2e;
+    color: white;
+  }
+  .btn:active { transform: scale(0.97); }
+  .btn:disabled { opacity: 0.4; }
+
+  /* SUMMARY */
+  .summary { padding: 16px; display: none; }
+  .summary.active { display: block; }
+  .summary-card {
+    background: white;
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 12px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  }
+  .summary-section-title {
+    background: #1a1a2e;
+    color: white;
+    padding: 12px 16px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .summary-item {
+    padding: 12px 16px;
+    border-bottom: 1px solid #f5f5f5;
+  }
+  .summary-item:last-child { border-bottom: none; }
+  .summary-q { font-size: 12px; color: #888; margin-bottom: 4px; }
+  .summary-a { font-size: 14px; color: #1a1a2e; font-weight: 500; }
+  .summary-empty { color: #ccc; font-style: italic; }
+
+  .btn-copy {
+    width: 100%;
+    padding: 16px;
+    background: #4a8fcc;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 80px;
+  }
+  .copy-confirm {
+    text-align: center;
+    font-size: 13px;
+    color: #4a8fcc;
+    margin-top: 8px;
+    display: none;
+  }
+
+  .spacer { height: 80px; }
