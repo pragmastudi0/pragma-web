@@ -60,19 +60,6 @@
     rel="stylesheet">
   <link rel="stylesheet" href="css/index.css">
 
-  <!-- Sin JavaScript: mostrar todo el contenido (quitar loader y animaciones de revelado) -->
-  <noscript>
-    <style>
-      .page-loader { display: none !important; }
-      body.loading { overflow: auto !important; }
-      .reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-blur, .reveal-mask {
-        opacity: 1 !important;
-        transform: none !important;
-        filter: none !important;
-      }
-    </style>
-  </noscript>
-
   <!-- Datos estructurados (JSON-LD) — consistentes con el contenido visible -->
   <script type="application/ld+json">
   {
@@ -153,20 +140,9 @@
   </script>
 </head>
 
-<body class="loading">
+<body>
 
-  <!-- Page loader — el hex cae como un dado y aterriza -->
-  <div class="page-loader" id="pageLoader" aria-hidden="true">
-    <div class="loader-scene">
-      <div class="loader-shadow"></div>
-      <div class="loader-die"><img src="images/favicon.png" alt=""></div>
-    </div>
-    <div class="loader-caption">pragma · studio</div>
-  </div>
-
-  <!-- Grid lens — la grilla se activa/amplifica donde está el cursor -->
-  <div class="grid-lens" id="gridLens" aria-hidden="true"></div>
-  <div class="grid-lens-core" id="gridLensCore" aria-hidden="true"></div>
+  <a class="skip-link" href="#main" data-i18n-en="Skip to content">Saltar al contenido</a>
 
   <!-- ═══════════════ NAV ═══════════════ -->
   <nav id="navbar">
@@ -179,8 +155,8 @@
     </div>
     <div class="nav-actions">
       <div class="lang-toggle" role="group" aria-label="Idioma" data-i18n-en-aria-label="Language">
-        <button type="button" class="active" data-lang="es">ES</button>
-        <button type="button" data-lang="en">EN</button>
+        <button type="button" class="active" data-lang="es" aria-pressed="true">ES</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
       </div>
       <a href="https://wa.me/5493512145673" target="_blank" rel="noopener" class="nav-wa" aria-label="WhatsApp" data-i18n-en-aria-label="WhatsApp">
         <svg viewBox="0 0 24 24" fill="currentColor">
@@ -197,233 +173,230 @@
         </span>
       </a>
     </div>
-    <button class="nav-toggle" id="navToggle" aria-label="Menú" data-i18n-en-aria-label="Menu">
+    <button type="button" class="nav-toggle" id="navToggle" aria-label="Menú" data-i18n-en-aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
   </nav>
 
+  <main id="main">
+
   <!-- ═══════════════ HERO ═══════════════ -->
-  <section class="hero">
-    <div class="hero-content">
-      <div class="hero-copy">
-        <div class="hero-tag">
-          <span></span> <span data-i18n-en="Accepting new projects">Aceptando nuevos proyectos</span>
-        </div>
-        <h1>
-          <span class="line"><span class="line-inner" data-i18n-en="Ideas turned">Ideas convertidas</span></span>
-          <span class="line"><span class="line-inner"><span data-i18n-en="into">en</span> <em class="italic-bordo" data-i18n-en="product">producto</em>.</span></span>
-        </h1>
-        <p class="hero-desc" data-i18n-en="No templates, no shortcuts, no generic builders. Every project — website, system, CRM or app — is built truly custom.">Sin plantillas, sin atajos, sin constructores genéricos. Cada proyecto — web, sistema,
-          CRM o app — se construye a medida de verdad.</p>
-        <div class="hero-actions">
-          <a href="https://wa.me/5493512145673?text=Hola!%20Me%20gustar%C3%ADa%20coordinar%20una%20reuni%C3%B3n%20para%20contarles%20sobre%20mi%20proyecto." data-i18n-en-href="https://wa.me/5493512145673?text=Hi!%20I%27d%20like%20to%20book%20a%20call%20to%20discuss%20my%20project." target="_blank" rel="noopener" class="btn-primary">
-            <span data-i18n-en="Book a meeting">Agendar reunión</span>
-            <span class="btn-arrow">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </span>
-          </a>
-          <a href="demo-crm.html" class="btn-secondary">
-            <span class="btn-ic">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"
-                stroke-linejoin="round">
-                <rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/>
-              </svg>
-            </span>
-            <span data-i18n-en="Try the CRM demo">Probar demo CRM</span>
-          </a>
-        </div>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap">
+      <p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span><span data-i18n-en="Software studio · Córdoba, Argentina">Estudio de software · Córdoba, Argentina</span></p>
+      <h1 id="hero-title" class="hero-title"><span data-i18n-en="Organize to">Ordenar para</span> <em data-i18n-en="grow">crecer</em>.</h1>
+      <p class="hero-lead" data-i18n-en="We build custom software for SMEs that need to connect sales, production and administration.">Desarrollamos software a medida para pymes que necesitan conectar ventas, producción y administración.</p>
+      <p class="hero-sub" data-i18n-en="First we map how your company works. Then we build the system that puts it in order.">Primero relevamos cómo trabaja tu empresa. Después construimos el sistema que la ordena.</p>
+      <div class="hero-actions">
+        <a href="#proyectos" class="btn btn-solid">
+          <span data-i18n-en="See projects">Ver proyectos</span>
+        </a>
+        <a href="https://wa.me/5493512145673?text=Hola!%20Les%20cuento%20c%C3%B3mo%20trabajamos%20en%20mi%20empresa%3A%20" data-i18n-en-href="https://wa.me/5493512145673?text=Hi!%20Here%27s%20how%20we%20work%20at%20my%20company%3A%20" target="_blank" rel="noopener" class="btn btn-ghost">
+          <span data-i18n-en="Tell us how you work">Contanos cómo trabajás</span>
+          <span class="btn-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+          </span>
+          <span class="sr-only" data-i18n-en="(WhatsApp, opens in a new tab)">(WhatsApp, se abre en una pestaña nueva)</span>
+        </a>
+      </div>
+
+      <div class="hero-proof">
+        <p class="hero-proof-label" data-i18n-en="Companies we work with">Empresas con las que trabajamos</p>
+        <ul class="hero-proof-logos">
+          <li><img class="logo-pad" src="images/brands/emat.png" alt="EMAT" width="600" height="300"></li>
+          <li><img src="images/brands/grupoarpeco2026.png" alt="Grupo Arpeco" width="2435" height="1073"></li>
+          <li><img class="logo-pad" src="images/brands/quintanaruiz.png" alt="Quintana Ruiz Asesores" width="600" height="300"></li>
+          <li><img class="logo-wide" src="images/brands/INBIRA.png" alt="INBIRA" width="1728" height="380"></li>
+          <li><img class="logo-pad" src="images/brands/galowines.png" alt="Galo Wines" width="600" height="300"></li>
+        </ul>
+        <a href="marcas.html" class="text-link"><span data-i18n-en="All brands">Todas las marcas</span> <span aria-hidden="true">→</span></a>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════ LO QUE NO OFRECEMOS ═══════════════ -->
-  <div class="no-list-wrap reveal">
-    <div class="no-list">
-      <div class="no-list-label" data-i18n-en="What we DON'T use:">Lo que NO hacemos:</div>
-      <div class="no-list-items">
-        <span class="no-pill">
-          <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10" /><line x1="4.93" y1="4.93" x2="19.07" y2="19.07" />
-          </svg>
-          Wix
-        </span>
-        <span class="no-pill">
-          <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10" /><line x1="4.93" y1="4.93" x2="19.07" y2="19.07" />
-          </svg>
-          Squarespace
-        </span>
-        <span class="no-pill">
-          <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10" /><line x1="4.93" y1="4.93" x2="19.07" y2="19.07" />
-          </svg>
-          WordPress
-        </span>
-        <span class="no-pill">
-          <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10" /><line x1="4.93" y1="4.93" x2="19.07" y2="19.07" />
-          </svg>
-          TiendaNube
-        </span>
-        <span class="no-pill">
-          <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10" /><line x1="4.93" y1="4.93" x2="19.07" y2="19.07" />
-          </svg>
-          Shopify
-        </span>
-        <span class="no-pill">
-          <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10" /><line x1="4.93" y1="4.93" x2="19.07" y2="19.07" />
-          </svg>
-          <span data-i18n-en="Templates">Plantillas</span>
-        </span>
-      </div>
-    </div>
-  </div>
+  <!-- ═══════════════ PROYECTOS ═══════════════ -->
+  <section id="proyectos" class="work" aria-labelledby="work-title">
+    <div class="wrap">
+      <header class="section-head">
+        <div>
+          <h2 id="work-title" class="section-heading" data-i18n-en="Projects">Proyectos</h2>
+          <p class="section-intro" data-i18n-en="Systems and websites in production. Real screenshots, with sample data.">Sistemas y sitios en producción. Capturas reales, con datos de ejemplo.</p>
+        </div>
+        <a href="proyectos.html" class="text-link"><span data-i18n-en="All projects">Todos los proyectos</span> <span aria-hidden="true">→</span></a>
+      </header>
 
-  <!-- ═══════════════ HERO MARQUEE ═══════════════ -->
-  <div class="hero-marquee parallax" aria-hidden="true" data-parallax="0.08">
-    <div class="hero-marquee-track">
-      <div class="hero-marquee-item" data-i18n-en="custom websites">webs a medida</div>
-      <div class="hero-marquee-item" data-i18n-en="corporate sites">sitios corporativos</div>
-      <div class="hero-marquee-item">landing pages</div>
-      <div class="hero-marquee-item">e-commerce</div>
-      <div class="hero-marquee-item" data-i18n-en="mobile apps">apps móviles</div>
-      <div class="hero-marquee-item" data-i18n-en="internal systems">sistemas internos</div>
-      <div class="hero-marquee-item">CRMs</div>
-      <div class="hero-marquee-item" data-i18n-en="custom websites">webs a medida</div>
-      <div class="hero-marquee-item" data-i18n-en="corporate sites">sitios corporativos</div>
-      <div class="hero-marquee-item">landing pages</div>
-      <div class="hero-marquee-item">e-commerce</div>
-      <div class="hero-marquee-item" data-i18n-en="mobile apps">apps móviles</div>
-      <div class="hero-marquee-item" data-i18n-en="internal systems">sistemas internos</div>
-      <div class="hero-marquee-item">CRMs</div>
+      <ol class="cases">
+        <li class="case case--wide">
+          <div class="case-media case-media--emat">
+            <picture>
+              <source media="(max-width: 640px)" srcset="images/projects/home/emat-cotizador-m.jpg" width="414" height="314">
+              <img src="images/projects/home/emat-cotizador.jpg" width="840" height="450" alt="Cotizador del sitio de EMAT: paso 1 de 4, ¿Qué querés aislar?, con las opciones muro interior, techo, húmedos y muro exterior." data-i18n-en-alt="EMAT website quote tool: step 1 of 4, what do you want to insulate?, with interior wall, roof, wet areas and exterior wall options.">
+            </picture>
+          </div>
+          <div class="case-body">
+            <p class="case-meta"><span class="case-num">01</span><span>EMAT · <span data-i18n-en="Thermal and acoustic insulation">Aislación térmica y acústica</span></span></p>
+            <h3 class="case-title">
+              <a href="https://emat.com.ar/" target="_blank" rel="noopener" class="case-link"><span data-i18n-en="Quoting an insulation job from the website">Cotizar una obra de aislación desde la web</span><span class="sr-only" data-i18n-en="(EMAT website, opens in a new tab)">(sitio de EMAT, se abre en una pestaña nueva)</span></a>
+            </h3>
+            <p class="case-desc" data-i18n-en="We built EMAT's site with a 4-step quote tool: the client picks what to insulate, enters the dimensions and gets an estimate. It also includes the product catalog and the coverage map.">Hicimos el sitio de EMAT con un cotizador en 4 pasos: el cliente elige qué quiere aislar, carga las dimensiones y recibe una estimación. Suma el catálogo de productos y el mapa de cobertura.</p>
+            <ul class="case-tags">
+              <li data-i18n-en="Website">Sitio web</li>
+              <li data-i18n-en="Quote tool">Cotizador</li>
+              <li data-i18n-en="Catalog">Catálogo</li>
+            </ul>
+            <span class="case-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></span>
+          </div>
+        </li>
+
+        <li class="case">
+          <div class="case-media case-media--tilin">
+            <picture>
+              <source media="(max-width: 640px)" srcset="images/projects/home/tilin-caja-m.jpg" width="448" height="242">
+              <img src="images/projects/home/tilin-caja.jpg" width="460" height="532" loading="lazy" alt="Pantalla de caja de Tilin: tres productos cargados, total de $23.600, medios de pago efectivo, tarjeta, QR y cuenta corriente, y el resumen de ventas del día." data-i18n-en-alt="Tilin checkout screen: three products, a $23,600 total, cash, card, QR and account payment options, and the day's sales summary.">
+            </picture>
+          </div>
+          <div class="case-body">
+            <p class="case-meta"><span class="case-num">02</span><span>Tilin · <span data-i18n-en="Retail">Comercios</span></span></p>
+            <h3 class="case-title">
+              <a href="https://www.tilin.com.ar/" target="_blank" rel="noopener" class="case-link"><span data-i18n-en="Ringing up a sale and closing the till">Cobrar una venta y cerrar la caja</span><span class="sr-only" data-i18n-en="(Tilin website, opens in a new tab)">(sitio de Tilin, se abre en una pestaña nueva)</span></a>
+            </h3>
+            <p class="case-desc" data-i18n-en="Tilin is our checkout system for shops: you add products, choose the payment method (cash, card, QR or account) and the day is summarized in sales and transactions.">Tilin es nuestro sistema de caja para comercios: se cargan los productos, se elige el medio de pago (efectivo, tarjeta, QR o cuenta corriente) y el día queda resumido en ventas y operaciones.</p>
+            <ul class="case-tags">
+              <li data-i18n-en="System">Sistema</li>
+              <li data-i18n-en="Checkout">Caja</li>
+              <li data-i18n-en="Payment methods">Medios de pago</li>
+            </ul>
+            <span class="case-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></span>
+          </div>
+        </li>
+
+        <li class="case">
+          <div class="case-media case-media--alma">
+            <picture>
+              <source media="(max-width: 640px)" srcset="images/projects/home/alma-agenda-m.jpg" width="492" height="202">
+              <img src="images/projects/home/alma-agenda.jpg" width="536" height="250" loading="lazy" alt="Agenda del día en Alma: hoy tenés 4 turnos, con horarios 09:00, 11:30 y 16:00 y el nombre de cada paciente de ejemplo." data-i18n-en-alt="Alma's daily agenda: you have 4 appointments today, at 09:00, 11:30 and 16:00, with each sample patient's name.">
+            </picture>
+          </div>
+          <div class="case-body">
+            <p class="case-meta"><span class="case-num">03</span><span>Alma · <span data-i18n-en="Independent professionals">Profesionales</span></span></p>
+            <h3 class="case-title">
+              <a href="https://alma-saas.vercel.app" target="_blank" rel="noopener" class="case-link"><span data-i18n-en="Organizing the day's appointments">Organizar los turnos del día</span><span class="sr-only" data-i18n-en="(Alma website, opens in a new tab)">(sitio de Alma, se abre en una pestaña nueva)</span></a>
+            </h3>
+            <p class="case-desc" data-i18n-en="Alma is our appointments system for independent professionals: the day's agenda, deposits via Mercado Pago and WhatsApp reminders.">Alma es nuestro sistema de turnos para profesionales independientes: la agenda del día, las señas por Mercado Pago y los recordatorios por WhatsApp.</p>
+            <ul class="case-tags">
+              <li data-i18n-en="System">Sistema</li>
+              <li data-i18n-en="Appointments">Turnos</li>
+              <li data-i18n-en="Deposits">Señas</li>
+            </ul>
+            <span class="case-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></span>
+          </div>
+        </li>
+      </ol>
     </div>
-  </div>
+  </section>
 
   <!-- ═══════════════ SERVICIOS ═══════════════ -->
-  <section id="servicios">
-    <div class="servicios-inner">
-      <span class="section-tag reveal" style="text-align: left;" data-i18n-en="01 · Services">01 · Servicios</span>
-      <h2 class="servicios-heading reveal-blur"><span data-i18n-en="What we build">Qué construimos</span> <em data-i18n-en="custom">a medida</em>.</h2>
+  <section id="servicios" class="needs" aria-labelledby="needs-title">
+    <div class="wrap">
+      <p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span><span data-i18n-en="Services">Servicios</span></p>
+      <h2 id="needs-title" class="big-heading"><span data-i18n-en="Which part of your company">¿Qué parte de tu empresa</span> <em data-i18n-en="needs order?">necesitás ordenar?</em></h2>
 
-      <article class="servicio-row reveal">
-        <div class="servicio-head">
-          <span class="servicio-num" data-i18n-en="01 · Service">01 · Servicio</span>
-          <h3 class="servicio-title">Landing page</h3>
-        </div>
-        <div class="servicio-body">
-          <p class="servicio-desc" data-i18n-en="A single page built to convert. Ideal for focused campaigns, launches, events, specific products, or professionals who need a direct digital touchpoint. All of the visitor's attention on one message and one action.">Una sola página construida para convertir. Ideal para campañas puntuales,
-            lanzamientos, eventos, productos específicos o profesionales que necesitan un punto de contacto digital
-            directo. Toda la atención del visitante en un único mensaje y una sola acción.</p>
-          <div class="servicio-features">
-            <div class="servicio-feature" data-i18n-en="Focused on a single visitor action">Foco en una sola acción del visitante</div>
-            <div class="servicio-feature" data-i18n-en="Lightweight and fast on mobile">Carga liviana y rápida en móvil</div>
-            <div class="servicio-feature" data-i18n-en="Form wired to your CRM or inbox">Formulario integrado a tu CRM o correo</div>
-            <div class="servicio-feature" data-i18n-en="Set up for Ads campaigns">Configuración lista para campañas de Ads</div>
-          </div>
-          <div class="servicio-audience">
-            <span class="servicio-audience-label" data-i18n-en="Who it's for">Para quién es</span>
-            <div class="servicio-audience-list">
-              <div class="servicio-audience-item" data-i18n-en="Companies that need to capture campaign leads before having a full site.">Empresas que necesitan capturar leads de una campaña antes de tener
-                un sitio completo.</div>
-              <div class="servicio-audience-item" data-i18n-en="Independent professionals who want a digital touchpoint without maintaining a full site.">Profesionales independientes que quieren un punto de contacto
-                digital sin mantener un sitio extenso.</div>
-            </div>
-          </div>
-        </div>
-      </article>
+      <ol class="needs-list">
+        <li class="need">
+          <span class="need-num">01</span>
+          <h3 class="need-title" data-i18n-en="Following up on a quote">Seguir un presupuesto</h3>
+          <p class="need-desc" data-i18n-en="Who asked for it, what state it's in and when to call back. The whole sales team sees the same thing, without digging through WhatsApp.">Quién lo pidió, en qué estado está y cuándo hay que volver a llamar. Todo el equipo comercial ve lo mismo, sin buscar en el WhatsApp.</p>
+          <p class="need-tool" data-i18n-en="CRM and sales follow-up">CRM y seguimiento comercial</p>
+        </li>
+        <li class="need">
+          <span class="need-num">02</span>
+          <h3 class="need-title" data-i18n-en="Coordinating a delivery">Coordinar una entrega</h3>
+          <p class="need-desc" data-i18n-en="Orders, dates and owners in one place, so sales, warehouse and logistics work from the same data.">Pedidos, fechas y responsables en un solo lugar, para que ventas, depósito y logística trabajen sobre los mismos datos.</p>
+          <p class="need-tool" data-i18n-en="Orders and logistics system">Sistema de pedidos y logística</p>
+        </li>
+        <li class="need">
+          <span class="need-num">03</span>
+          <h3 class="need-title" data-i18n-en="Knowing what to produce">Saber qué hay que producir</h3>
+          <p class="need-desc" data-i18n-en="What's been sold becomes a production list and the stock you're missing, without copying by hand from one spreadsheet to another.">Lo vendido se convierte en una lista de producción y en el stock que falta, sin pasar a mano de una planilla a otra.</p>
+          <p class="need-tool" data-i18n-en="Custom management system">Sistema de gestión a medida</p>
+        </li>
+        <li class="need">
+          <span class="need-num">04</span>
+          <h3 class="need-title" data-i18n-en="Ringing up and closing the till">Cobrar y cerrar la caja</h3>
+          <p class="need-desc" data-i18n-en="Sales, payment methods and the end-of-day summary, at the counter.">Ventas, medios de pago y el resumen del día, en el mostrador.</p>
+          <p class="need-tool" data-i18n-en="Checkout and stock">Caja y stock</p>
+        </li>
+        <li class="need">
+          <span class="need-num">05</span>
+          <h3 class="need-title" data-i18n-en="Getting enquiries that arrive with data">Recibir consultas que llegan con datos</h3>
+          <p class="need-desc" data-i18n-en="A website that explains what you do and asks for what your team needs to reply, like EMAT's quote tool.">Una web que explica lo que hacés y pide lo que tu equipo necesita para responder, como el cotizador de EMAT.</p>
+          <p class="need-tool" data-i18n-en="Website or landing page">Sitio web o landing</p>
+        </li>
+      </ol>
+    </div>
+  </section>
 
-      <article class="servicio-row reveal">
-        <div class="servicio-head">
-          <span class="servicio-num" data-i18n-en="02 · Service">02 · Servicio</span>
-          <h3 class="servicio-title" data-i18n-en="Corporate site">Sitio corporativo</h3>
-        </div>
-        <div class="servicio-body">
-          <p class="servicio-desc" data-i18n-en="A multi-section site built for established companies that need to showcase the full operation: services, case studies, team, news and contact channels. A clear structure to represent the company seriously and give the lead everything they need before reaching out.">Sitio con varias secciones pensado para empresas consolidadas que necesitan mostrar
-            la operación completa: servicios, casos, equipo, novedades y canales de contacto. Estructura clara para
-            representar la empresa con seriedad y darle al lead toda la información que necesita antes de tomar
-            contacto.</p>
-          <div class="servicio-features">
-            <div class="servicio-feature" data-i18n-en="Custom CMS so your team can update without the developer">Gestión de contenido propio para que tu equipo actualice sin depender del
-              desarrollador</div>
-            <div class="servicio-feature" data-i18n-en="Built-in news or blog section">Sección de novedades o blog integrada</div>
-            <div class="servicio-feature" data-i18n-en="Connected to social platforms and marketing tools">Conexión con redes sociales y herramientas de marketing</div>
-            <div class="servicio-feature" data-i18n-en="Built-in analytics to see what works and what doesn't">Métricas integradas para entender qué funciona y qué no</div>
-          </div>
-          <div class="servicio-audience">
-            <span class="servicio-audience-label" data-i18n-en="Who it's for">Para quién es</span>
-            <div class="servicio-audience-list">
-              <div class="servicio-audience-item" data-i18n-en="Industrial or service companies that need to showcase operational capacity, portfolio and case studies.">Empresas industriales o de servicios que necesitan mostrar capacidad
-                operativa, cartera y casos.</div>
-              <div class="servicio-audience-item" data-i18n-en="Growing companies that need a professional site to reach new markets.">Empresas en expansión que necesitan un sitio profesional para
-                apuntar a nuevos mercados.</div>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article class="servicio-row reveal">
-        <div class="servicio-head">
-          <span class="servicio-num" data-i18n-en="03 · Service">03 · Servicio</span>
-          <h3 class="servicio-title" data-i18n-en="Apps and internal systems">Apps y sistemas internos</h3>
-        </div>
-        <div class="servicio-body">
-          <p class="servicio-desc" data-i18n-en="Internal software tailored to how the operation actually runs: CRMs, management systems, admin panels, mobile and web apps for internal use. Replaces Excel spreadsheets, scattered sheets and manual processes with a single, tidy and scalable platform.">Software interno hecho a la medida de la operación: CRMs, sistemas de gestión,
-            paneles de administración, apps móviles y web para uso interno. Reemplaza las planillas de Excel, las
-            hojas dispersas y los procesos manuales por una plataforma única, ordenada y escalable.</p>
-          <div class="servicio-features">
-            <div class="servicio-feature" data-i18n-en="Custom modules matched to the operation (clients, sales, stock, logistics)">Módulos a medida según la operación (clientes, ventas, stock, logística)
-            </div>
-            <div class="servicio-feature" data-i18n-en="Role- or team-based roles and permissions">Roles y permisos por rol o equipo</div>
-            <div class="servicio-feature" data-i18n-en="Integration with the tools you already use">Integración con las herramientas que ya usás</div>
-            <div class="servicio-feature" data-i18n-en="Real-time reports and metrics">Reportes y métricas en tiempo real</div>
-          </div>
-          <div class="servicio-audience">
-            <span class="servicio-audience-label" data-i18n-en="Who it's for">Para quién es</span>
-            <div class="servicio-audience-list">
-              <div class="servicio-audience-item" data-i18n-en="Mid-sized companies that can no longer manage day-to-day operations with spreadsheets and WhatsApp messages.">Empresas medianas que ya no dan abasto con hojas de cálculo y
-                mensajes de WhatsApp para gestionar la operación diaria.</div>
-              <div class="servicio-audience-item" data-i18n-en="Sales teams that need their own CRM, without paying monthly licenses that scale with every user.">Equipos comerciales que necesitan un CRM propio, sin pagar
-                licencias mensuales que crecen con cada usuario.</div>
-            </div>
-          </div>
-        </div>
-      </article>
+  <!-- ═══════════════ PROCESO ═══════════════ -->
+  <section id="proceso" class="process" aria-labelledby="process-title">
+    <div class="wrap">
+      <div class="process-head">
+        <p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span><span data-i18n-en="How we work">Cómo trabajamos</span></p>
+        <h2 id="process-title" class="big-heading"><span data-i18n-en="From mapping">Del relevamiento</span> <em data-i18n-en="to the system">al sistema</em>.</h2>
+        <a href="demo-crm.html" class="text-link"><span data-i18n-en="See a sample walkthrough">Mirá un recorrido de ejemplo</span> <span aria-hidden="true">→</span></a>
+      </div>
+      <ol class="steps">
+        <li class="step">
+          <span class="step-num">01</span>
+          <h3 class="step-title" data-i18n-en="We map it">Relevamos</h3>
+          <p data-i18n-en="We sit down with the people who do the work: how an order comes in, which spreadsheets they use, where information gets stuck.">Nos sentamos con quienes hacen el trabajo: cómo entra un pedido, qué planillas usan, dónde se traba la información.</p>
+        </li>
+        <li class="step">
+          <span class="step-num">02</span>
+          <h3 class="step-title" data-i18n-en="We draw the flow">Dibujamos el flujo</h3>
+          <p data-i18n-en="We turn that path into a simple diagram and validate it with you before writing a line of code.">Ordenamos ese recorrido en un esquema simple y lo validamos con vos antes de escribir una línea de código.</p>
+        </li>
+        <li class="step">
+          <span class="step-num">03</span>
+          <h3 class="step-title" data-i18n-en="We build in stages">Desarrollamos por etapas</h3>
+          <p data-i18n-en="We start with what brings the most order. Each stage is tested with your company's real data.">Arrancamos por lo que más ordena. Cada etapa se prueba con datos reales de tu empresa.</p>
+        </li>
+        <li class="step">
+          <span class="step-num">04</span>
+          <h3 class="step-title" data-i18n-en="We stay with you">Acompañamos el uso</h3>
+          <p data-i18n-en="We train the team and adjust the system with what comes up day to day.">Capacitamos al equipo y ajustamos el sistema con lo que aparece en el día a día.</p>
+        </li>
+      </ol>
     </div>
   </section>
 
   <!-- ═══════════════ EQUIPO ═══════════════ -->
-  <section id="equipo" class="team-section">
-    <div class="container">
-      <span class="section-tag reveal" data-i18n-en="03 · Team">03 · Equipo</span>
-      <h2 class="section-title reveal-blur"><span data-i18n-en="The people behind">Las personas detrás de</span> <span class="gradient-text">PRAGMA</span></h2>
+  <section id="equipo" class="team-section" aria-labelledby="team-title">
+    <div class="wrap">
+      <p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span><span data-i18n-en="Team">Equipo</span></p>
+      <h2 id="team-title" class="big-heading big-heading--sm"><span data-i18n-en="The people behind">Las personas detrás de</span> <em>PRAGMA</em>.</h2>
       <div class="team-grid">
-        <article class="team-card reveal">
+        <article class="team-card">
           <img class="team-photo" src="images/gonzalo.png" width="140" height="140"
-            alt="Gonzalo Benedetto - Co-Founder & Full Stack Developer en PRAGMA Studio">
+            alt="Gonzalo Benedetto - Co-Founder &amp; Full Stack Developer en PRAGMA Studio">
           <h3>Gonzalo Benedetto</h3>
-          <p class="team-role">Co-Founder & Full Stack Developer</p>
+          <p class="team-role">Co-Founder &amp; Full Stack Developer</p>
           <p class="team-bio" data-i18n-en="Leads the technical definition of every project: architecture, development of complex features and production deploys. Ensures quality, scalability and execution speed at every stage.">Lidera la definición técnica de los proyectos: arquitectura, desarrollo de
             funcionalidades complejas y despliegues en producción. Garantiza calidad, escalabilidad y velocidad de
             ejecución en cada etapa.</p>
         </article>
-        <article class="team-card reveal">
+        <article class="team-card">
           <img class="team-photo" src="images/gaspar.png" width="140" height="140"
-            alt="Gaspar Quintana Ruiz - Co-Founder & Industrial Engineer en PRAGMA Studio">
+            alt="Gaspar Quintana Ruiz - Co-Founder &amp; Industrial Engineer en PRAGMA Studio">
           <h3>Gaspar Quintana Ruiz</h3>
-          <p class="team-role">Co-Founder & Industrial Engineer</p>
+          <p class="team-role">Co-Founder &amp; Industrial Engineer</p>
           <p class="team-bio" data-i18n-en="Combines full-stack development and process optimization to turn real needs into scalable digital solutions. Code reviews, testing and continuous improvement on every release.">Combina desarrollo full stack y optimización de procesos para convertir necesidades reales
             en soluciones digitales escalables. Code reviews, testing y mejora continua en cada entrega.</p>
         </article>
-        <article class="team-card reveal">
+        <article class="team-card">
           <img class="team-photo" src="images/facundo.png" width="140" height="140"
-            alt="Facundo Lamoratta - Co-Founder & Growth Lead en PRAGMA Studio">
+            alt="Facundo Lamoratta - Co-Founder &amp; Growth Lead en PRAGMA Studio">
           <h3>Facundo Lamoratta</h3>
-          <p class="team-role">Co-Founder & Growth Lead</p>
+          <p class="team-role">Co-Founder &amp; Growth Lead</p>
           <p class="team-bio" data-i18n-en="Leads sales and client relationships: discovery, follow-up and brand growth. Drives PRAGMA's social presence, connecting tech and business.">Lidera el área comercial y la relación con clientes: descubrimiento, seguimiento y
             crecimiento de la marca. Impulsa la presencia de PRAGMA en redes conectando tecnología y negocio.</p>
         </article>
@@ -431,129 +404,25 @@
     </div>
   </section>
 
-  <!-- ═══════════════ MARCAS ═══════════════ -->
-  <section id="marcas" class="brands-section">
-    <div class="container">
-      <div class="brands-intro reveal">
-        <span class="section-tag" data-i18n-en="04 · Clients">04 · Confían en nosotros</span>
-        <h2 class="brands-heading">
-          <span data-i18n-en="Brands we">Marcas con las que</span>
-          <em class="italic-bordo" data-i18n-en="work with">trabajamos</em>.
-        </h2>
-        <a href="marcas.html" class="btn-secondary" style="margin-top: 1.5rem;">
-          <span data-i18n-en="View all brands">Ver todas las marcas</span>
-          <span class="btn-arrow">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
+  <!-- ═══════════════ CONTACTO ═══════════════ -->
+  <section id="contacto" class="closing" aria-labelledby="closing-title">
+    <div class="wrap closing-inner">
+      <h2 id="closing-title" class="closing-title"><span data-i18n-en="Tell us how">Contanos cómo</span> <em data-i18n-en="you work">trabajás</em>.</h2>
+      <p class="closing-desc" data-i18n-en="Message us on WhatsApp. In a short conversation we'll see which part makes sense to organize first.">Escribinos por WhatsApp. En una charla corta vemos qué parte conviene ordenar primero.</p>
+      <div class="hero-actions closing-actions">
+        <a href="https://wa.me/5493512145673?text=Hola!%20Les%20cuento%20c%C3%B3mo%20trabajamos%20en%20mi%20empresa%3A%20" data-i18n-en-href="https://wa.me/5493512145673?text=Hi!%20Here%27s%20how%20we%20work%20at%20my%20company%3A%20" target="_blank" rel="noopener" class="btn btn-light">
+          <span data-i18n-en="Message us on WhatsApp">Escribinos por WhatsApp</span>
+          <span class="btn-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
           </span>
+          <span class="sr-only" data-i18n-en="(opens in a new tab)">(se abre en una pestaña nueva)</span>
         </a>
-      </div>
-      <div class="brands-marquee-wrap reveal">
-        <div class="brands-marquee-track">
-          <div class="brands-marquee-group">
-            <a class="brand-logo-link" href="https://www.instagram.com/emat.ok/?hl=es-la" target="_blank" rel="noopener noreferrer" aria-label="EMAT en Instagram">
-              <img class="brand-logo-img" src="images/brands/emat.png" alt="Logo EMAT">
-            </a>
-            <a class="brand-logo-link" href="https://galowines.com.ar/sucursal-barrio-jardin/" target="_blank" rel="noopener noreferrer" aria-label="Galo Wines">
-              <img class="brand-logo-img" src="images/brands/galowines.png" alt="Logo Galo Wines">
-            </a>
-            <a class="brand-logo-link" href="https://greenova.ar" target="_blank" rel="noopener noreferrer" aria-label="Greenova">
-              <img class="brand-logo-img" src="images/brands/greenova.png" alt="Logo Greenova">
-            </a>
-            <a class="brand-logo-link" href="https://www.instagram.com/somoslamickey/" target="_blank" rel="noopener noreferrer" aria-label="Somos La Mickey Juguetería">
-              <img class="brand-logo-img" src="images/brands/mickey.png" alt="Logo Somos La Mickey">
-            </a>
-            <a class="brand-logo-link" href="https://seguroscordoba.com.ar/" target="_blank" rel="noopener noreferrer" aria-label="Quintana Ruiz Asesores">
-              <img class="brand-logo-img" src="images/brands/quintanaruiz.png" alt="Logo Quintana Ruiz Asesores">
-            </a>
-            <a class="brand-logo-link" href="https://grupoarpeco-site.vercel.app" target="_blank" rel="noopener noreferrer" aria-label="Grupo Arpeco">
-              <img class="brand-logo-img" src="images/brands/grupoarpeco2026.png" alt="Logo Grupo Arpeco">
-            </a>
-            <a class="brand-logo-link" href="https://inbira-web.vercel.app" target="_blank" rel="noopener noreferrer" aria-label="INBIRA">
-              <img class="brand-logo-img" src="images/brands/INBIRA.png" alt="Logo INBIRA">
-            </a>
-            <a class="brand-logo-link" href="https://www.franciscanutricion.com/" target="_blank" rel="noopener noreferrer" aria-label="Francisca Nutrición">
-              <img class="brand-logo-img" src="images/brands/franciscanutricion.png" alt="Logo Francisca Nutrición">
-            </a>
-            <a class="brand-logo-link" href="https://www.vientosurluz.com/" target="_blank" rel="noopener noreferrer" aria-label="Viento Sur">
-              <img class="brand-logo-img" src="images/brands/vientosurluz.png" alt="Logo Viento Sur">
-            </a>
-          </div>
-          <div class="brands-marquee-group" aria-hidden="true">
-            <a class="brand-logo-link" href="https://www.instagram.com/emat.ok/?hl=es-la" target="_blank" rel="noopener noreferrer" tabindex="-1">
-              <img class="brand-logo-img" src="images/brands/emat.png" alt="">
-            </a>
-            <a class="brand-logo-link" href="https://galowines.com.ar/sucursal-barrio-jardin/" target="_blank" rel="noopener noreferrer" tabindex="-1">
-              <img class="brand-logo-img" src="images/brands/galowines.png" alt="">
-            </a>
-            <a class="brand-logo-link" href="https://greenova.ar" target="_blank" rel="noopener noreferrer" tabindex="-1">
-              <img class="brand-logo-img" src="images/brands/greenova.png" alt="">
-            </a>
-            <a class="brand-logo-link" href="https://www.instagram.com/somoslamickey/" target="_blank" rel="noopener noreferrer" tabindex="-1">
-              <img class="brand-logo-img" src="images/brands/mickey.png" alt="">
-            </a>
-            <a class="brand-logo-link" href="https://seguroscordoba.com.ar/" target="_blank" rel="noopener noreferrer" tabindex="-1">
-              <img class="brand-logo-img" src="images/brands/quintanaruiz.png" alt="">
-            </a>
-            <a class="brand-logo-link" href="https://grupoarpeco-site.vercel.app" target="_blank" rel="noopener noreferrer" tabindex="-1">
-              <img class="brand-logo-img" src="images/brands/grupoarpeco2026.png" alt="">
-            </a>
-            <a class="brand-logo-link" href="https://inbira-web.vercel.app" target="_blank" rel="noopener noreferrer" tabindex="-1">
-              <img class="brand-logo-img" src="images/brands/INBIRA.png" alt="">
-            </a>
-            <a class="brand-logo-link" href="https://www.franciscanutricion.com/" target="_blank" rel="noopener noreferrer" tabindex="-1">
-              <img class="brand-logo-img" src="images/brands/franciscanutricion.png" alt="">
-            </a>
-            <a class="brand-logo-link" href="https://www.vientosurluz.com/" target="_blank" rel="noopener noreferrer" tabindex="-1">
-              <img class="brand-logo-img" src="images/brands/vientosurluz.png" alt="">
-            </a>
-          </div>
-        </div>
+        <a href="mailto:hola@pragmastudio.com" class="closing-mail">hola@pragmastudio.com</a>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════ INVITE PROYECTOS ═══════════════ -->
-  <section id="webs" class="projects-invite">
-    <div class="container">
-      <div class="projects-invite-card reveal">
-        <span class="section-tag" data-i18n-en="05 · Projects">05 · Proyectos</span>
-        <h2 class="projects-invite-title">
-          <span data-i18n-en="Some of">Algunos de</span>
-          <em class="italic-bordo" data-i18n-en="our work">nuestros proyectos</em>.
-        </h2>
-        <p class="projects-invite-desc" data-i18n-en="Websites and custom systems live in production. Take a closer look at each one.">Sitios y sistemas a medida ya en producción. Miralos uno por uno.</p>
-        <a href="proyectos.html" class="btn-primary">
-          <span data-i18n-en="View projects">Ver proyectos</span>
-          <span class="btn-arrow">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-              stroke-linejoin="round">
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
-          </span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════ CTA ═══════════════ -->
-  <section class="cta">
-    <div class="cta-content reveal">
-      <h2><span data-i18n-en="Shall we start">¿Empezamos</span> <em class="italic-bordo" data-i18n-en="your project">tu proyecto</em>?</h2>
-      <p class="cta-desc" data-i18n-en="Tell us about your idea. We'll walk with you from the first sketch to production deploy.">Contanos tu idea y te acompañamos desde el primer sketch hasta el deploy en producción.</p>
-      <a href="https://wa.me/5493512145673?text=Hola!%20Me%20gustar%C3%ADa%20coordinar%20una%20reuni%C3%B3n%20para%20contarles%20sobre%20mi%20proyecto." data-i18n-en-href="https://wa.me/5493512145673?text=Hi!%20I%27d%20like%20to%20book%20a%20call%20to%20discuss%20my%20project." target="_blank" rel="noopener" class="btn-primary">
-        <span data-i18n-en="Book a meeting">Agendar reunión</span>
-        <span class="btn-arrow">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-            stroke-linejoin="round">
-            <path d="M5 12h14M12 5l7 7-7 7" />
-          </svg>
-        </span>
-      </a>
-    </div>
-  </section>
-
+  </main>
 
   <!-- ═══════════════ FOOTER ═══════════════ -->
   <footer>
