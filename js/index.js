@@ -1,8 +1,5 @@
-    // ═══════════════ NAV SCROLL ═══════════════
-    const nav = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 50);
-    }, { passive: true });
+    // El estado "scrolled" de la barra, las entradas y todo lo ligado al scroll
+    // viven en js/motion.js (un solo listener para las tres páginas).
 
     // ═══════════════ MOBILE NAV ═══════════════
     const toggle = document.getElementById('navToggle');

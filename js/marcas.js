@@ -1,35 +1,16 @@
-    // Page loader — hide after window.load, con min-show
-    (function pageLoader() {
-      const loader = document.getElementById('pageLoader');
-      if (!loader) return;
-      const start = performance.now();
-      const MIN_SHOW = 1750;
-      const HARD_MAX = 6000;
-      let done = false;
-      function hide() {
-        if (done) return; done = true;
-        const wait = Math.max(0, MIN_SHOW - (performance.now() - start));
-        setTimeout(() => {
-          loader.classList.add('done');
-          document.body.classList.remove('loading');
-        }, wait);
-      }
-      if (document.readyState === 'complete') hide();
-      else window.addEventListener('load', hide);
-      setTimeout(hide, HARD_MAX);
-    })();
-
-    // Navbar scroll
-    const nav = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 50);
-    });
-
-    // Mobile nav
+    // Mobile nav (el estado "scrolled" de la barra y el cierre con Escape viven en js/motion.js)
     const toggle = document.getElementById('navToggle');
     const links = document.getElementById('navLinks');
-    toggle.addEventListener('click', () => links.classList.toggle('open'));
-    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+    toggle.setAttribute('aria-controls', 'navLinks');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      links.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }));
 
     // Reveal
     const obs = new IntersectionObserver((entries) => {
@@ -98,14 +79,15 @@
         document.querySelectorAll('.lang-toggle button').forEach(b => {
           b.classList.toggle('active', b.dataset.lang === lang);
         });
-        try { localStorage.setItem('pragma-lang', lang); } catch (e) {}
+        try { localStorage.setItem('pragma_lang', lang); } catch (e) {}
       }
 
       const btns = document.querySelectorAll('.lang-toggle button');
       btns.forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
 
       try {
-        const saved = localStorage.getItem('pragma-lang');
+        // 'pragma_lang' es la clave que usa la home; 'pragma-lang' era la de estas páginas
+        const saved = localStorage.getItem('pragma_lang') || localStorage.getItem('pragma-lang');
         if (saved === 'en') setLang('en');
       } catch (e) {}
     })();
