@@ -450,6 +450,28 @@
       transform: translateX(3px);
     }
 
+    /* Cards con ilustración genérica en HTML (componente en mocks.css) */
+    .project-card--wide { grid-column: 1 / -1; }
+    .card-title-em {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 400;
+      color: var(--accent-bordo);
+    }
+    .cards-grid .card-screenshot.card-mock {
+      aspect-ratio: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3.5rem 1.5rem 1.5rem;
+    }
+    .cards-grid .project-card--wide .card-screenshot.card-mock { padding: 3.5rem 1.5rem 2.5rem; }
+    .card-mock--dark {
+      background: radial-gradient(120% 90% at 50% 30%, #5a1a1a 0%, #2a0f0f 55%, #160909 100%);
+    }
+    .card-mock .mk-cols { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .card-mock .mk-col:nth-child(n+4) { display: none; }
+
     /* ══════ FINAL CTA ══════ */
     .final-cta {
       padding: 6rem 3rem;
@@ -620,6 +642,9 @@
       .section-heading { padding-bottom: 1.25rem; margin-bottom: 2.5rem; }
       .cards-grid, .cards-grid.cards-3 { grid-template-columns: 1fr; gap: 1.75rem; }
       .cards-grid.cards-3 .card-screenshot { aspect-ratio: 16 / 10; }
+      .cards-grid .card-screenshot.card-mock { padding: 3.25rem 1rem 1rem; }
+      .card-mock .mk-cols { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .card-mock .mk-col:nth-child(n+3) { display: none; }
       .final-cta { padding: 4rem 1.25rem; }
       footer { padding: 2.5rem 1.5rem 1.75rem; gap: 1.75rem; }
       .footer-top { grid-template-columns: 1fr; gap: 1.75rem; }
