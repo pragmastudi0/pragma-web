@@ -82,6 +82,9 @@
     var mode = el.getAttribute('data-m');
     var label = el.textContent.replace(/\s+/g, ' ').trim();
     var count = 0;
+    // Solo en títulos: ahí aria-label es válido y evita que el lector de pantalla
+    // lea palabra por palabra. En párrafos se deja el texto tal cual.
+    var heading = /^H[1-6]$/.test(el.tagName);
 
     textNodes(el).forEach(function (node) {
       var parts = node.nodeValue.split(/(\s+)/);
@@ -106,15 +109,14 @@
           inner.textContent = part;
           span.appendChild(inner);
         }
-        span.setAttribute('aria-hidden', 'true');
+        if (heading) span.setAttribute('aria-hidden', 'true');
         frag.appendChild(span);
         count++;
       });
       node.parentNode.replaceChild(frag, node);
     });
 
-    // Los lectores de pantalla leen el título entero, no palabra por palabra.
-    el.setAttribute('aria-label', label);
+    if (heading) el.setAttribute('aria-label', label);
     el.classList.add('is-split');
   }
 
@@ -366,14 +368,36 @@
     // 3. Secuencia de carga (hero). Arranca en el primer frame; si la página llega
     //    con una transición entre páginas, espera a que la cortina la descubra.
     if (grouped.length) {
-      requestAnimationFrame(function () {
-        var lead = window.__vt && window.__vt !== 'neutral' ? 320 : 0;
-        grouped.forEach(function (el, i) {
-          var at = parseFloat(el.getAttribute('data-m-at'));
-          if (isNaN(at)) at = i * cfg.stagger;
-          reveal(el, lead + at * cfg.timeScale);
+      var started = false;
+      var start = function () {
+        if (started) return;
+        started = true;
+        requestAnimationFrame(function () {
+          var lead = window.__vt && window.__vt !== 'neutral' ? 320 : 0;
+          grouped.forEach(function (el, i) {
+            var at = parseFloat(el.getAttribute('data-m-at'));
+            if (isNaN(at)) at = i * cfg.stagger;
+            reveal(el, lead + at * cfg.timeScale);
+          });
         });
-      });
+      };
+      // Las líneas se detectan midiendo el texto: conviene que la tipografía ya
+      // esté cargada. Se espera como mucho 300 ms; con caché es inmediato.
+      var fontLoads = [];
+      if (document.fonts && document.fonts.load) {
+        grouped.forEach(function (el) {
+          if (!el.classList.contains('is-split')) return;
+          var cs = getComputedStyle(el);
+          var font = cs.fontStyle + ' ' + cs.fontWeight + ' ' + cs.fontSize + ' ' + cs.fontFamily;
+          try { if (!document.fonts.check(font)) fontLoads.push(document.fonts.load(font)); } catch (e) {}
+        });
+      }
+      if (fontLoads.length) {
+        Promise.all(fontLoads).then(start, start);
+        later(start, 300);
+      } else {
+        start();
+      }
     }
 
     // 4. Scroll
@@ -429,9 +453,11 @@
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') close(true);
     });
-    document.addEventListener('click', function (e) {
+    // pointerdown y no click: en iOS Safari el click no llega al documento cuando
+    // se toca un elemento no interactivo.
+    document.addEventListener('pointerdown', function (e) {
       if (!links.contains(e.target) && !toggle.contains(e.target)) close(false);
-    });
+    }, { passive: true });
   }
 
   /* ───────────── Inicio ───────────── */

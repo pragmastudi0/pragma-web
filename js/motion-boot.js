@@ -22,7 +22,7 @@
     // Si motion.js no confirma que arrancó, se muestra todo.
     setTimeout(function () {
       if (!window.__motion) root.classList.remove('motion');
-    }, 2500);
+    }, 2000);
   }
 
   // ── Transiciones entre páginas ──

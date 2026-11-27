@@ -200,6 +200,7 @@ html.motion [data-m-scroll="expand"]:not(.is-full) {
 /* ═══════════════════ MENÚ MOBILE ═══════════════════ */
 
 /* El ícono pasa de tres líneas a una cruz */
+.nav-toggle { -webkit-tap-highlight-color: transparent; }
 .nav-toggle span { transition: transform 0.45s var(--ease-inout), opacity 0.25s var(--ease-ui); }
 .nav-links.open ~ .nav-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .nav-links.open ~ .nav-toggle span:nth-child(2) { opacity: 0; transform: scaleX(0.2); }
@@ -306,6 +307,13 @@ html.motion [data-m-scroll="expand"]:not(.is-full) {
 
 #navbar { view-transition-name: site-nav; }
 .whatsapp-float, .wa-float { view-transition-name: wa-float; }
+
+/* Sin fundido cruzado en los elementos fijos: se muestra directamente el estado
+   nuevo (en WebKit el fundido por defecto los atenuaba a mitad de la transición). */
+::view-transition-old(site-nav),
+::view-transition-old(wa-float) { display: none; }
+::view-transition-new(site-nav),
+::view-transition-new(wa-float) { animation: none; }
 
 html[data-vt="forward"]::view-transition-image-pair(root),
 html[data-vt="back"]::view-transition-image-pair(root) { isolation: auto; }
