@@ -197,6 +197,13 @@
     st.in = true;
     st.delay = delay;
     var units = 0;
+    var type = el.getAttribute('data-m');
+    if ((type === 'lines' || type === 'words') && !el.classList.contains('is-split')) {
+      // La tipografía todavía no cargó: no se divide (ver prepareText) y el
+      // título entra entero, como texto de apoyo.
+      el.setAttribute('data-m', 'rise');
+      void el.offsetWidth;
+    }
     if (el.classList.contains('is-split')) units = indexUnits(el);
     if (delay) el.style.setProperty('--m-delay', Math.round(delay) + 'ms');
     el.classList.add('is-in');
@@ -339,12 +346,16 @@
 
     var all = Array.prototype.slice.call(document.querySelectorAll('[data-m]'));
 
-    // 1. Títulos: dividir y vigilar cambios de texto (idioma)
-    all.forEach(function (el) {
+    // 1. Títulos: se dividen en palabras recién cuando su tipografía está cargada.
+    //    Si se dividieran antes, el cambio de fuente reacomodaría palabra por
+    //    palabra y cada una contaría como salto de layout (CLS).
+    var splitEls = all.filter(function (el) { return SPLIT_TYPES[el.getAttribute('data-m')]; });
+
+    function prepareText(el) {
       var type = el.getAttribute('data-m');
-      if (!SPLIT_TYPES[type]) return;
-      split(el);
       var st = state(el);
+      if (!SPLIT_TYPES[type] || st.in || el.classList.contains('is-split')) return;
+      split(el);
       st.mo = watchText(el, function () {
         if (st.done) return;
         unsplit(el);
@@ -353,7 +364,28 @@
         else if (st.in) indexUnits(el);
       });
       if (type === 'fill') { fills.push({ el: el, p: 0, done: false }); pending++; }
-    });
+    }
+
+    var fontLoads = [];
+    if (document.fonts && document.fonts.load) {
+      var seen = {};
+      splitEls.forEach(function (el) {
+        [el].concat(Array.prototype.slice.call(el.querySelectorAll('em'))).forEach(function (node) {
+          var cs = getComputedStyle(node);
+          var font = cs.fontStyle + ' ' + cs.fontWeight + ' 16px ' + cs.fontFamily;
+          if (seen[font]) return;
+          seen[font] = true;
+          try { if (!document.fonts.check(font)) fontLoads.push(document.fonts.load(font)); } catch (e) {}
+        });
+      });
+    }
+    var fontsReady = false;
+    var onFonts = function () {
+      if (fontsReady) return;
+      fontsReady = true;
+      splitEls.forEach(prepareText);
+      requestTick();
+    };
 
     // 2. Entradas por IntersectionObserver (todo salvo "fill" y los grupos de carga)
     io = new IntersectionObserver(onIntersect, { rootMargin: cfg.margin, threshold: 0 });
@@ -362,42 +394,37 @@
       if (el.getAttribute('data-m') === 'fill') return;
       pending++;
       if (el.closest('[data-m-group]')) grouped.push(el);
-      else { io.observe(el); waiting.push(el); }
+      else waiting.push(el);
     });
 
-    // 3. Secuencia de carga (hero). Arranca en el primer frame; si la página llega
-    //    con una transición entre páginas, espera a que la cortina la descubra.
-    if (grouped.length) {
-      var started = false;
-      var start = function () {
-        if (started) return;
-        started = true;
-        requestAnimationFrame(function () {
-          var lead = window.__vt && window.__vt !== 'neutral' ? 320 : 0;
-          grouped.forEach(function (el, i) {
-            var at = parseFloat(el.getAttribute('data-m-at'));
-            if (isNaN(at)) at = i * cfg.stagger;
-            reveal(el, lead + at * cfg.timeScale);
-          });
+    // 3. Secuencia de carga (hero). Espera a la tipografía como mucho 300 ms (con
+    //    caché es inmediato); si no llega, los títulos entran sin dividirse. Si la
+    //    página llega con una transición entre páginas, espera a que la cortina la
+    //    descubra.
+    var started = false;
+    var start = function () {
+      if (started) return;
+      started = true;
+      // El observador también arranca acá, para que los títulos que ya están en
+      // pantalla al cargar lleguen divididos.
+      waiting.forEach(function (el) { if (io && !state(el).in) io.observe(el); });
+      if (!grouped.length) return;
+      requestAnimationFrame(function () {
+        var lead = window.__vt && window.__vt !== 'neutral' ? 320 : 0;
+        grouped.forEach(function (el, i) {
+          var at = parseFloat(el.getAttribute('data-m-at'));
+          if (isNaN(at)) at = i * cfg.stagger;
+          reveal(el, lead + at * cfg.timeScale);
         });
-      };
-      // Las líneas se detectan midiendo el texto: conviene que la tipografía ya
-      // esté cargada. Se espera como mucho 300 ms; con caché es inmediato.
-      var fontLoads = [];
-      if (document.fonts && document.fonts.load) {
-        grouped.forEach(function (el) {
-          if (!el.classList.contains('is-split')) return;
-          var cs = getComputedStyle(el);
-          var font = cs.fontStyle + ' ' + cs.fontWeight + ' ' + cs.fontSize + ' ' + cs.fontFamily;
-          try { if (!document.fonts.check(font)) fontLoads.push(document.fonts.load(font)); } catch (e) {}
-        });
-      }
-      if (fontLoads.length) {
-        Promise.all(fontLoads).then(start, start);
-        later(start, 300);
-      } else {
-        start();
-      }
+      });
+    };
+
+    if (fontLoads.length) {
+      Promise.all(fontLoads).then(function () { onFonts(); start(); }, start);
+      later(start, 300);
+    } else {
+      onFonts();
+      start();
     }
 
     // 4. Scroll
