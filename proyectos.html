@@ -31,10 +31,10 @@
   <script src="js/consent.js" defer></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>proyectos — pragma studio</title>
-  <meta name="description" content="Proyectos de pragma studio: webs y sistemas a medida para negocios reales — EMAT, Quintana Ruiz Asesores, INBIRA, Tilin y Alma.">
+  <meta name="description" content="Proyectos de pragma studio: sistemas a medida, Claudia (asistente comercial de IA), productos propios como Tilín y Alma, y webs de clientes como EMAT, Quintana Ruiz e INBIRA.">
   <link rel="canonical" href="https://pragmastudio.com.ar/proyectos.html">
   <meta property="og:title" content="proyectos — pragma studio">
-  <meta property="og:description" content="Webs y sistemas a medida: EMAT, Quintana Ruiz Asesores, INBIRA, Tilin y Alma.">
+  <meta property="og:description" content="Sistemas a medida, Claudia (asistente comercial de IA que atiende 24/7), Tilín, Alma y webs de clientes.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://pragmastudio.com.ar/proyectos.html">
   <meta property="og:site_name" content="pragma studio">
@@ -45,7 +45,7 @@
   <meta property="og:image:alt" content="pragma studio — soluciones digitales a medida, Córdoba, Argentina">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="proyectos — pragma studio">
-  <meta name="twitter:description" content="Webs y sistemas a medida: EMAT, Quintana Ruiz Asesores, INBIRA, Tilin y Alma.">
+  <meta name="twitter:description" content="Sistemas a medida, Claudia (asistente comercial de IA que atiende 24/7), Tilín, Alma y webs de clientes.">
   <meta name="twitter:image" content="https://pragmastudio.com.ar/images/og-image.jpg">
   <link rel="icon" type="image/png" href="images/favicon.png">
   <link rel="shortcut icon" type="image/png" href="images/favicon.png">
@@ -57,6 +57,7 @@
     href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="css/proyectos.css">
+  <link rel="stylesheet" href="css/mocks.css">
 
   <!-- Sin JavaScript: mostrar todo el contenido (quitar loader y animaciones de revelado) -->
   <noscript>
@@ -81,7 +82,7 @@
         "@id": "https://pragmastudio.com.ar/proyectos.html#webpage",
         "url": "https://pragmastudio.com.ar/proyectos.html",
         "name": "Proyectos — pragma studio",
-        "description": "Webs y sistemas a medida desarrollados por pragma studio para negocios reales.",
+        "description": "Sistemas a medida, productos propios y webs desarrollados por pragma studio. Los sistemas a medida se muestran con ejemplos genéricos.",
         "inLanguage": "es",
         "isPartOf": { "@id": "https://pragmastudio.com.ar/#website" },
         "about": { "@id": "https://pragmastudio.com.ar/#organization" }
@@ -98,11 +99,14 @@
         "name": "Proyectos de pragma studio",
         "itemListOrder": "https://schema.org/ItemListUnordered",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Tilin — tienda digital" },
-          { "@type": "ListItem", "position": 2, "name": "Alma — gestión de turnos" },
-          { "@type": "ListItem", "position": 3, "name": "EMAT — aislación térmica y acústica" },
-          { "@type": "ListItem", "position": 4, "name": "Quintana Ruiz Asesores — seguros" },
-          { "@type": "ListItem", "position": 5, "name": "INBIRA — inversiones en bienes raíces" }
+          { "@type": "ListItem", "position": 1, "name": "Claudia — asistente comercial de IA" },
+          { "@type": "ListItem", "position": 2, "name": "Sistema comercial — presupuestos y proyectos" },
+          { "@type": "ListItem", "position": 3, "name": "Sistema de producción — plan y stock" },
+          { "@type": "ListItem", "position": 4, "name": "Tilín — tienda digital" },
+          { "@type": "ListItem", "position": 5, "name": "Alma — gestión de turnos" },
+          { "@type": "ListItem", "position": 6, "name": "EMAT — aislación térmica y acústica" },
+          { "@type": "ListItem", "position": 7, "name": "Quintana Ruiz Asesores — seguros" },
+          { "@type": "ListItem", "position": 8, "name": "INBIRA — inversiones en bienes raíces" }
         ]
       }
     ]
@@ -129,7 +133,7 @@
       <a href="index.html#servicios" data-i18n-en="Services">Servicios</a>
       <a href="proyectos.html" data-i18n-en="Work">Proyectos</a>
       <a href="marcas.html" data-i18n-en="Brands">Marcas</a>
-      <a href="index.html#nosotros" data-i18n-en="Studio">Nosotros</a>
+      <a href="index.html#equipo" data-i18n-en="Studio">Nosotros</a>
       <a href="https://wa.me/5493512145673" target="_blank" rel="noopener" data-i18n-en="Contact">Contacto</a>
     </div>
     <div class="nav-actions">
@@ -151,7 +155,7 @@
         </span>
       </a>
     </div>
-    <button class="nav-toggle" id="navToggle" aria-label="Menú" data-i18n-en-aria-label="Menu">
+    <button type="button" class="nav-toggle" id="navToggle" aria-label="Menú" data-i18n-en-aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
   </nav>
@@ -164,27 +168,125 @@
         <span data-i18n-en="Some of our">Algunos</span>
         <em data-i18n-en="projects">proyectos</em>.
       </h1>
-      <p class="hero-desc" data-i18n-en="Real systems and websites built end-to-end at pragma. Each one live and in production.">Sistemas y sitios a medida que construimos de principio a fin en pragma. Cada uno vivo y en producción.</p>
+      <p class="hero-desc" data-i18n-en="Custom systems, our own products and client websites, built end-to-end at pragma. Custom systems are shown with generic examples.">Sistemas a medida, productos propios y webs de clientes que construimos de principio a fin en pragma. Los sistemas a medida se muestran con ejemplos genéricos.</p>
     </div>
   </section>
 
   <!-- ══════ SISTEMAS ══════ -->
-  <section class="projects-section">
+  <section class="projects-section" id="sistemas">
     <div class="container">
       <div class="section-heading reveal">
         <h2 class="section-title">
           <span data-i18n-en="Systems">Sistemas</span>
         </h2>
-        <p class="section-caption" data-i18n-en="Custom software products built for real businesses. Sold as a service or built specifically for one client.">Productos de software a medida para negocios reales. Como servicio o desarrollados a pedido para un cliente puntual.</p>
+        <p class="section-caption" data-i18n-en="Custom systems and our own products. Custom systems are shown with generic examples, without client data.">Sistemas a medida y productos propios. Los sistemas a medida se muestran con ejemplos genéricos, sin datos de clientes.</p>
       </div>
       <div class="cards-grid">
+        <article class="project-card project-card--wide reveal">
+          <div class="card-screenshot card-mock card-mock--dark">
+            <span class="card-badge" data-i18n-en="AI · 24/7">IA · 24/7</span>
+            <div class="mock mock-chat" role="img" aria-label="Ilustración con datos de ejemplo: a las 2:14 de la madrugada un cliente pregunta por Instagram por un producto; Claudia, en modo automático, responde sola con el precio y, cuando el cliente quiere comprarlo, crea la oportunidad en el pipeline y avisa al vendedor." data-i18n-en-aria-label="Illustration with sample data: at 2:14 a.m. a customer asks about a product on Instagram; Claudia, in automatic mode, answers on her own with the price and, when the customer wants to buy, creates the opportunity in the pipeline and alerts the salesperson.">
+              <div aria-hidden="true">
+                <div class="mc-head">
+                  <span class="mc-avatar">CL</span>
+                  <span class="mc-who"><b data-i18n-en="Customer">Cliente</b><small>Instagram</small></span>
+                  <span class="mc-status"><span class="mc-live"></span><span data-i18n-en="Automatic · 24/7">Automático · 24/7</span></span>
+                </div>
+                <div class="mc-thread">
+                  <p class="mc-time">02:14</p>
+                  <p class="mc-msg mc-in" data-i18n-en="Hi! Do you have the desk chair in black? How much is it?">¡Hola! ¿Tienen la silla de escritorio en negro? ¿Cuánto sale?</p>
+                  <div class="mc-out">
+                    <p class="mc-by"><span class="mc-dot"></span><span data-i18n-en="Claudia · answered on her own">Claudia · respondió sola</span></p>
+                    <p class="mc-msg mc-claudia" data-i18n-en="Hi! Yes, we have it in black at $189,000. Shall I tell you the payment options?">¡Hola! Sí, la tenemos en negro a $189.000. ¿Te paso las formas de pago?</p>
+                  </div>
+                  <p class="mc-msg mc-in" data-i18n-en="Yes! I want it.">¡Dale! La quiero.</p>
+                </div>
+                <p class="mc-toast"><span class="mc-toast-dot"></span><span data-i18n-en="Opportunity created · salesperson alerted">Oportunidad creada · vendedor avisado</span></p>
+              </div>
+            </div>
+          </div>
+          <div class="card-info">
+            <h3 class="card-title">Claudia — <em class="card-title-em" data-i18n-en="AI sales assistant">asistente comercial de IA</em></h3>
+            <div class="card-tags">
+              <span>Instagram</span>
+              <span>WhatsApp</span>
+              <span data-i18n-en="Automatic 24/7">Automático 24/7</span>
+            </div>
+            <p class="card-desc" data-i18n-en="A sales CRM with a single inbox for Instagram Direct and WhatsApp, connected to Meta's official APIs. In automatic mode Claudia answers customers on her own, 24 hours a day, 7 days a week; she checks the stock spreadsheet catalog before confirming price or availability, and when the customer wants to buy she creates the opportunity in the pipeline and alerts the salesperson.">Un CRM de ventas con una bandeja única para Instagram Direct y WhatsApp, conectada a las APIs oficiales de Meta. En modo automático, Claudia atiende sola a los clientes las 24 horas, los 7 días; consulta el catálogo de la planilla de stock antes de confirmar precio o disponibilidad, y cuando el cliente quiere comprar crea la oportunidad en el pipeline y avisa al vendedor.</p>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="card-screenshot card-mock">
+            <span class="card-badge" data-i18n-en="Sales">Comercial</span>
+            <div class="mock mock-kanban" role="img" aria-label="Ilustración con datos de ejemplo: tablero de oportunidades por etapa; cada ficha muestra el trabajo, el cliente y el monto." data-i18n-en-aria-label="Illustration with sample data: opportunities board by stage; each card shows the job, the client and the amount.">
+              <div class="mk-cols" aria-hidden="true">
+                <div class="mk-col"><p class="mk-label mk-new"><span data-i18n-en="New">Nueva</span><b>2</b></p>
+                  <div class="mk-card"><b data-i18n-en="Store renovation">Remodelación de local</b><small data-i18n-en="Client 014 · web">Cliente 014 · web</small><span>$ 2.400.000</span></div>
+                  <div class="mk-card"><b data-i18n-en="Annual maintenance">Mantenimiento anual</b><small data-i18n-en="Client 009">Cliente 009</small><span>$ 860.000</span></div>
+                </div>
+                <div class="mk-col"><p class="mk-label mk-sent"><span data-i18n-en="Quoted">Presupuestada</span><b>1</b></p>
+                  <div class="mk-card"><b data-i18n-en="Office equipment">Equipamiento de oficina</b><small data-i18n-en="Client 021">Cliente 021</small><span>$ 5.150.000</span></div>
+                </div>
+                <div class="mk-col"><p class="mk-label mk-neg"><span data-i18n-en="Negotiation">Negociación</span><b>1</b></p>
+                  <div class="mk-card"><b data-i18n-en="Exhibition stand">Stand para exposición</b><small data-i18n-en="Client 003">Cliente 003</small><span>$ 9.300.000</span></div>
+                </div>
+                <div class="mk-col mk-hide-sm"><p class="mk-label mk-won"><span data-i18n-en="Won">Ganada</span><b>1</b></p>
+                  <div class="mk-card"><b data-i18n-en="Signage">Cartelería</b><small data-i18n-en="Client 017">Cliente 017</small><span>$ 1.200.000</span></div>
+                </div>
+                <div class="mk-col mk-hide-sm"><p class="mk-label mk-lost"><span data-i18n-en="Lost">Perdida</span><b>1</b></p>
+                  <div class="mk-card"><b data-i18n-en="Showroom">Showroom</b><small data-i18n-en="Client 011">Cliente 011</small><span>$ 3.700.000</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-info">
+            <h3 class="card-title"><span data-i18n-en="Sales system">Sistema comercial</span> — <em class="card-title-em" data-i18n-en="quotes and projects">presupuestos y proyectos</em></h3>
+            <div class="card-tags">
+              <span data-i18n-en="CRM">CRM</span>
+              <span data-i18n-en="Quotes">Presupuestos</span>
+              <span data-i18n-en="Projects">Proyectos</span>
+            </div>
+            <p class="card-desc" data-i18n-en="Each opportunity moves from new to quoted, negotiation, won or lost. Enquiries from the website form come in as new opportunities, and an accepted quote creates the sale and the project.">Cada oportunidad avanza de nueva a presupuestada, negociación, ganada o perdida. Las consultas del formulario de la web entran como oportunidad nueva, y un presupuesto aceptado genera la venta y el proyecto.</p>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="card-screenshot card-mock">
+            <span class="card-badge" data-i18n-en="Industry">Industria</span>
+            <div class="mock mock-plan" role="img" aria-label="Ilustración con datos de ejemplo: plan de producción del día con un objetivo de 120 unidades, la cantidad por producto, los lotes de materia prima previstos y la versión del plan." data-i18n-en-aria-label="Illustration with sample data: the day's production plan with a 120-unit target, the quantity per product, the planned raw material lots and the plan version.">
+              <div aria-hidden="true">
+                <p class="mp-head"><b data-i18n-en="Today's plan">Plan de la jornada</b><span class="mp-chip" data-i18n-en="Started · v2">Iniciado · v2</span></p>
+                <p class="mp-goal"><span data-i18n-en="Target">Objetivo</span><b data-i18n-en="120 units">120 unidades</b></p>
+                <table class="mp-table">
+                  <thead><tr><th scope="col" data-i18n-en="Product">Producto</th><th scope="col" data-i18n-en="Planned">Plan</th><th scope="col" data-i18n-en="Done">Hecho</th></tr></thead>
+                  <tbody>
+                    <tr><td data-i18n-en="Product A · 15 kg">Producto A · 15 kg</td><td>80</td><td>52</td></tr>
+                    <tr><td data-i18n-en="Product B · 10 kg">Producto B · 10 kg</td><td>40</td><td>40</td></tr>
+                  </tbody>
+                </table>
+                <p class="mp-lots"><span data-i18n-en="Planned lots">Lotes previstos</span> MP-0012 · MP-0015</p>
+              </div>
+            </div>
+          </div>
+          <div class="card-info">
+            <h3 class="card-title"><span data-i18n-en="Production system">Sistema de producción</span> — <em class="card-title-em" data-i18n-en="plan and stock">plan y stock</em></h3>
+            <div class="card-tags">
+              <span data-i18n-en="Production">Producción</span>
+              <span data-i18n-en="Stock">Stock</span>
+              <span data-i18n-en="Dispatches">Despachos</span>
+            </div>
+            <p class="card-desc" data-i18n-en="The day's plan with its target per product and the raw material lots, and each revision saved before the real close. With intake, stock by lot, dispatches with delivery notes and the week's shortfalls based on sales demand.">El plan de la jornada con su objetivo por producto y los lotes de materia prima, y cada revisión guardada antes del cierre real. Con recepción, stock por lote, despachos con remito y los faltantes de la semana según la demanda comercial.</p>
+          </div>
+        </article>
+
         <article class="project-card reveal">
           <div class="card-screenshot">
             <span class="card-badge" data-i18n-en="Shops">Comercios</span>
-            <img src="images/projects/tilin.jpg" alt="Tilin" loading="lazy">
+            <img src="images/projects/tilin.jpg" alt="Tilín" loading="lazy">
           </div>
           <div class="card-info">
-            <h3 class="card-title">Tilin — <em style="font-family: var(--font-serif); font-style: italic; font-weight: 400; color: var(--accent-bordo);" data-i18n-en="Digital storefront">tienda digital</em></h3>
+            <h3 class="card-title">Tilín — <em style="font-family: var(--font-serif); font-style: italic; font-weight: 400; color: var(--accent-bordo);" data-i18n-en="Digital storefront">tienda digital</em></h3>
             <div class="card-tags">
               <span data-i18n-en="E-commerce">E-commerce</span>
               <span data-i18n-en="WhatsApp orders">Pedidos WhatsApp</span>
@@ -298,12 +400,12 @@
   <section class="final-cta">
     <div class="container">
       <h2>
-        <span data-i18n-en="Have a project">¿Tenés un proyecto</span>
-        <em data-i18n-en="in mind?">en mente?</em>
+        <span data-i18n-en="Which part of your company">¿Qué parte de tu empresa</span>
+        <em data-i18n-en="needs order?">necesitás ordenar?</em>
       </h2>
-      <p data-i18n-en="Whether it's a landing page, a website or a full internal system — tell us your idea and we'll take it from there.">Ya sea una landing, un sitio web o un sistema interno completo — contanos tu idea y la llevamos adelante.</p>
-      <a href="https://wa.me/5493512145673?text=Hola!%20Me%20gustar%C3%ADa%20coordinar%20una%20reuni%C3%B3n%20para%20contarles%20sobre%20mi%20proyecto." target="_blank" rel="noopener" class="btn-primary" data-i18n-en-href="https://wa.me/5493512145673?text=Hi!%20I%27d%20like%20to%20book%20a%20call%20to%20discuss%20my%20project.">
-        <span data-i18n-en="Book a meeting">Agendar reunión</span>
+      <p data-i18n-en="Tell us how you work and we'll see where to start.">Contanos cómo trabajás y vemos por dónde conviene empezar.</p>
+      <a href="https://wa.me/5493512145673?text=Hola!%20Les%20cuento%20c%C3%B3mo%20trabajamos%20en%20mi%20empresa%3A%20" target="_blank" rel="noopener" class="btn-primary" data-i18n-en-href="https://wa.me/5493512145673?text=Hi!%20Here%27s%20how%20we%20work%20at%20my%20company%3A%20">
+        <span data-i18n-en="Tell us how you work">Contanos cómo trabajás</span>
         <span class="btn-arrow">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </span>
@@ -329,7 +431,7 @@
         <a href="index.html#servicios" data-i18n-en="Services">Servicios</a>
         <a href="proyectos.html" data-i18n-en="Projects">Proyectos</a>
         <a href="marcas.html" data-i18n-en="Brands">Marcas</a>
-        <a href="index.html#nosotros" data-i18n-en="Studio">Nosotros</a>
+        <a href="index.html#equipo" data-i18n-en="Studio">Nosotros</a>
         <a href="privacidad.html" data-i18n-en="Privacy">Privacidad</a>
         <a href="privacidad.html#cookies" data-cookie-preferences data-i18n-en="Cookie preferences">Preferencias de cookies</a>
       </div>
