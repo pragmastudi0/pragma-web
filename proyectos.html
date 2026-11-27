@@ -58,19 +58,10 @@
     rel="stylesheet">
   <link rel="stylesheet" href="css/proyectos.css">
   <link rel="stylesheet" href="css/mocks.css">
+  <link rel="stylesheet" href="css/motion.css">
+  <!-- Movimiento: habilita los estados iniciales antes del primer pintado (ver js/motion-boot.js) -->
+  <script src="js/motion-boot.js"></script>
 
-  <!-- Sin JavaScript: mostrar todo el contenido (quitar loader y animaciones de revelado) -->
-  <noscript>
-    <style>
-      .page-loader { display: none !important; }
-      body.loading { overflow: auto !important; }
-      .reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-blur, .reveal-mask {
-        opacity: 1 !important;
-        transform: none !important;
-        filter: none !important;
-      }
-    </style>
-  </noscript>
 
   <!-- Datos estructurados (JSON-LD) — consistentes con el contenido visible -->
   <script type="application/ld+json">
@@ -114,14 +105,7 @@
   </script>
 </head>
 
-<body class="loading">
-  <div class="page-loader" id="pageLoader" aria-hidden="true">
-    <div class="loader-scene">
-      <div class="loader-shadow"></div>
-      <div class="loader-die"><img src="images/favicon.png" alt=""></div>
-    </div>
-    <div class="loader-caption">pragma · studio</div>
-  </div>
+<body>
 
   <div class="grid-lens" id="gridLens"></div>
   <div class="grid-lens-core" id="gridLensCore"></div>
@@ -162,30 +146,30 @@
 
   <!-- ══════ HERO ══════ -->
   <section class="hero">
-    <div class="container">
-      <span class="section-tag" data-i18n-en="Projects">Proyectos</span>
-      <h1 class="hero-title">
+    <div class="container" data-m-group>
+      <span class="section-tag" data-m="rise" data-m-at="0" data-i18n-en="Projects">Proyectos</span>
+      <h1 class="hero-title" data-m="lines" data-m-at="80">
         <span data-i18n-en="Some of our">Algunos</span>
         <em data-i18n-en="projects">proyectos</em>.
       </h1>
-      <p class="hero-desc" data-i18n-en="Custom systems, our own products and client websites, built end-to-end at pragma. Custom systems are shown with generic examples.">Sistemas a medida, productos propios y webs de clientes que construimos de principio a fin en pragma. Los sistemas a medida se muestran con ejemplos genéricos.</p>
+      <p class="hero-desc" data-m="lines" data-m-at="320" data-i18n-en="Custom systems, our own products and client websites, built end-to-end at pragma. Custom systems are shown with generic examples.">Sistemas a medida, productos propios y webs de clientes que construimos de principio a fin en pragma. Los sistemas a medida se muestran con ejemplos genéricos.</p>
     </div>
   </section>
 
   <!-- ══════ SISTEMAS ══════ -->
   <section class="projects-section" id="sistemas">
     <div class="container">
-      <div class="section-heading reveal">
-        <h2 class="section-title">
+      <div class="section-heading" data-m="draw-b">
+        <h2 class="section-title" data-m="lines">
           <span data-i18n-en="Systems">Sistemas</span>
         </h2>
-        <p class="section-caption" data-i18n-en="Custom systems and our own products. Custom systems are shown with generic examples, without client data.">Sistemas a medida y productos propios. Los sistemas a medida se muestran con ejemplos genéricos, sin datos de clientes.</p>
+        <p class="section-caption" data-m="rise" data-i18n-en="Custom systems and our own products. Custom systems are shown with generic examples, without client data.">Sistemas a medida y productos propios. Los sistemas a medida se muestran con ejemplos genéricos, sin datos de clientes.</p>
       </div>
       <div class="cards-grid">
-        <article class="project-card project-card--wide reveal">
+        <article class="project-card project-card--wide" data-m="clip">
           <div class="card-screenshot card-mock card-mock--dark">
             <span class="card-badge" data-i18n-en="AI · 24/7">IA · 24/7</span>
-            <div class="mock mock-chat" role="img" aria-label="Ilustración con datos de ejemplo: a las 2:14 de la madrugada un cliente pregunta por Instagram por un producto; Claudia, en modo automático, responde sola con el precio y, cuando el cliente quiere comprarlo, crea la oportunidad en el pipeline y avisa al vendedor." data-i18n-en-aria-label="Illustration with sample data: at 2:14 a.m. a customer asks about a product on Instagram; Claudia, in automatic mode, answers on her own with the price and, when the customer wants to buy, creates the opportunity in the pipeline and alerts the salesperson.">
+            <div class="mock mock-chat" data-m-inner data-m-stagger="260" data-m-base="500" role="img" aria-label="Ilustración con datos de ejemplo: a las 2:14 de la madrugada un cliente pregunta por Instagram por un producto; Claudia, en modo automático, responde sola con el precio y, cuando el cliente quiere comprarlo, crea la oportunidad en el pipeline y avisa al vendedor." data-i18n-en-aria-label="Illustration with sample data: at 2:14 a.m. a customer asks about a product on Instagram; Claudia, in automatic mode, answers on her own with the price and, when the customer wants to buy, creates the opportunity in the pipeline and alerts the salesperson.">
               <div aria-hidden="true">
                 <div class="mc-head">
                   <span class="mc-avatar">CL</span>
@@ -193,68 +177,68 @@
                   <span class="mc-status"><span class="mc-live"></span><span data-i18n-en="Automatic · 24/7">Automático · 24/7</span></span>
                 </div>
                 <div class="mc-thread">
-                  <p class="mc-time">02:14</p>
-                  <p class="mc-msg mc-in" data-i18n-en="Hi! Do you have the desk chair in black? How much is it?">¡Hola! ¿Tienen la silla de escritorio en negro? ¿Cuánto sale?</p>
-                  <div class="mc-out">
+                  <p class="mc-time" data-m="rise">02:14</p>
+                  <p class="mc-msg mc-in" data-m="rise" data-i18n-en="Hi! Do you have the desk chair in black? How much is it?">¡Hola! ¿Tienen la silla de escritorio en negro? ¿Cuánto sale?</p>
+                  <div class="mc-out" data-m="rise">
                     <p class="mc-by"><span class="mc-dot"></span><span data-i18n-en="Claudia · answered on her own">Claudia · respondió sola</span></p>
                     <p class="mc-msg mc-claudia" data-i18n-en="Hi! Yes, we have it in black at $189,000. Shall I tell you the payment options?">¡Hola! Sí, la tenemos en negro a $189.000. ¿Te paso las formas de pago?</p>
                   </div>
-                  <p class="mc-msg mc-in" data-i18n-en="Yes! I want it.">¡Dale! La quiero.</p>
+                  <p class="mc-msg mc-in" data-m="rise" data-i18n-en="Yes! I want it.">¡Dale! La quiero.</p>
                 </div>
-                <p class="mc-toast"><span class="mc-toast-dot"></span><span data-i18n-en="Opportunity created · salesperson alerted">Oportunidad creada · vendedor avisado</span></p>
+                <p class="mc-toast" data-m="rise"><span class="mc-toast-dot"></span><span data-i18n-en="Opportunity created · salesperson alerted">Oportunidad creada · vendedor avisado</span></p>
               </div>
             </div>
           </div>
           <div class="card-info">
-            <h3 class="card-title">Claudia — <em class="card-title-em" data-i18n-en="AI sales assistant">asistente comercial de IA</em></h3>
-            <div class="card-tags">
+            <h3 class="card-title" data-m="rise">Claudia — <em class="card-title-em" data-i18n-en="AI sales assistant">asistente comercial de IA</em></h3>
+            <div class="card-tags" data-m="rise">
               <span>Instagram</span>
               <span>WhatsApp</span>
               <span data-i18n-en="Automatic 24/7">Automático 24/7</span>
             </div>
-            <p class="card-desc" data-i18n-en="A sales CRM with a single inbox for Instagram Direct and WhatsApp, connected to Meta's official APIs. In automatic mode Claudia answers customers on her own, 24 hours a day, 7 days a week; she checks the stock spreadsheet catalog before confirming price or availability, and when the customer wants to buy she creates the opportunity in the pipeline and alerts the salesperson.">Un CRM de ventas con una bandeja única para Instagram Direct y WhatsApp, conectada a las APIs oficiales de Meta. En modo automático, Claudia atiende sola a los clientes las 24 horas, los 7 días; consulta el catálogo de la planilla de stock antes de confirmar precio o disponibilidad, y cuando el cliente quiere comprar crea la oportunidad en el pipeline y avisa al vendedor.</p>
+            <p class="card-desc" data-m="rise" data-i18n-en="A sales CRM with a single inbox for Instagram Direct and WhatsApp, connected to Meta's official APIs. In automatic mode Claudia answers customers on her own, 24 hours a day, 7 days a week; she checks the stock spreadsheet catalog before confirming price or availability, and when the customer wants to buy she creates the opportunity in the pipeline and alerts the salesperson.">Un CRM de ventas con una bandeja única para Instagram Direct y WhatsApp, conectada a las APIs oficiales de Meta. En modo automático, Claudia atiende sola a los clientes las 24 horas, los 7 días; consulta el catálogo de la planilla de stock antes de confirmar precio o disponibilidad, y cuando el cliente quiere comprar crea la oportunidad en el pipeline y avisa al vendedor.</p>
           </div>
         </article>
 
-        <article class="project-card reveal">
+        <article class="project-card" data-m="clip">
           <div class="card-screenshot card-mock">
             <span class="card-badge" data-i18n-en="Sales">Comercial</span>
-            <div class="mock mock-kanban" role="img" aria-label="Ilustración con datos de ejemplo: tablero de oportunidades por etapa; cada ficha muestra el trabajo, el cliente y el monto." data-i18n-en-aria-label="Illustration with sample data: opportunities board by stage; each card shows the job, the client and the amount.">
+            <div class="mock mock-kanban" data-m-inner data-m-stagger="90" data-m-base="350" role="img" aria-label="Ilustración con datos de ejemplo: tablero de oportunidades por etapa; cada ficha muestra el trabajo, el cliente y el monto." data-i18n-en-aria-label="Illustration with sample data: opportunities board by stage; each card shows the job, the client and the amount.">
               <div class="mk-cols" aria-hidden="true">
-                <div class="mk-col"><p class="mk-label mk-new"><span data-i18n-en="New">Nueva</span><b>2</b></p>
+                <div class="mk-col" data-m="rise"><p class="mk-label mk-new"><span data-i18n-en="New">Nueva</span><b>2</b></p>
                   <div class="mk-card"><b data-i18n-en="Store renovation">Remodelación de local</b><small data-i18n-en="Client 014 · web">Cliente 014 · web</small><span>$ 2.400.000</span></div>
                   <div class="mk-card"><b data-i18n-en="Annual maintenance">Mantenimiento anual</b><small data-i18n-en="Client 009">Cliente 009</small><span>$ 860.000</span></div>
                 </div>
-                <div class="mk-col"><p class="mk-label mk-sent"><span data-i18n-en="Quoted">Presupuestada</span><b>1</b></p>
+                <div class="mk-col" data-m="rise"><p class="mk-label mk-sent"><span data-i18n-en="Quoted">Presupuestada</span><b>1</b></p>
                   <div class="mk-card"><b data-i18n-en="Office equipment">Equipamiento de oficina</b><small data-i18n-en="Client 021">Cliente 021</small><span>$ 5.150.000</span></div>
                 </div>
-                <div class="mk-col"><p class="mk-label mk-neg"><span data-i18n-en="Negotiation">Negociación</span><b>1</b></p>
+                <div class="mk-col" data-m="rise"><p class="mk-label mk-neg"><span data-i18n-en="Negotiation">Negociación</span><b>1</b></p>
                   <div class="mk-card"><b data-i18n-en="Exhibition stand">Stand para exposición</b><small data-i18n-en="Client 003">Cliente 003</small><span>$ 9.300.000</span></div>
                 </div>
-                <div class="mk-col mk-hide-sm"><p class="mk-label mk-won"><span data-i18n-en="Won">Ganada</span><b>1</b></p>
+                <div class="mk-col mk-hide-sm" data-m="rise"><p class="mk-label mk-won"><span data-i18n-en="Won">Ganada</span><b>1</b></p>
                   <div class="mk-card"><b data-i18n-en="Signage">Cartelería</b><small data-i18n-en="Client 017">Cliente 017</small><span>$ 1.200.000</span></div>
                 </div>
-                <div class="mk-col mk-hide-sm"><p class="mk-label mk-lost"><span data-i18n-en="Lost">Perdida</span><b>1</b></p>
+                <div class="mk-col mk-hide-sm" data-m="rise"><p class="mk-label mk-lost"><span data-i18n-en="Lost">Perdida</span><b>1</b></p>
                   <div class="mk-card"><b data-i18n-en="Showroom">Showroom</b><small data-i18n-en="Client 011">Cliente 011</small><span>$ 3.700.000</span></div>
                 </div>
               </div>
             </div>
           </div>
           <div class="card-info">
-            <h3 class="card-title"><span data-i18n-en="Sales system">Sistema comercial</span> — <em class="card-title-em" data-i18n-en="quotes and projects">presupuestos y proyectos</em></h3>
-            <div class="card-tags">
+            <h3 class="card-title" data-m="rise"><span data-i18n-en="Sales system">Sistema comercial</span> — <em class="card-title-em" data-i18n-en="quotes and projects">presupuestos y proyectos</em></h3>
+            <div class="card-tags" data-m="rise">
               <span data-i18n-en="CRM">CRM</span>
               <span data-i18n-en="Quotes">Presupuestos</span>
               <span data-i18n-en="Projects">Proyectos</span>
             </div>
-            <p class="card-desc" data-i18n-en="Each opportunity moves from new to quoted, negotiation, won or lost. Enquiries from the website form come in as new opportunities, and an accepted quote creates the sale and the project.">Cada oportunidad avanza de nueva a presupuestada, negociación, ganada o perdida. Las consultas del formulario de la web entran como oportunidad nueva, y un presupuesto aceptado genera la venta y el proyecto.</p>
+            <p class="card-desc" data-m="rise" data-i18n-en="Each opportunity moves from new to quoted, negotiation, won or lost. Enquiries from the website form come in as new opportunities, and an accepted quote creates the sale and the project.">Cada oportunidad avanza de nueva a presupuestada, negociación, ganada o perdida. Las consultas del formulario de la web entran como oportunidad nueva, y un presupuesto aceptado genera la venta y el proyecto.</p>
           </div>
         </article>
 
-        <article class="project-card reveal">
+        <article class="project-card" data-m="clip">
           <div class="card-screenshot card-mock">
             <span class="card-badge" data-i18n-en="Industry">Industria</span>
-            <div class="mock mock-plan" role="img" aria-label="Ilustración con datos de ejemplo: plan de producción del día con un objetivo de 120 unidades, la cantidad por producto, los lotes de materia prima previstos y la versión del plan." data-i18n-en-aria-label="Illustration with sample data: the day's production plan with a 120-unit target, the quantity per product, the planned raw material lots and the plan version.">
+            <div class="mock mock-plan" data-m-inner role="img" aria-label="Ilustración con datos de ejemplo: plan de producción del día con un objetivo de 120 unidades, la cantidad por producto, los lotes de materia prima previstos y la versión del plan." data-i18n-en-aria-label="Illustration with sample data: the day's production plan with a 120-unit target, the quantity per product, the planned raw material lots and the plan version.">
               <div aria-hidden="true">
                 <p class="mp-head"><b data-i18n-en="Today's plan">Plan de la jornada</b><span class="mp-chip" data-i18n-en="Started · v2">Iniciado · v2</span></p>
                 <p class="mp-goal"><span data-i18n-en="Target">Objetivo</span><b data-i18n-en="120 units">120 unidades</b></p>
@@ -270,50 +254,50 @@
             </div>
           </div>
           <div class="card-info">
-            <h3 class="card-title"><span data-i18n-en="Production system">Sistema de producción</span> — <em class="card-title-em" data-i18n-en="plan and stock">plan y stock</em></h3>
-            <div class="card-tags">
+            <h3 class="card-title" data-m="rise"><span data-i18n-en="Production system">Sistema de producción</span> — <em class="card-title-em" data-i18n-en="plan and stock">plan y stock</em></h3>
+            <div class="card-tags" data-m="rise">
               <span data-i18n-en="Production">Producción</span>
               <span data-i18n-en="Stock">Stock</span>
               <span data-i18n-en="Dispatches">Despachos</span>
             </div>
-            <p class="card-desc" data-i18n-en="The day's plan with its target per product and the raw material lots, and each revision saved before the real close. With intake, stock by lot, dispatches with delivery notes and the week's shortfalls based on sales demand.">El plan de la jornada con su objetivo por producto y los lotes de materia prima, y cada revisión guardada antes del cierre real. Con recepción, stock por lote, despachos con remito y los faltantes de la semana según la demanda comercial.</p>
+            <p class="card-desc" data-m="rise" data-i18n-en="The day's plan with its target per product and the raw material lots, and each revision saved before the real close. With intake, stock by lot, dispatches with delivery notes and the week's shortfalls based on sales demand.">El plan de la jornada con su objetivo por producto y los lotes de materia prima, y cada revisión guardada antes del cierre real. Con recepción, stock por lote, despachos con remito y los faltantes de la semana según la demanda comercial.</p>
           </div>
         </article>
 
-        <article class="project-card reveal">
+        <article class="project-card" data-m="clip">
           <div class="card-screenshot">
             <span class="card-badge" data-i18n-en="Shops">Comercios</span>
-            <img src="images/projects/tilin.jpg" alt="Tilín" loading="lazy">
+            <img src="images/projects/tilin.jpg" alt="Tilín" loading="lazy" data-m-inner>
           </div>
           <div class="card-info">
-            <h3 class="card-title">Tilín — <em style="font-family: var(--font-serif); font-style: italic; font-weight: 400; color: var(--accent-bordo);" data-i18n-en="Digital storefront">tienda digital</em></h3>
-            <div class="card-tags">
+            <h3 class="card-title" data-m="rise">Tilín — <em style="font-family: var(--font-serif); font-style: italic; font-weight: 400; color: var(--accent-bordo);" data-i18n-en="Digital storefront">tienda digital</em></h3>
+            <div class="card-tags" data-m="rise">
               <span data-i18n-en="E-commerce">E-commerce</span>
               <span data-i18n-en="WhatsApp orders">Pedidos WhatsApp</span>
               <span data-i18n-en="Multi-shop">Multi-comercio</span>
             </div>
-            <p class="card-desc" data-i18n-en="System designed for shops. Product catalog with categories, cart, WhatsApp order flow and white-label branding per shop.">Sistema pensado para comercios. Catálogo con categorías, carrito, flujo de pedido por WhatsApp y branding white-label por comercio.</p>
-            <a href="https://www.tilin.com.ar/" target="_blank" rel="noopener" class="card-visit">
+            <p class="card-desc" data-m="rise" data-i18n-en="System designed for shops. Product catalog with categories, cart, WhatsApp order flow and white-label branding per shop.">Sistema pensado para comercios. Catálogo con categorías, carrito, flujo de pedido por WhatsApp y branding white-label por comercio.</p>
+            <a href="https://www.tilin.com.ar/" target="_blank" rel="noopener" class="card-visit" data-m="rise">
               <span data-i18n-en="Visit site">Visitar web</span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
             </a>
           </div>
         </article>
 
-        <article class="project-card reveal">
+        <article class="project-card" data-m="clip">
           <div class="card-screenshot">
             <span class="card-badge" data-i18n-en="Professionals">Profesionales</span>
-            <img src="images/projects/alma.jpg" alt="Alma" loading="lazy">
+            <img src="images/projects/alma.jpg" alt="Alma" loading="lazy" data-m-inner>
           </div>
           <div class="card-info">
-            <h3 class="card-title">Alma — <em style="font-family: var(--font-serif); font-style: italic; font-weight: 400; color: var(--accent-bordo);" data-i18n-en="Bookings SaaS">gestión de turnos</em></h3>
-            <div class="card-tags">
+            <h3 class="card-title" data-m="rise">Alma — <em style="font-family: var(--font-serif); font-style: italic; font-weight: 400; color: var(--accent-bordo);" data-i18n-en="Bookings SaaS">gestión de turnos</em></h3>
+            <div class="card-tags" data-m="rise">
               <span data-i18n-en="Appointments">Turnos</span>
               <span data-i18n-en="Deposits">Señas</span>
               <span data-i18n-en="Reminders">Recordatorios</span>
             </div>
-            <p class="card-desc" data-i18n-en="System built for professionals — hair salons, nutritionists, aesthetic clinics. Appointment management, deposits, automated reminders and per-client history.">Sistema para profesionales — peluquerías, nutricionistas, estética. Gestión de turnos, señas, recordatorios automáticos e historial por cliente.</p>
-            <a href="https://alma-saas.vercel.app" target="_blank" rel="noopener" class="card-visit">
+            <p class="card-desc" data-m="rise" data-i18n-en="System built for professionals — hair salons, nutritionists, aesthetic clinics. Appointment management, deposits, automated reminders and per-client history.">Sistema para profesionales — peluquerías, nutricionistas, estética. Gestión de turnos, señas, recordatorios automáticos e historial por cliente.</p>
+            <a href="https://alma-saas.vercel.app" target="_blank" rel="noopener" class="card-visit" data-m="rise">
               <span data-i18n-en="Visit site">Visitar web</span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
             </a>
@@ -326,67 +310,67 @@
   <!-- ══════ WEBS ══════ -->
   <section class="projects-section" style="background: var(--bg-secondary);">
     <div class="container">
-      <div class="section-heading reveal">
-        <h2 class="section-title">
+      <div class="section-heading" data-m="draw-b">
+        <h2 class="section-title" data-m="lines">
           <span data-i18n-en="Websites">Webs</span>
         </h2>
-        <p class="section-caption" data-i18n-en="Institutional sites, corporate pages and landing experiences. Hover each card to scroll through the full site.">Sitios institucionales, páginas corporativas y experiencias tipo landing. Pasá el mouse por cada card para recorrer el sitio completo.</p>
+        <p class="section-caption" data-m="rise" data-i18n-en="Institutional sites, corporate pages and landing experiences. Hover each card to scroll through the full site.">Sitios institucionales, páginas corporativas y experiencias tipo landing. Pasá el mouse por cada card para recorrer el sitio completo.</p>
       </div>
       <div class="cards-grid cards-3">
-        <article class="project-card reveal">
+        <article class="project-card" data-m="clip">
           <div class="card-screenshot">
             <span class="card-badge">Web</span>
-            <img src="images/projects/emat.jpg" alt="EMAT" loading="lazy">
+            <img src="images/projects/emat.jpg" alt="EMAT" loading="lazy" data-m-inner>
           </div>
           <div class="card-info">
-            <h3 class="card-title" data-i18n-en="EMAT — Thermal & acoustic insulation">EMAT — Aislación térmica y acústica</h3>
-            <div class="card-tags">
+            <h3 class="card-title" data-m="rise" data-i18n-en="EMAT — Thermal & acoustic insulation">EMAT — Aislación térmica y acústica</h3>
+            <div class="card-tags" data-m="rise">
               <span data-i18n-en="Institutional">Institucional</span>
               <span data-i18n-en="Catalog">Catálogo</span>
               <span data-i18n-en="Calculator">Calculadora</span>
             </div>
-            <p class="card-desc" data-i18n-en="Institutional site featuring product catalog, budget calculator, coverage map and customer testimonials.">Sitio institucional con catálogo de productos, calculadora de presupuesto, mapa de cobertura y testimonios.</p>
-            <a href="https://emat.com.ar/" target="_blank" rel="noopener" class="card-visit">
+            <p class="card-desc" data-m="rise" data-i18n-en="Institutional site featuring product catalog, budget calculator, coverage map and customer testimonials.">Sitio institucional con catálogo de productos, calculadora de presupuesto, mapa de cobertura y testimonios.</p>
+            <a href="https://emat.com.ar/" target="_blank" rel="noopener" class="card-visit" data-m="rise">
               <span data-i18n-en="Visit site">Visitar web</span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
             </a>
           </div>
         </article>
 
-        <article class="project-card reveal">
+        <article class="project-card" data-m="clip">
           <div class="card-screenshot">
             <span class="card-badge">Web</span>
-            <img src="images/projects/quintana.jpg" alt="Quintana Ruiz Asesores" loading="lazy">
+            <img src="images/projects/quintana.jpg" alt="Quintana Ruiz Asesores" loading="lazy" data-m-inner>
           </div>
           <div class="card-info">
-            <h3 class="card-title" data-i18n-en="Quintana Ruiz Advisors — Insurance">Quintana Ruiz Asesores — Seguros</h3>
-            <div class="card-tags">
+            <h3 class="card-title" data-m="rise" data-i18n-en="Quintana Ruiz Advisors — Insurance">Quintana Ruiz Asesores — Seguros</h3>
+            <div class="card-tags" data-m="rise">
               <span data-i18n-en="Corporate">Corporativo</span>
               <span data-i18n-en="Blog">Blog</span>
               <span data-i18n-en="Contact form">Formulario</span>
             </div>
-            <p class="card-desc" data-i18n-en="Corporate website featuring insurance coverage, team, Google reviews, blog and an integrated quotation form.">Web corporativa con coberturas, equipo, reseñas de Google, blog y formulario de cotización integrado.</p>
-            <a href="https://seguroscordoba.com.ar" target="_blank" rel="noopener" class="card-visit">
+            <p class="card-desc" data-m="rise" data-i18n-en="Corporate website featuring insurance coverage, team, Google reviews, blog and an integrated quotation form.">Web corporativa con coberturas, equipo, reseñas de Google, blog y formulario de cotización integrado.</p>
+            <a href="https://seguroscordoba.com.ar" target="_blank" rel="noopener" class="card-visit" data-m="rise">
               <span data-i18n-en="Visit site">Visitar web</span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
             </a>
           </div>
         </article>
 
-        <article class="project-card reveal">
+        <article class="project-card" data-m="clip">
           <div class="card-screenshot">
             <span class="card-badge">Web</span>
-            <img src="images/projects/inbira.jpg" alt="INBIRA" loading="lazy">
+            <img src="images/projects/inbira.jpg" alt="INBIRA" loading="lazy" data-m-inner>
           </div>
           <div class="card-info">
-            <h3 class="card-title" data-i18n-en="INBIRA — Real estate investments">INBIRA — Inversiones en bienes raíces</h3>
-            <div class="card-tags">
+            <h3 class="card-title" data-m="rise" data-i18n-en="INBIRA — Real estate investments">INBIRA — Inversiones en bienes raíces</h3>
+            <div class="card-tags" data-m="rise">
               <span data-i18n-en="Institutional">Institucional</span>
               <span data-i18n-en="Real Estate">Inmobiliaria</span>
               <span data-i18n-en="Developments">Desarrollos</span>
             </div>
-            <p class="card-desc" data-i18n-en="Institutional site for a real estate developer, featuring projects, investor services and contact channels to generate leads.">Sitio institucional para una desarrolladora inmobiliaria, con proyectos, servicios para inversores y canales de contacto para generar consultas.</p>
-            <a href="https://inbira-web.vercel.app/" target="_blank" rel="noopener" class="card-visit">
+            <p class="card-desc" data-m="rise" data-i18n-en="Institutional site for a real estate developer, featuring projects, investor services and contact channels to generate leads.">Sitio institucional para una desarrolladora inmobiliaria, con proyectos, servicios para inversores y canales de contacto para generar consultas.</p>
+            <a href="https://inbira-web.vercel.app/" target="_blank" rel="noopener" class="card-visit" data-m="rise">
               <span data-i18n-en="Visit site">Visitar web</span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
             </a>
@@ -399,12 +383,12 @@
   <!-- ══════ CTA ══════ -->
   <section class="final-cta">
     <div class="container">
-      <h2>
+      <h2 data-m="words">
         <span data-i18n-en="Which part of your company">¿Qué parte de tu empresa</span>
         <em data-i18n-en="needs order?">necesitás ordenar?</em>
       </h2>
-      <p data-i18n-en="Tell us how you work and we'll see where to start.">Contanos cómo trabajás y vemos por dónde conviene empezar.</p>
-      <a href="https://wa.me/5493512145673?text=Hola!%20Les%20cuento%20c%C3%B3mo%20trabajamos%20en%20mi%20empresa%3A%20" target="_blank" rel="noopener" class="btn-primary" data-i18n-en-href="https://wa.me/5493512145673?text=Hi!%20Here%27s%20how%20we%20work%20at%20my%20company%3A%20">
+      <p data-m="rise" data-i18n-en="Tell us how you work and we'll see where to start.">Contanos cómo trabajás y vemos por dónde conviene empezar.</p>
+      <a href="https://wa.me/5493512145673?text=Hola!%20Les%20cuento%20c%C3%B3mo%20trabajamos%20en%20mi%20empresa%3A%20" target="_blank" rel="noopener" class="btn-primary" data-m="rise" data-i18n-en-href="https://wa.me/5493512145673?text=Hi!%20Here%27s%20how%20we%20work%20at%20my%20company%3A%20">
         <span data-i18n-en="Tell us how you work">Contanos cómo trabajás</span>
         <span class="btn-arrow">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -415,7 +399,7 @@
 
   <!-- ══════ FOOTER ══════ -->
   <footer>
-    <div class="footer-top">
+    <div class="footer-top" data-m="fade">
       <div class="footer-col footer-col-brand">
         <a href="index.html" class="footer-brand">pragma<span class="footer-brand-sub">studio</span></a>
         <p data-i18n-en="Custom digital solutions. Websites, systems, CRMs and apps built for real businesses.">Soluciones digitales a medida. Webs, sistemas, CRMs y apps para negocios reales.</p>
@@ -436,7 +420,7 @@
         <a href="privacidad.html#cookies" data-cookie-preferences data-i18n-en="Cookie preferences">Preferencias de cookies</a>
       </div>
     </div>
-    <div class="footer-bottom">
+    <div class="footer-bottom" data-m="fade">
       <a href="index.html" class="footer-brand">pragma<span class="footer-brand-sub">studio</span></a>
       <span class="footer-copy" data-i18n-en="© 2026 Pragma Studio. All rights reserved.">© 2026 Pragma Studio. Todos los derechos reservados.</span>
       <div class="footer-socials">
@@ -459,6 +443,7 @@
   </a>
 
   <script src="js/proyectos.js"></script>
+  <script src="js/motion.js"></script>
 </body>
 
 </html>

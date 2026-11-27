@@ -1,0 +1,357 @@
+/* ═══════════════════════════════════════════════════════════════════
+   MOTION · sistema de movimiento de pragma studio
+   Compartido por index.html, proyectos.html y marcas.html.
+
+   Lenguaje (una regla por tipo de contenido):
+     · Títulos        → emergen desde una máscara, línea por línea   (data-m="lines" / "words")
+     · Declaraciones  → se "entintan" palabra por palabra con el scroll (data-m="fill")
+     · Texto de apoyo → sube unos píxeles y aparece                    (data-m="rise")
+     · Cards y medios → se destapan como una cortina, con escala interna (data-m="clip")
+     · Divisores      → la línea se dibuja de izquierda a derecha      (data-m="draw")
+
+   Cómo funciona:
+     · Los estados ocultos solo existen bajo `html.motion` (clase que pone
+       js/motion-boot.js). Sin JS, o si algo falla, todo se ve.
+     · js/motion.js agrega `.is-in` al entrar en pantalla y `.is-done` al terminar.
+       Con `.is-done` ninguna regla de este archivo sigue aplicando sobre el
+       elemento: los hovers y transiciones propios de cada componente quedan intactos.
+     · Las entradas animan `translate`, `scale`, `opacity` y `clip-path`; nunca
+       `transform` del propio elemento, para no pisar los hovers existentes.
+   ═══════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* Curvas */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);        /* texto, medios, hovers */
+  --ease-soft: cubic-bezier(0.6, 0.01, 0.05, 0.95); /* entradas con peso (cierre) */
+  --ease-inout: cubic-bezier(0.76, 0, 0.24, 1);     /* cortinas, líneas, menú */
+  --ease-ui: cubic-bezier(0.4, 0, 0.2, 1);          /* color y estados de UI */
+
+  /* Duraciones */
+  --m-dur-ui: 0.3s;
+  --m-dur: 0.9s;         /* texto de apoyo */
+  --m-dur-title: 1.2s;   /* títulos con máscara */
+  --m-dur-clip: 1.15s;   /* cortina de cards */
+  --m-dur-inner: 1.5s;   /* escala interna de medios */
+  --m-dur-line: 1.1s;    /* divisores */
+
+  /* Recorridos y escalonado */
+  --m-y: 28px;
+  --m-line-step: 90ms;   /* entre líneas de un título */
+  --m-word-step: 80ms;   /* entre palabras (cierre) */
+  --m-stagger: 80;       /* ms entre elementos que entran juntos (lo lee motion.js) */
+  --m-stagger-in: 60;    /* ms entre hijos de una card */
+  --m-fill-from: 0.16;
+
+  /* Valores por componente */
+  --m-r: 24px;
+  --m-line-w: 1px;
+  --m-line-c: rgba(10, 10, 10, 0.14);
+}
+
+/* Mobile: mismos efectos, con menos recorrido y algo más breves */
+@media (max-width: 768px) {
+  :root {
+    --m-dur: 0.75s;
+    --m-dur-title: 1s;
+    --m-dur-clip: 0.95s;
+    --m-dur-inner: 1.2s;
+    --m-dur-line: 0.9s;
+    --m-y: 18px;
+    --m-line-step: 75ms;
+    --m-word-step: 65ms;
+    --m-stagger: 65;
+    --m-stagger-in: 50;
+  }
+}
+
+/* Radios y líneas de cada componente (coinciden con su CSS) */
+.integ, .team-card, .marca-card { --m-r: 20px; }
+.project-card { --m-r: 22px; }
+.step { --m-line-w: 2px; --m-line-c: var(--text-primary); }
+.hero-proof { --m-line-c: rgba(10, 10, 10, 0.12); }
+.section-heading { --m-line-c: rgba(10, 10, 10, 0.10); }
+@media (max-width: 768px) {
+  .case { --m-r: 18px; }
+}
+
+/* ═══════════════════ ENTRADAS ═══════════════════ */
+
+/* — rise: texto de apoyo — */
+html.motion [data-m="rise"]:not(.is-done) {
+  transition:
+    opacity var(--m-dur) var(--ease-out) var(--m-delay, 0ms),
+    translate var(--m-dur) var(--ease-out) var(--m-delay, 0ms);
+}
+html.motion [data-m="rise"]:not(.is-in) {
+  opacity: 0;
+  translate: 0 var(--m-y);
+}
+
+/* — fade — */
+html.motion [data-m="fade"]:not(.is-done) {
+  transition: opacity 1.1s var(--ease-ui) var(--m-delay, 0ms);
+}
+html.motion [data-m="fade"]:not(.is-in) { opacity: 0; }
+
+/* — eyebrow: la regla se dibuja y la etiqueta entra desde ella — */
+html.motion [data-m="eyebrow"]:not(.is-done) .eyebrow-rule {
+  transform-origin: left center;
+  transition: scale 0.9s var(--ease-inout) var(--m-delay, 0ms);
+}
+html.motion [data-m="eyebrow"]:not(.is-in) .eyebrow-rule { scale: 0 1; }
+html.motion [data-m="eyebrow"]:not(.is-done) > :not(.eyebrow-rule) {
+  transition:
+    opacity var(--m-dur) var(--ease-out) calc(var(--m-delay, 0ms) + 140ms),
+    translate var(--m-dur) var(--ease-out) calc(var(--m-delay, 0ms) + 140ms);
+}
+html.motion [data-m="eyebrow"]:not(.is-in) > :not(.eyebrow-rule) {
+  opacity: 0;
+  translate: -14px 0;
+}
+
+/* — lines / words: títulos con máscara —
+   motion.js envuelve cada palabra en .m-w > .m-wi. Las palabras de una misma
+   línea comparten retardo (--l = índice de línea), así el título sube por
+   líneas sin depender de dónde corta el texto en cada pantalla. */
+html.motion :is([data-m="lines"], [data-m="words"]):not(.is-split):not(.is-done) { visibility: hidden; }
+
+.m-w {
+  display: inline-block;
+  /* máscara: deja aire para descendentes e itálicas, corta lo que viene de abajo */
+  clip-path: inset(-0.14em -0.16em -0.26em -0.16em);
+}
+.m-wi {
+  display: inline-block;
+  transform: translateY(150%);
+  transition: transform var(--m-dur-title) var(--ease-out)
+    calc(var(--m-delay, 0ms) + var(--l, 0) * var(--m-line-step));
+}
+[data-m="words"] .m-wi {
+  transition-timing-function: var(--ease-soft);
+  transition-duration: 1s;
+  transition-delay: calc(var(--m-delay, 0ms) + var(--l, 0) * var(--m-word-step));
+}
+:is([data-m="lines"], [data-m="words"]).is-in .m-wi { transform: none; }
+
+/* signo pegado a la palabra anterior (el punto final de un título) */
+.m-p {
+  opacity: 0;
+  transition: opacity 0.5s linear
+    calc(var(--m-delay, 0ms) + var(--l, 0) * var(--m-line-step) + 480ms);
+}
+[data-m="words"] .m-p {
+  transition-delay: calc(var(--m-delay, 0ms) + var(--l, 0) * var(--m-word-step) + 480ms);
+}
+:is([data-m="lines"], [data-m="words"]).is-in .m-p { opacity: 1; }
+
+/* — fill: la declaración se entinta con el scroll (motion.js escribe --o) — */
+.m-f {
+  opacity: var(--o, var(--m-fill-from));
+  transition: opacity 0.35s linear;
+}
+
+/* — clip: cortina sobre cards y medios, con escala interna — */
+html.motion [data-m="clip"]:not(.is-done) {
+  transition: clip-path var(--m-dur-clip) var(--ease-out) var(--m-delay, 0ms);
+}
+html.motion [data-m="clip"]:not(.is-in) { clip-path: inset(0 0 100% 0 round var(--m-r)); }
+html.motion [data-m="clip"].is-in:not(.is-done) { clip-path: inset(0 0 0 0 round var(--m-r)); }
+
+html.motion [data-m="clip"]:not(.is-done) [data-m-inner] {
+  transition: scale var(--m-dur-inner) var(--ease-out) var(--m-delay, 0ms);
+}
+html.motion [data-m="clip"]:not(.is-in) [data-m-inner] { scale: 1.08; }
+
+/* — draw: el borde del componente se reemplaza por una línea que se dibuja —
+   "draw" usa el borde superior; "draw-b", el inferior. */
+html.motion :is([data-m="draw"], [data-m="draw-b"]):not(.is-done) { position: relative; }
+html.motion [data-m="draw"]:not(.is-done) { border-top-color: transparent; }
+html.motion [data-m="draw-b"]:not(.is-done) { border-bottom-color: transparent; }
+
+html.motion [data-m="draw"]:not(.is-done)::before,
+html.motion [data-m="draw-b"]:not(.is-done)::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: var(--m-line-w);
+  background: var(--m-line-c);
+  pointer-events: none;
+  transform-origin: left center;
+  scale: 0 1;
+  transition: scale var(--m-dur-line) var(--ease-inout) var(--m-delay, 0ms);
+}
+html.motion [data-m="draw"]:not(.is-done)::before { top: calc(-1 * var(--m-line-w)); }
+html.motion [data-m="draw-b"]:not(.is-done)::after { bottom: calc(-1 * var(--m-line-w)); }
+html.motion [data-m="draw"].is-in:not(.is-done)::before,
+html.motion [data-m="draw-b"].is-in:not(.is-done)::after { scale: 1 1; }
+
+/* ═══════════════════ VINCULADAS AL SCROLL ═══════════════════ */
+
+/* El cierre oscuro llega como un panel con esquinas redondeadas que se abre
+   hasta ocupar todo el ancho (motion.js escribe --p de 0 a 1). */
+html.motion [data-m-scroll="expand"]:not(.is-full) {
+  clip-path: inset(
+    0 calc((1 - var(--p, 1)) * 3.5vw) 0 calc((1 - var(--p, 1)) * 3.5vw)
+    round calc((1 - var(--p, 1)) * 40px) calc((1 - var(--p, 1)) * 40px) 0 0
+  );
+}
+
+/* ═══════════════════ MENÚ MOBILE ═══════════════════ */
+
+/* El ícono pasa de tres líneas a una cruz */
+.nav-toggle { -webkit-tap-highlight-color: transparent; }
+.nav-toggle span { transition: transform 0.45s var(--ease-inout), opacity 0.25s var(--ease-ui); }
+.nav-links.open ~ .nav-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-links.open ~ .nav-toggle span:nth-child(2) { opacity: 0; transform: scaleX(0.2); }
+.nav-links.open ~ .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+@media (max-width: 768px) {
+  /* El panel se despliega como cortina y los links suben escalonados.
+     Cerrado queda con visibility:hidden: fuera del foco y de los lectores. */
+  html.motion .nav-links {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0.75rem;
+    right: 0.75rem;
+    background: rgba(247, 246, 242, 0.96);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    padding: 1.5rem;
+    gap: 0.5rem;
+    border: 1px solid rgba(10, 10, 10, 0.10);
+    border-radius: 20px;
+    margin-top: 0.5rem;
+    visibility: hidden;
+    pointer-events: none;
+    clip-path: inset(0 0 100% 0 round 20px);
+    transition: clip-path 0.45s var(--ease-inout), visibility 0s linear 0.45s;
+  }
+  html.motion .nav-links.open {
+    visibility: visible;
+    pointer-events: auto;
+    clip-path: inset(0 0 0 0 round 20px);
+    transition: clip-path 0.6s var(--ease-inout), visibility 0s;
+  }
+  html.motion .nav-links a {
+    opacity: 0;
+    translate: 0 16px;
+    transition: opacity 0.2s var(--ease-ui), translate 0.2s var(--ease-ui), color 0.25s, background 0.25s;
+  }
+  html.motion .nav-links.open a {
+    opacity: 1;
+    translate: 0 0;
+    transition:
+      opacity 0.6s var(--ease-out) calc(160ms + var(--i, 0) * 55ms),
+      translate 0.7s var(--ease-out) calc(160ms + var(--i, 0) * 55ms),
+      color 0.25s, background 0.25s;
+  }
+  html.motion .nav-links a:nth-child(2) { --i: 1; }
+  html.motion .nav-links a:nth-child(3) { --i: 2; }
+  html.motion .nav-links a:nth-child(4) { --i: 3; }
+  html.motion .nav-links a:nth-child(5) { --i: 4; }
+  html.motion .nav-links a:nth-child(6) { --i: 5; }
+}
+
+/* ═══════════════════ MICROINTERACCIONES ═══════════════════ */
+
+.btn { transition: background 0.2s, color 0.2s, border-color 0.2s, scale 0.3s var(--ease-out); }
+.btn:active { scale: 0.975; }
+
+.text-link span[aria-hidden="true"] { display: inline-block; transition: translate 0.45s var(--ease-out); }
+.team-photo { transition: scale 0.9s var(--ease-out); }
+.need-title { transition: translate 0.6s var(--ease-out), color 0.3s var(--ease-ui); }
+.integ { transition: border-color 0.4s var(--ease-ui); }
+.card-visit svg, .marca-visit svg { transition: translate 0.45s var(--ease-out); }
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  /* La flecha sale por un lado del círculo y vuelve a entrar por el opuesto */
+  .btn-arrow, .nav-cta-arrow, .case-go { overflow: hidden; }
+
+  .btn:hover .btn-arrow svg,
+  .case:has(.case-link):hover .case-go svg { animation: m-arrow-diag 0.6s var(--ease-inout); }
+
+  .nav-cta:hover .nav-cta-arrow svg,
+  .btn-primary:hover .btn-arrow svg { animation: m-arrow-x 0.6s var(--ease-inout); }
+
+  .text-link:hover span[aria-hidden="true"] { translate: 5px 0; }
+  .card-visit:hover svg, .marca-card:hover .marca-visit svg { translate: 2px -2px; }
+
+  .team-card:hover .team-photo { scale: 1.05; }
+  .need:hover .need-title { translate: 0.6rem 0; color: var(--accent-bordo); }
+  .integ:hover { border-color: rgba(107, 28, 28, 0.35); }
+}
+
+@keyframes m-arrow-diag {
+  0% { translate: 0 0; }
+  49.9% { translate: 150% -150%; }
+  50% { translate: -150% 150%; }
+  100% { translate: 0 0; }
+}
+@keyframes m-arrow-x {
+  0% { translate: 0 0; }
+  49.9% { translate: 170% 0; }
+  50% { translate: -170% 0; }
+  100% { translate: 0 0; }
+}
+
+/* ═══════════════════ TRANSICIONES ENTRE PÁGINAS ═══════════════════
+   View Transitions entre documentos (Chrome/Edge 126+, Safari 18.2+).
+   Donde no hay soporte, la navegación es la nativa de siempre.
+   Inicio → Proyectos → Marcas: hacia adelante la página nueva sube como una
+   cortina sobre la anterior; hacia atrás, baja. La barra de navegación y el
+   botón de WhatsApp no se mueven: son el ancla de continuidad. */
+@view-transition { navigation: auto; }
+
+#navbar { view-transition-name: site-nav; }
+.whatsapp-float, .wa-float { view-transition-name: wa-float; }
+
+/* Sin fundido cruzado en los elementos fijos: se muestra directamente el estado
+   nuevo (en WebKit el fundido por defecto los atenuaba a mitad de la transición). */
+::view-transition-old(site-nav),
+::view-transition-old(wa-float) { display: none; }
+::view-transition-new(site-nav),
+::view-transition-new(wa-float) { animation: none; }
+
+html[data-vt="forward"]::view-transition-image-pair(root),
+html[data-vt="back"]::view-transition-image-pair(root) { isolation: auto; }
+
+html[data-vt="forward"]::view-transition-old(root),
+html[data-vt="forward"]::view-transition-new(root),
+html[data-vt="back"]::view-transition-old(root),
+html[data-vt="back"]::view-transition-new(root) {
+  mix-blend-mode: normal;
+  animation-duration: 0.7s;
+  animation-timing-function: var(--ease-inout);
+  animation-fill-mode: both;
+  animation-delay: 0s;
+}
+
+html[data-vt="forward"]::view-transition-old(root) { animation-name: m-vt-leave-up; }
+html[data-vt="forward"]::view-transition-new(root) { animation-name: m-vt-curtain-up; }
+html[data-vt="back"]::view-transition-old(root) { animation-name: m-vt-leave-down; }
+html[data-vt="back"]::view-transition-new(root) { animation-name: m-vt-curtain-down; }
+
+@keyframes m-vt-leave-up { to { transform: translateY(-9vh); opacity: 0.45; } }
+@keyframes m-vt-leave-down { to { transform: translateY(9vh); opacity: 0.45; } }
+@keyframes m-vt-curtain-up { from { clip-path: inset(100% 0 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes m-vt-curtain-down { from { clip-path: inset(0 0 100% 0); } to { clip-path: inset(0 0 0 0); } }
+
+@media (prefers-reduced-motion: reduce) {
+  @view-transition { navigation: none; }
+}
+
+/* ═══════════════════ IMPRESIÓN ═══════════════════ */
+@media print {
+  html.motion [data-m],
+  html.motion [data-m] * {
+    opacity: 1 !important;
+    translate: none !important;
+    scale: none !important;
+    clip-path: none !important;
+    visibility: visible !important;
+    transform: none !important;
+  }
+}
