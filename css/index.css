@@ -840,6 +840,28 @@
 
     .case--wide .case-media { aspect-ratio: auto; min-height: 420px; }
 
+    /* Caso de ancho completo: captura arriba, texto en dos columnas */
+    .case--full { grid-column: 1 / -1; }
+
+    .case--full .case-media {
+      aspect-ratio: auto;
+      padding: clamp(1.25rem, 4vw, 3.5rem) clamp(1.25rem, 4vw, 3.5rem);
+    }
+
+    .case--full .case-body {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      grid-template-rows: auto 1fr;
+      column-gap: 3rem;
+      row-gap: 0.85rem;
+      padding: clamp(1.5rem, 3vw, 2.5rem);
+    }
+
+    .case--full .case-meta { grid-column: 1; grid-row: 1; }
+    .case--full .case-title { grid-column: 1; grid-row: 2; font-size: clamp(1.6rem, 3vw, 2.6rem); }
+    .case--full .case-desc { grid-column: 2; grid-row: 1 / span 2; }
+    .case--full .case-tags { grid-column: 2; grid-row: 3; margin-top: 0; }
+
     .case-media picture {
       display: flex;
       align-items: center;
@@ -861,7 +883,8 @@
 
     .case-media--emat { background: #1d3527; }
     .case-media--tilin { background: #efe6d6; }
-    .case-media--alma { background: #dfe8e2; }
+    .case-media--arpeco { background: #1b2540; }
+    .case-media--emat-prod { background: #dde6dd; }
 
     .case-body {
       position: relative;
@@ -890,6 +913,8 @@
     }
 
     .case-num { color: var(--accent-bordo); }
+
+    .case:not(:has(.case-go)) .case-meta { padding-right: 0; }
 
     .case-title {
       font-family: var(--font-display);
@@ -946,6 +971,12 @@
       color: var(--text-primary);
     }
 
+    .case-tags .tag-internal {
+      border-color: transparent;
+      background: var(--bg-secondary);
+      color: var(--text-secondary);
+    }
+
     /* Flecha siempre visible: en touch no hay hover que la revele */
     .case-go {
       position: absolute;
@@ -967,16 +998,16 @@
     .case-go svg { width: 16px; height: 16px; }
 
     @media (hover: hover) {
-      .case:hover .case-go {
+      .case:has(.case-link):hover .case-go {
         background: var(--accent-bordo);
         border-color: var(--accent-bordo);
         color: #fff;
       }
-      .case:hover .case-title { color: var(--accent-bordo); }
+      .case:has(.case-link):hover .case-title { color: var(--accent-bordo); }
     }
 
     @media (hover: hover) and (prefers-reduced-motion: no-preference) {
-      .case:hover .case-media img { transform: translateY(-6px); }
+      .case:has(.case-link):hover .case-media img { transform: translateY(-6px); }
     }
 
     /* ═══════════════════ SERVICIOS (situaciones) ═══════════════════ */
@@ -1130,6 +1161,7 @@
       }
       .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 2.75rem; }
       .case--wide { grid-template-columns: 1fr; }
+      .case--full .case-body { display: flex; }
       .case--wide .case-media { min-height: 0; aspect-ratio: 16 / 10; }
     }
 
@@ -1215,7 +1247,8 @@
       .case, .case--wide { border-radius: 18px; }
 
       .case-media,
-      .case--wide .case-media {
+      .case--wide .case-media,
+      .case--full .case-media {
         aspect-ratio: auto;
         padding: 0.75rem;
       }
@@ -1225,7 +1258,8 @@
       .case-media img { width: 100%; border-radius: 8px; }
 
       .case-body,
-      .case--wide .case-body { padding: 1.35rem 1.25rem 1.5rem; }
+      .case--wide .case-body,
+      .case--full .case-body { padding: 1.35rem 1.25rem 1.5rem; }
 
       .case-go,
       .case--wide .case-go { top: 1.1rem; right: 1.1rem; width: 38px; height: 38px; }
