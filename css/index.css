@@ -1139,7 +1139,8 @@
 
     .mc-who b { display: block; }
 
-    .mc-thread { padding: 1rem 0 0.85rem; }
+    .mc-thread { display: flex; flex-direction: column; gap: 0.6rem; padding: 1rem 0 0.85rem; }
+    .mc-in { align-self: flex-start; }
 
     .mc-msg {
       max-width: 85%;
@@ -1149,37 +1150,35 @@
       border: 1px solid var(--border-card);
     }
 
-    .mc-draft {
-      background: #fff;
-      border: 1px solid rgba(107, 28, 28, 0.25);
-      border-radius: 16px;
-      padding: 0.85rem;
-    }
-
-    .mc-draft-head { display: flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; }
-    .mc-draft-head span:last-child { color: #15803d; font-weight: 600; }
-    .mc-dot { width: 8px; height: 8px; border-radius: 999px; background: var(--accent-bordo); }
-
-    .mc-draft-note { margin-top: 0.3rem; font-size: 0.78rem; color: var(--text-secondary); }
-
-    .mc-draft-text {
-      margin-top: 0.6rem;
-      padding: 0.7rem 0.8rem;
-      border-radius: 10px;
-      background: rgba(107, 28, 28, 0.06);
-    }
-
-    .mc-actions { display: flex; align-items: center; gap: 0.9rem; margin-top: 0.7rem; font-size: 0.85rem; }
-
-    .mc-btn {
-      padding: 0.4rem 0.95rem;
+    .mc-status {
+      margin-left: auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.25rem 0.6rem;
       border-radius: 999px;
-      background: var(--accent-bordo);
-      color: #fff;
+      background: #dcf1e3;
+      color: #166534;
+      font-size: 0.74rem;
       font-weight: 600;
+      white-space: nowrap;
     }
 
-    .mc-ghost { color: var(--text-secondary); }
+    .mc-live { width: 7px; height: 7px; border-radius: 999px; background: #22c55e; }
+
+    .mc-time { align-self: center; font-size: 0.75rem; color: var(--text-secondary); }
+
+    .mc-out { align-self: flex-end; max-width: 88%; display: flex; flex-direction: column; align-items: flex-end; gap: 0.3rem; }
+    .mc-by { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.75rem; font-weight: 600; color: var(--accent-bordo); }
+    .mc-dot { width: 7px; height: 7px; border-radius: 999px; background: var(--accent-bordo); }
+
+    .mc-claudia {
+      max-width: none;
+      border-radius: 16px 16px 4px 16px;
+      background: var(--accent-bordo);
+      border-color: var(--accent-bordo);
+      color: #fff;
+    }
 
     .mc-toast {
       display: flex;
