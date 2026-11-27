@@ -220,7 +220,7 @@
       <header class="section-head">
         <div>
           <h2 id="work-title" class="section-heading" data-i18n-en="Projects">Proyectos</h2>
-          <p class="section-intro" data-i18n-en="Systems and websites we built. Real screenshots, with sample data.">Sistemas y sitios que desarrollamos. Capturas reales, con datos de ejemplo.</p>
+          <p class="section-intro" data-i18n-en="Generic examples of what we build. No client data.">Ejemplos genéricos de lo que construimos. Sin datos de clientes.</p>
         </div>
         <a href="proyectos.html" class="text-link"><span data-i18n-en="All projects">Todos los proyectos</span> <span aria-hidden="true">→</span></a>
       </header>
@@ -230,7 +230,7 @@
           <div class="spot-body">
             <p class="case-meta"><span class="case-num">01</span><span data-i18n-en="Sales CRM · AI assistant">CRM de ventas · Asistente de IA</span></p>
             <h3 class="spot-title"><em>Claudia</em><span data-i18n-en=", the sales assistant that answers Instagram and WhatsApp.">, la asistente comercial que atiende Instagram y WhatsApp.</span></h3>
-            <p class="spot-lead" data-i18n-en="We built a sales CRM with a single inbox for Instagram Direct and WhatsApp, connected to Meta's official APIs. That's where Claudia, our AI sales assistant, works.">Desarrollamos un CRM de ventas con una bandeja única para Instagram Direct y WhatsApp, conectada a las APIs oficiales de Meta. Ahí trabaja Claudia, nuestra asistente comercial de IA.</p>
+            <p class="spot-lead" data-i18n-en="A sales CRM with a single inbox for Instagram Direct and WhatsApp, connected to Meta's official APIs. That's where Claudia, the AI sales assistant we developed, works.">Un CRM de ventas con una bandeja única para Instagram Direct y WhatsApp, conectada a las APIs oficiales de Meta. Ahí trabaja Claudia, la asistente comercial de IA que desarrollamos.</p>
             <ul class="spot-list">
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span data-i18n-en="She drafts the reply and a salesperson approves it, or she answers on her own.">Propone la respuesta y un vendedor la aprueba, o responde sola.</span></li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span data-i18n-en="She checks the stock spreadsheet catalog before confirming price or availability.">Consulta el catálogo de la planilla de stock antes de confirmar precio o disponibilidad.</span></li>
@@ -243,80 +243,95 @@
               <li data-i18n-en="AI">IA</li>
               <li>Instagram</li>
               <li>WhatsApp</li>
-              <li class="tag-internal" data-i18n-en="Internal system">Sistema interno</li>
             </ul>
           </div>
           <div class="spot-media">
-            <img src="images/projects/home/claudia-borrador.jpg" width="780" height="1562" alt="Conversación de Instagram en el CRM, en el celular: la clienta pregunta por un iPhone 16 Pro y Claudia, en modo borrador, propone la respuesta con precio para que el vendedor la envíe o la descarte. Datos ficticios." data-i18n-en-alt="An Instagram conversation in the CRM, on a phone: the customer asks about an iPhone 16 Pro and Claudia, in draft mode, proposes a reply with the price for the salesperson to send or discard. Fictitious data.">
+            <div class="mock mock-chat" role="img" aria-label="Ilustración con datos de ejemplo: un cliente pregunta por Instagram por un producto y Claudia, en modo borrador, propone la respuesta para que el vendedor la envíe o la descarte." data-i18n-en-aria-label="Illustration with sample data: a customer asks about a product on Instagram and Claudia, in draft mode, proposes the reply for the salesperson to send or discard.">
+              <div aria-hidden="true">
+                <div class="mc-head">
+                  <span class="mc-avatar">CL</span>
+                  <span class="mc-who"><b data-i18n-en="Customer">Cliente</b><small>Instagram</small></span>
+                </div>
+                <div class="mc-thread">
+                  <p class="mc-msg mc-in" data-i18n-en="Hi! Do you have the desk chair in black? How much is it?">¡Hola! ¿Tienen la silla de escritorio en negro? ¿Cuánto sale?</p>
+                </div>
+                <div class="mc-draft">
+                  <p class="mc-draft-head"><span class="mc-dot"></span><b>Claudia</b> <span data-i18n-en="Draft mode">Modo borrador</span></p>
+                  <p class="mc-draft-note" data-i18n-en="Reply proposed by Claudia. Review it and send it.">Respuesta que propone Claudia. Revisala y enviala.</p>
+                  <p class="mc-draft-text" data-i18n-en="Hi! Yes, we have it in black at $189,000. Shall I tell you the payment options?">¡Hola! Sí, la tenemos en negro a $189.000. ¿Te paso las formas de pago?</p>
+                  <p class="mc-actions"><span class="mc-btn" data-i18n-en="Send">Enviar</span><span class="mc-ghost" data-i18n-en="Discard">Descartar</span></p>
+                </div>
+                <p class="mc-toast"><span class="mc-toast-dot"></span><span data-i18n-en="Opportunity created in the pipeline">Oportunidad creada en el pipeline</span></p>
+              </div>
+            </div>
           </div>
         </li>
 
         <li class="case case--full">
-          <div class="case-media case-media--arpeco">
-            <picture>
-              <source media="(max-width: 640px)" srcset="images/projects/home/arpeco-oportunidades-m.jpg" width="822" height="500">
-              <img src="images/projects/home/arpeco-oportunidades.jpg" width="1600" height="536" alt="Tablero de oportunidades del sistema de Grupo Arpeco con las columnas nueva, presupuestada, negociación, ganada y perdida; cada ficha muestra el proyecto, el cliente y el monto. Datos de ejemplo." data-i18n-en-alt="Grupo Arpeco's opportunities board with new, quoted, negotiation, won and lost columns; each card shows the project, client and amount. Sample data.">
-            </picture>
+          <div class="case-media case-media--mock">
+            <div class="mock mock-kanban" role="img" aria-label="Ilustración con datos de ejemplo: tablero de oportunidades con las columnas nueva, presupuestada, negociación, ganada y perdida; cada ficha muestra el trabajo, el cliente y el monto." data-i18n-en-aria-label="Illustration with sample data: opportunities board with new, quoted, negotiation, won and lost columns; each card shows the job, the client and the amount.">
+              <div class="mk-cols" aria-hidden="true">
+                <div class="mk-col"><p class="mk-label mk-new"><span data-i18n-en="New">Nueva</span><b>2</b></p>
+                  <div class="mk-card"><b data-i18n-en="Store renovation">Remodelación de local</b><small data-i18n-en="Client 014 · web">Cliente 014 · web</small><span>$ 2.400.000</span></div>
+                  <div class="mk-card"><b data-i18n-en="Annual maintenance">Mantenimiento anual</b><small data-i18n-en="Client 009">Cliente 009</small><span>$ 860.000</span></div>
+                </div>
+                <div class="mk-col"><p class="mk-label mk-sent"><span data-i18n-en="Quoted">Presupuestada</span><b>1</b></p>
+                  <div class="mk-card"><b data-i18n-en="Office equipment">Equipamiento de oficina</b><small data-i18n-en="Client 021">Cliente 021</small><span>$ 5.150.000</span></div>
+                </div>
+                <div class="mk-col"><p class="mk-label mk-neg"><span data-i18n-en="Negotiation">Negociación</span><b>1</b></p>
+                  <div class="mk-card"><b data-i18n-en="Exhibition stand">Stand para exposición</b><small data-i18n-en="Client 003">Cliente 003</small><span>$ 9.300.000</span></div>
+                </div>
+                <div class="mk-col mk-hide-sm"><p class="mk-label mk-won"><span data-i18n-en="Won">Ganada</span><b>1</b></p>
+                  <div class="mk-card"><b data-i18n-en="Signage">Cartelería</b><small data-i18n-en="Client 017">Cliente 017</small><span>$ 1.200.000</span></div>
+                </div>
+                <div class="mk-col mk-hide-sm"><p class="mk-label mk-lost"><span data-i18n-en="Lost">Perdida</span><b>1</b></p>
+                  <div class="mk-card"><b data-i18n-en="Showroom">Showroom</b><small data-i18n-en="Client 011">Cliente 011</small><span>$ 3.700.000</span></div>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="case-body">
-            <p class="case-meta"><span class="case-num">02</span><span>Grupo Arpeco · <span data-i18n-en="Exhibition stands">Arquitectura de stands</span></span></p>
-            <h3 class="case-title">
-              <span data-i18n-en="Following each quote until it's won or lost">Seguir cada presupuesto hasta que se gana o se pierde</span>
-            </h3>
-            <p class="case-desc" data-i18n-en="We built Grupo Arpeco's sales and projects system. Each opportunity moves from new to quoted, negotiation, won or lost; enquiries from the website form come in as new opportunities, and an accepted quote creates the sale and the project.">Desarrollamos el sistema comercial y de proyectos de Grupo Arpeco. Cada oportunidad avanza de nueva a presupuestada, negociación, ganada o perdida; las consultas del formulario de la web entran como oportunidad nueva, y un presupuesto aceptado genera la venta y el proyecto.</p>
+            <p class="case-meta"><span class="case-num">02</span><span data-i18n-en="Sales and projects system">Sistema comercial y de proyectos</span></p>
+            <h3 class="case-title" data-i18n-en="Following each quote until it's won or lost">Seguir cada presupuesto hasta que se gana o se pierde</h3>
+            <p class="case-desc" data-i18n-en="Each opportunity moves from new to quoted, negotiation, won or lost. Enquiries from the website form come in as new opportunities, and an accepted quote creates the sale and the project.">Cada oportunidad avanza de nueva a presupuestada, negociación, ganada o perdida. Las consultas del formulario de la web entran como oportunidad nueva, y un presupuesto aceptado genera la venta y el proyecto.</p>
             <ul class="case-tags">
               <li data-i18n-en="CRM">CRM</li>
               <li data-i18n-en="Quotes">Presupuestos</li>
-              <li data-i18n-en="Expos">Expos</li>
-              <li class="tag-internal" data-i18n-en="Internal system">Sistema interno</li>
+              <li data-i18n-en="Projects">Proyectos</li>
             </ul>
           </div>
         </li>
 
         <li class="case">
-          <div class="case-media case-media--emat-prod">
-            <picture>
-              <img src="images/projects/home/emat-planificacion.jpg" width="900" height="478" loading="lazy" alt="Planificación diaria de producción en el sistema de EMAT: un plan iniciado con objetivo de 30 bolsas, los lotes de materia prima previstos y el formulario para planificar la jornada. Datos de ejemplo." data-i18n-en-alt="Daily production planning in EMAT's system: a started plan with a 30-bag target, the planned raw material lots and the form to plan the day. Sample data.">
-            </picture>
+          <div class="case-media case-media--mock">
+            <div class="mock mock-plan" role="img" aria-label="Ilustración con datos de ejemplo: plan de producción del día con un objetivo de 120 unidades, la cantidad por producto, los lotes de materia prima previstos y la versión del plan." data-i18n-en-aria-label="Illustration with sample data: the day's production plan with a 120-unit target, the quantity per product, the planned raw material lots and the plan version.">
+              <div aria-hidden="true">
+                <p class="mp-head"><b data-i18n-en="Today's plan">Plan de la jornada</b><span class="mp-chip" data-i18n-en="Started · v2">Iniciado · v2</span></p>
+                <p class="mp-goal"><span data-i18n-en="Target">Objetivo</span><b data-i18n-en="120 units">120 unidades</b></p>
+                <table class="mp-table">
+                  <thead><tr><th scope="col" data-i18n-en="Product">Producto</th><th scope="col" data-i18n-en="Planned">Plan</th><th scope="col" data-i18n-en="Done">Hecho</th></tr></thead>
+                  <tbody>
+                    <tr><td data-i18n-en="Product A · 15 kg">Producto A · 15 kg</td><td>80</td><td>52</td></tr>
+                    <tr><td data-i18n-en="Product B · 10 kg">Producto B · 10 kg</td><td>40</td><td>40</td></tr>
+                  </tbody>
+                </table>
+                <p class="mp-lots"><span data-i18n-en="Planned lots">Lotes previstos</span> MP-0012 · MP-0015</p>
+              </div>
+            </div>
           </div>
           <div class="case-body">
-            <p class="case-meta"><span class="case-num">03</span><span>EMAT · <span data-i18n-en="Production">Producción</span></span></p>
-            <h3 class="case-title">
-              <span data-i18n-en="Knowing what to produce each day">Saber qué producir cada día</span>
-            </h3>
-            <p class="case-desc" data-i18n-en="EMAT's production system: the day's plan with its bag target and raw material lots, each revision saved before the real close. It also covers intake, stock by lot, dispatches with delivery notes and weekly shortfalls based on sales demand.">El sistema de producción de EMAT: el plan de la jornada con su objetivo de bolsas y los lotes de materia prima, y cada revisión guardada antes del cierre real. Suma recepción, stock por lote, despachos con remito y los faltantes de la semana según la demanda comercial.</p>
+            <p class="case-meta"><span class="case-num">03</span><span data-i18n-en="Production system">Sistema de producción</span></p>
+            <h3 class="case-title" data-i18n-en="Knowing what to produce each day">Saber qué producir cada día</h3>
+            <p class="case-desc" data-i18n-en="The day's plan with its target per product and the raw material lots, and each revision saved before the real close. With intake, stock by lot, dispatches with delivery notes and the week's shortfalls based on sales demand.">El plan de la jornada con su objetivo por producto y los lotes de materia prima, y cada revisión guardada antes del cierre real. Con recepción, stock por lote, despachos con remito y los faltantes de la semana según la demanda comercial.</p>
             <ul class="case-tags">
               <li data-i18n-en="Production">Producción</li>
               <li data-i18n-en="Stock">Stock</li>
               <li data-i18n-en="Dispatches">Despachos</li>
-              <li class="tag-internal" data-i18n-en="Internal system">Sistema interno</li>
             </ul>
           </div>
         </li>
 
         <li class="case">
-          <div class="case-media case-media--emat">
-            <picture>
-              <source media="(max-width: 640px)" srcset="images/projects/home/emat-cotizador-m.jpg" width="414" height="314">
-              <img src="images/projects/home/emat-cotizador.jpg" width="840" height="450" loading="lazy" alt="Cotizador del sitio de EMAT: paso 1 de 4, ¿Qué querés aislar?, con las opciones muro interior, techo, húmedos y muro exterior." data-i18n-en-alt="EMAT website quote tool: step 1 of 4, what do you want to insulate?, with interior wall, roof, wet areas and exterior wall options.">
-            </picture>
-          </div>
-          <div class="case-body">
-            <p class="case-meta"><span class="case-num">04</span><span>EMAT · <span data-i18n-en="Website">Sitio web</span></span></p>
-            <h3 class="case-title">
-              <a href="https://emat.com.ar/" target="_blank" rel="noopener" class="case-link"><span data-i18n-en="Quoting an insulation job from the website">Cotizar una obra de aislación desde la web</span><span class="sr-only" data-i18n-en="(EMAT website, opens in a new tab)">(sitio de EMAT, se abre en una pestaña nueva)</span></a>
-            </h3>
-            <p class="case-desc" data-i18n-en="EMAT's site has a 4-step quote tool: the client picks what to insulate, enters the dimensions and gets an estimate. It also includes the product catalog and the coverage map.">El sitio de EMAT tiene un cotizador en 4 pasos: el cliente elige qué quiere aislar, carga las dimensiones y recibe una estimación. Suma el catálogo de productos y el mapa de cobertura.</p>
-            <ul class="case-tags">
-              <li data-i18n-en="Website">Sitio web</li>
-              <li data-i18n-en="Quote tool">Cotizador</li>
-              <li data-i18n-en="Catalog">Catálogo</li>
-            </ul>
-            <span class="case-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></span>
-          </div>
-        </li>
-
-        <li class="case case--wide">
           <div class="case-media case-media--tilin">
             <picture>
               <source media="(max-width: 640px)" srcset="images/projects/home/tilin-caja-m.jpg" width="448" height="242">
@@ -324,7 +339,7 @@
             </picture>
           </div>
           <div class="case-body">
-            <p class="case-meta"><span class="case-num">05</span><span>Tilín · <span data-i18n-en="Retail">Comercios</span></span></p>
+            <p class="case-meta"><span class="case-num">04</span><span>Tilín · <span data-i18n-en="Retail">Comercios</span></span></p>
             <h3 class="case-title">
               <a href="https://www.tilin.com.ar/" target="_blank" rel="noopener" class="case-link"><span data-i18n-en="Ringing up a sale and closing the till">Cobrar una venta y cerrar la caja</span><span class="sr-only" data-i18n-en="(Tilín website, opens in a new tab)">(sitio de Tilín, se abre en una pestaña nueva)</span></a>
             </h3>
@@ -360,7 +375,7 @@
         <li class="integ">
           <h3 class="integ-name">ARCA</h3>
           <p class="integ-desc" data-i18n-en="Electronic invoices issued from the system itself.">Emisión de facturas electrónicas desde el propio sistema.</p>
-          <p class="integ-where" data-i18n-en="In PRAGMA's internal system">En el sistema interno de PRAGMA</p>
+          <p class="integ-where" data-i18n-en="In management systems">En sistemas de gestión</p>
         </li>
         <li class="integ">
           <h3 class="integ-name"><span>Meta</span> <span class="integ-sub">Instagram · WhatsApp</span></h3>
@@ -381,7 +396,7 @@
         <li class="need">
           <span class="need-num">01</span>
           <h3 class="need-title" data-i18n-en="Following up on a quote">Seguir un presupuesto</h3>
-          <p class="need-desc" data-i18n-en="Who asked for it, what state it's in and when to call back. The whole sales team sees the same thing, as in Grupo Arpeco's system.">Quién lo pidió, en qué estado está y cuándo hay que volver a llamar. Todo el equipo comercial ve lo mismo, como en el sistema de Grupo Arpeco.</p>
+          <p class="need-desc" data-i18n-en="Who asked for it, what state it's in and when to call back. The whole sales team sees the same thing.">Quién lo pidió, en qué estado está y cuándo hay que volver a llamar. Todo el equipo comercial ve lo mismo.</p>
           <p class="need-tool" data-i18n-en="CRM and sales follow-up">CRM y seguimiento comercial</p>
         </li>
         <li class="need">
@@ -399,7 +414,7 @@
         <li class="need">
           <span class="need-num">04</span>
           <h3 class="need-title" data-i18n-en="Knowing what to produce">Saber qué hay que producir</h3>
-          <p class="need-desc" data-i18n-en="What's been sold becomes a production list and the stock you're missing, as in EMAT's production planning.">Lo vendido se convierte en una lista de producción y en el stock que falta, como en la planificación de producción de EMAT.</p>
+          <p class="need-desc" data-i18n-en="What's been sold becomes a production list and the stock you're missing, without copying by hand from one spreadsheet to another.">Lo vendido se convierte en una lista de producción y en el stock que falta, sin pasar a mano de una planilla a otra.</p>
           <p class="need-tool" data-i18n-en="Custom management system">Sistema de gestión a medida</p>
         </li>
         <li class="need">
@@ -411,7 +426,7 @@
         <li class="need">
           <span class="need-num">06</span>
           <h3 class="need-title" data-i18n-en="Getting enquiries that arrive with data">Recibir consultas que llegan con datos</h3>
-          <p class="need-desc" data-i18n-en="A website that explains what you do and asks for what your team needs to reply, like EMAT's quote tool.">Una web que explica lo que hacés y pide lo que tu equipo necesita para responder, como el cotizador de EMAT.</p>
+          <p class="need-desc" data-i18n-en="A website that explains what you do and asks for what your team needs to reply, like a quote tool.">Una web que explica lo que hacés y pide lo que tu equipo necesita para responder, como un cotizador.</p>
           <p class="need-tool" data-i18n-en="Website or landing page">Sitio web o landing</p>
         </li>
       </ol>
