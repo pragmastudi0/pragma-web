@@ -61,16 +61,6 @@
   <!-- Movimiento: habilita los estados iniciales antes del primer pintado (ver js/motion-boot.js) -->
   <script src="js/motion-boot.js"></script>
 
-  <!-- Sin JavaScript: mostrar todo el contenido -->
-  <noscript>
-    <style>
-      .reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-blur, .reveal-mask {
-        opacity: 1 !important;
-        transform: none !important;
-        filter: none !important;
-      }
-    </style>
-  </noscript>
 
   <!-- Datos estructurados (JSON-LD) — consistentes con el contenido visible -->
   <script type="application/ld+json">
@@ -140,13 +130,13 @@
 
   <!-- ══════ HERO ══════ -->
   <section class="hero">
-    <div class="container">
-      <span class="section-tag" data-i18n-en="Brands">Marcas</span>
-      <h1 class="hero-title">
+    <div class="container" data-m-group>
+      <span class="section-tag" data-m="rise" data-m-at="0" data-i18n-en="Brands">Marcas</span>
+      <h1 class="hero-title" data-m="lines" data-m-at="100">
         <span data-i18n-en="Brands we">Marcas con las que</span>
         <em data-i18n-en="work with">trabajamos</em>.
       </h1>
-      <p class="hero-desc" data-i18n-en="Businesses and brands that trust pragma — from websites to full systems. All of them live and in production.">Negocios y marcas que confían en pragma — desde webs hasta sistemas completos. Todas vivas y en producción.</p>
+      <p class="hero-desc" data-m="rise" data-m-at="480" data-i18n-en="Businesses and brands that trust pragma — from websites to full systems. All of them live and in production.">Negocios y marcas que confían en pragma — desde webs hasta sistemas completos. Todas vivas y en producción.</p>
     </div>
   </section>
 
@@ -155,91 +145,91 @@
     <div class="container">
       <div class="marcas-grid">
 
-        <a class="marca-card reveal" href="https://www.instagram.com/emat.ok/?hl=es-la" target="_blank" rel="noopener noreferrer">
-          <div class="marca-logo"><img src="images/brands/emat.png" alt="Logo EMAT"></div>
-          <h2 class="marca-name">EMAT</h2>
-          <span class="marca-type" data-i18n-en="Thermal &amp; acoustic insulation">Aislación térmica y acústica</span>
-          <span class="marca-visit">
+        <a class="marca-card" data-m="clip" href="https://www.instagram.com/emat.ok/?hl=es-la" target="_blank" rel="noopener noreferrer">
+          <div class="marca-logo" data-m="rise"><img src="images/brands/emat.png" alt="Logo EMAT"></div>
+          <h2 class="marca-name" data-m="rise">EMAT</h2>
+          <span class="marca-type" data-m="rise" data-i18n-en="Thermal &amp; acoustic insulation">Aislación térmica y acústica</span>
+          <span class="marca-visit" data-m="rise">
             <span data-i18n-en="Visit">Visitar</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
           </span>
         </a>
 
-        <a class="marca-card reveal" href="https://galowines.com.ar/sucursal-barrio-jardin/" target="_blank" rel="noopener noreferrer">
-          <div class="marca-logo"><img src="images/brands/galowines.png" alt="Logo Galo Wines"></div>
-          <h2 class="marca-name">Galo Wines</h2>
-          <span class="marca-type" data-i18n-en="Wine shop">Vinoteca</span>
-          <span class="marca-visit">
+        <a class="marca-card" data-m="clip" href="https://galowines.com.ar/sucursal-barrio-jardin/" target="_blank" rel="noopener noreferrer">
+          <div class="marca-logo" data-m="rise"><img src="images/brands/galowines.png" alt="Logo Galo Wines"></div>
+          <h2 class="marca-name" data-m="rise">Galo Wines</h2>
+          <span class="marca-type" data-m="rise" data-i18n-en="Wine shop">Vinoteca</span>
+          <span class="marca-visit" data-m="rise">
             <span data-i18n-en="Visit">Visitar</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
           </span>
         </a>
 
-        <a class="marca-card reveal" href="https://greenova.ar" target="_blank" rel="noopener noreferrer">
-          <div class="marca-logo"><img src="images/brands/greenova.png" alt="Logo Greenova"></div>
-          <h2 class="marca-name">Greenova</h2>
-          <span class="marca-type" data-i18n-en="Environmental solutions">Soluciones ambientales</span>
-          <span class="marca-visit">
+        <a class="marca-card" data-m="clip" href="https://greenova.ar" target="_blank" rel="noopener noreferrer">
+          <div class="marca-logo" data-m="rise"><img src="images/brands/greenova.png" alt="Logo Greenova"></div>
+          <h2 class="marca-name" data-m="rise">Greenova</h2>
+          <span class="marca-type" data-m="rise" data-i18n-en="Environmental solutions">Soluciones ambientales</span>
+          <span class="marca-visit" data-m="rise">
             <span data-i18n-en="Visit">Visitar</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
           </span>
         </a>
 
-        <a class="marca-card reveal" href="https://www.instagram.com/somoslamickey/" target="_blank" rel="noopener noreferrer">
-          <div class="marca-logo"><img src="images/brands/mickey.png" alt="Logo Somos La Mickey"></div>
-          <h2 class="marca-name">Somos La Mickey</h2>
-          <span class="marca-type" data-i18n-en="Toy store">Juguetería</span>
-          <span class="marca-visit">
+        <a class="marca-card" data-m="clip" href="https://www.instagram.com/somoslamickey/" target="_blank" rel="noopener noreferrer">
+          <div class="marca-logo" data-m="rise"><img src="images/brands/mickey.png" alt="Logo Somos La Mickey"></div>
+          <h2 class="marca-name" data-m="rise">Somos La Mickey</h2>
+          <span class="marca-type" data-m="rise" data-i18n-en="Toy store">Juguetería</span>
+          <span class="marca-visit" data-m="rise">
             <span data-i18n-en="Visit">Visitar</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
           </span>
         </a>
 
-        <a class="marca-card reveal" href="https://seguroscordoba.com.ar/" target="_blank" rel="noopener noreferrer">
-          <div class="marca-logo"><img src="images/brands/quintanaruiz.png" alt="Logo Quintana Ruiz Asesores"></div>
-          <h2 class="marca-name">Quintana Ruiz Asesores</h2>
-          <span class="marca-type" data-i18n-en="Insurance advisors">Seguros</span>
-          <span class="marca-visit">
+        <a class="marca-card" data-m="clip" href="https://seguroscordoba.com.ar/" target="_blank" rel="noopener noreferrer">
+          <div class="marca-logo" data-m="rise"><img src="images/brands/quintanaruiz.png" alt="Logo Quintana Ruiz Asesores"></div>
+          <h2 class="marca-name" data-m="rise">Quintana Ruiz Asesores</h2>
+          <span class="marca-type" data-m="rise" data-i18n-en="Insurance advisors">Seguros</span>
+          <span class="marca-visit" data-m="rise">
             <span data-i18n-en="Visit">Visitar</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
           </span>
         </a>
 
-        <a class="marca-card reveal" href="https://grupoarpeco-site.vercel.app" target="_blank" rel="noopener noreferrer">
-          <div class="marca-logo"><img src="images/brands/grupoarpeco2026.png" alt="Logo Grupo Arpeco"></div>
-          <h2 class="marca-name">Grupo Arpeco</h2>
-          <span class="marca-type" data-i18n-en="Construction &amp; design">Construcción y diseño</span>
-          <span class="marca-visit">
+        <a class="marca-card" data-m="clip" href="https://grupoarpeco-site.vercel.app" target="_blank" rel="noopener noreferrer">
+          <div class="marca-logo" data-m="rise"><img src="images/brands/grupoarpeco2026.png" alt="Logo Grupo Arpeco"></div>
+          <h2 class="marca-name" data-m="rise">Grupo Arpeco</h2>
+          <span class="marca-type" data-m="rise" data-i18n-en="Construction &amp; design">Construcción y diseño</span>
+          <span class="marca-visit" data-m="rise">
             <span data-i18n-en="Visit">Visitar</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
           </span>
         </a>
 
-        <a class="marca-card reveal" href="https://inbira-web.vercel.app" target="_blank" rel="noopener noreferrer">
-          <div class="marca-logo"><img src="images/brands/INBIRA.png" alt="Logo INBIRA"></div>
-          <h2 class="marca-name">INBIRA</h2>
-          <span class="marca-type" data-i18n-en="Real estate investments">Inversiones en bienes raíces</span>
-          <span class="marca-visit">
+        <a class="marca-card" data-m="clip" href="https://inbira-web.vercel.app" target="_blank" rel="noopener noreferrer">
+          <div class="marca-logo" data-m="rise"><img src="images/brands/INBIRA.png" alt="Logo INBIRA"></div>
+          <h2 class="marca-name" data-m="rise">INBIRA</h2>
+          <span class="marca-type" data-m="rise" data-i18n-en="Real estate investments">Inversiones en bienes raíces</span>
+          <span class="marca-visit" data-m="rise">
             <span data-i18n-en="Visit">Visitar</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
           </span>
         </a>
 
-        <a class="marca-card reveal" href="https://www.franciscanutricion.com/" target="_blank" rel="noopener noreferrer">
-          <div class="marca-logo"><img src="images/brands/franciscanutricion.png" alt="Logo Francisca Nutrición"></div>
-          <h2 class="marca-name">Francisca Nutrición</h2>
-          <span class="marca-type" data-i18n-en="Nutrition">Nutrición</span>
-          <span class="marca-visit">
+        <a class="marca-card" data-m="clip" href="https://www.franciscanutricion.com/" target="_blank" rel="noopener noreferrer">
+          <div class="marca-logo" data-m="rise"><img src="images/brands/franciscanutricion.png" alt="Logo Francisca Nutrición"></div>
+          <h2 class="marca-name" data-m="rise">Francisca Nutrición</h2>
+          <span class="marca-type" data-m="rise" data-i18n-en="Nutrition">Nutrición</span>
+          <span class="marca-visit" data-m="rise">
             <span data-i18n-en="Visit">Visitar</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
           </span>
         </a>
 
-        <a class="marca-card reveal" href="https://www.vientosurluz.com/" target="_blank" rel="noopener noreferrer">
-          <div class="marca-logo"><img src="images/brands/vientosurluz.png" alt="Logo Viento Sur"></div>
-          <h2 class="marca-name">Viento Sur</h2>
-          <span class="marca-type" data-i18n-en="Design lighting">Iluminación de diseño</span>
-          <span class="marca-visit">
+        <a class="marca-card" data-m="clip" href="https://www.vientosurluz.com/" target="_blank" rel="noopener noreferrer">
+          <div class="marca-logo" data-m="rise"><img src="images/brands/vientosurluz.png" alt="Logo Viento Sur"></div>
+          <h2 class="marca-name" data-m="rise">Viento Sur</h2>
+          <span class="marca-type" data-m="rise" data-i18n-en="Design lighting">Iluminación de diseño</span>
+          <span class="marca-visit" data-m="rise">
             <span data-i18n-en="Visit">Visitar</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
           </span>
@@ -252,12 +242,12 @@
   <!-- ══════ CTA ══════ -->
   <section class="final-cta">
     <div class="container">
-      <h2>
+      <h2 data-m="words">
         <span data-i18n-en="Want to join">¿Querés sumarte</span>
         <em data-i18n-en="the list?">a la lista?</em>
       </h2>
-      <p data-i18n-en="Tell us about your business and let's build your digital presence — website, system or both.">Contanos sobre tu negocio y construyamos tu presencia digital — web, sistema o ambos.</p>
-      <a href="https://wa.me/5493512145673?text=Hola!%20Me%20gustar%C3%ADa%20coordinar%20una%20reuni%C3%B3n%20para%20contarles%20sobre%20mi%20proyecto." target="_blank" rel="noopener" class="btn-primary" data-i18n-en-href="https://wa.me/5493512145673?text=Hi!%20I%27d%20like%20to%20book%20a%20call%20to%20discuss%20my%20project.">
+      <p data-m="rise" data-i18n-en="Tell us about your business and let's build your digital presence — website, system or both.">Contanos sobre tu negocio y construyamos tu presencia digital — web, sistema o ambos.</p>
+      <a href="https://wa.me/5493512145673?text=Hola!%20Me%20gustar%C3%ADa%20coordinar%20una%20reuni%C3%B3n%20para%20contarles%20sobre%20mi%20proyecto." target="_blank" rel="noopener" class="btn-primary" data-m="rise" data-i18n-en-href="https://wa.me/5493512145673?text=Hi!%20I%27d%20like%20to%20book%20a%20call%20to%20discuss%20my%20project.">
         <span data-i18n-en="Book a meeting">Agendar reunión</span>
         <span class="btn-arrow">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -268,7 +258,7 @@
 
   <!-- ══════ FOOTER ══════ -->
   <footer>
-    <div class="footer-top">
+    <div class="footer-top" data-m="fade">
       <div class="footer-col footer-col-brand">
         <a href="index.html" class="footer-brand">pragma<span class="footer-brand-sub">studio</span></a>
         <p data-i18n-en="Custom digital solutions. Websites, systems, CRMs and apps built for real businesses.">Soluciones digitales a medida. Webs, sistemas, CRMs y apps para negocios reales.</p>
@@ -289,7 +279,7 @@
         <a href="privacidad.html#cookies" data-cookie-preferences data-i18n-en="Cookie preferences">Preferencias de cookies</a>
       </div>
     </div>
-    <div class="footer-bottom">
+    <div class="footer-bottom" data-m="fade">
       <a href="index.html" class="footer-brand">pragma<span class="footer-brand-sub">studio</span></a>
       <span class="footer-copy" data-i18n-en="© 2026 Pragma Studio. All rights reserved.">© 2026 Pragma Studio. Todos los derechos reservados.</span>
       <div class="footer-socials">

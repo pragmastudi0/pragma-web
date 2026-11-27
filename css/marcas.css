@@ -603,13 +603,7 @@
     }
     .wa-float:hover { transform: scale(1.08); }
 
-    /* ══════ REVEAL ══════ */
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.9s var(--ease-out-expo), transform 0.9s var(--ease-out-expo);
-    }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
+    /* Entradas y revelados: css/motion.css */
 
     /* ══════ RESPONSIVE ══════ */
     @media (max-width: 900px) {

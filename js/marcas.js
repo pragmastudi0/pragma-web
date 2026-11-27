@@ -12,12 +12,6 @@
       toggle.setAttribute('aria-expanded', 'false');
     }));
 
-    // Reveal
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-    }, { threshold: 0.15, rootMargin: '0px 0px -80px 0px' });
-    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-
     // Grid Lens
     (function gridLens() {
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
