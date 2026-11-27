@@ -759,26 +759,58 @@
       line-height: 1.35;
     }
 
+    /* Carrusel de marcas: dos copias de la lista se desplazan juntas; cuando la
+       primera sale entera, la segunda ocupa su lugar y el ciclo no se nota. */
+    .hero-proof-marquee {
+      --logo-h: 38px;
+      --logo-gap: 3.25rem;
+      display: flex;
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+    }
+
     .hero-proof-logos {
       list-style: none;
       display: flex;
-      flex-wrap: wrap;
+      flex-shrink: 0;
       align-items: center;
-      gap: 0.75rem 2.25rem;
-      flex: 1;
+      gap: var(--logo-gap);
+      padding-right: var(--logo-gap);
+      animation: proof-marquee 11s linear infinite;
     }
 
+    .hero-proof-logos li { flex-shrink: 0; }
+
+    /* Cada logo se escala según su contenido real (sin el aire transparente del
+       archivo) para que todos tengan un peso visual parejo. Los valores --r, --m*
+       y --k vienen calculados en el HTML. */
     .hero-proof-logos img {
       display: block;
-      height: 34px;
       width: auto;
-      filter: grayscale(1);
-      opacity: 0.75;
+      max-width: none;
+      height: calc(var(--logo-h) * var(--k, 1) * var(--r, 1));
+      margin:
+        calc(var(--logo-h) * var(--k, 1) * var(--mt, 0) * -1)
+        calc(var(--logo-h) * var(--k, 1) * var(--mr, 0) * -1)
+        calc(var(--logo-h) * var(--k, 1) * var(--mb, 0) * -1)
+        calc(var(--logo-h) * var(--k, 1) * var(--ml, 0) * -1);
+      /* Tinta plena: todos los logos en negro sólido, sin grises lavados */
+      filter: brightness(0);
     }
 
-    /* Logos con aire transparente alrededor: se agrandan para igualar el peso visual */
-    .hero-proof-logos img.logo-pad { height: 62px; margin: -14px -14px; }
-    .hero-proof-logos img.logo-wide { height: 26px; }
+    /* Logos ilustrados: en negro pleno serían una mancha; van en gris contrastado */
+    .hero-proof-logos img.logo-art { filter: grayscale(1) contrast(1.4) brightness(0.75); }
+
+    @keyframes proof-marquee {
+      to { transform: translateX(-100%); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-proof-marquee { overflow: visible; }
+      .hero-proof-logos { animation: none; flex-wrap: wrap; flex-shrink: 1; row-gap: 1.25rem; }
+      .hero-proof-logos[aria-hidden="true"] { display: none; }
+    }
 
     /* ═══════════════════ PROYECTOS ═══════════════════ */
     .work { padding-top: clamp(3rem, 6vw, 5rem); }
@@ -1373,10 +1405,8 @@
         gap: 1.1rem;
       }
       .hero-proof-label { max-width: none; }
-      .hero-proof-logos { gap: 1rem 1.5rem; flex: none; }
-      .hero-proof-logos img { height: 26px; }
-      .hero-proof-logos img.logo-pad { height: 48px; margin: -11px -10px; }
-      .hero-proof-logos img.logo-wide { height: 20px; }
+      .hero-proof-marquee { --logo-h: 30px; --logo-gap: 2.25rem; flex: none; width: 100%; }
+      .hero-proof-logos { animation-duration: 8s; }
 
       .section-head { flex-direction: column; align-items: flex-start; }
 
