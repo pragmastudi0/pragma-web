@@ -252,6 +252,7 @@
 
   /* ───────────── Ligadas al scroll ───────────── */
   var fills = [];
+  var waiting = [];   // elementos observados que todavía no entraron
   var parallax = [];
   var expands = [];
   var nav = null;
@@ -280,8 +281,19 @@
     var pr = parallax.map(function (p) { return p.el.getBoundingClientRect(); });
     var er = expands.map(function (e) { return e.el.getBoundingClientRect(); });
 
+    // Al final de la página, lo que quedó dentro del margen del observador (el
+    // último bloque del footer) no puede "entrar" más: se revela acá.
+    var tail = [];
+    if (atEnd && io) {
+      waiting.forEach(function (el) {
+        if (state(el).in || !el.getClientRects().length) return;
+        if (el.getBoundingClientRect().top < vh) tail.push(el);
+      });
+    }
+
     // Escrituras
     if (nav) nav.classList.toggle('scrolled', window.scrollY > 50);
+    tail.forEach(function (el, i) { reveal(el, Math.min(i, 6) * cfg.stagger); });
 
     fills.forEach(function (f, i) {
       if (f.done) return;
@@ -348,7 +360,7 @@
       if (el.getAttribute('data-m') === 'fill') return;
       pending++;
       if (el.closest('[data-m-group]')) grouped.push(el);
-      else io.observe(el);
+      else { io.observe(el); waiting.push(el); }
     });
 
     // 3. Secuencia de carga (hero). Arranca en el primer frame; si la página llega
